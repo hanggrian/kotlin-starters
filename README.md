@@ -1,2 +1,3 @@
-# kt-templates
-My Kotlin project templates
+kt-templates
+------------
+Focused on using Kotlin language and frameworks.
