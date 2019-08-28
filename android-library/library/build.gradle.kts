@@ -1,15 +1,38 @@
 plugins {
-    kotlin("jvm")
-    dokka()
+    android("library")
+    kotlin("android")
+    dokka("android")
     `bintray-release`
 }
 
-group = RELEASE_GROUP
-version = RELEASE_VERSION
-
-sourceSets {
-    get("main").java.srcDir("src")
-    get("test").java.srcDir("tests/src")
+android {
+    compileSdkVersion(SDK_TARGET)
+    defaultConfig {
+        minSdkVersion(SDK_MIN)
+        targetSdkVersion(SDK_TARGET)
+        versionName = RELEASE_VERSION
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("AndroidManifest.xml")
+            java.srcDirs("src")
+            res.srcDir("res")
+            resources.srcDir("src")
+        }
+        getByName("androidTest") {
+            setRoot("tests")
+            manifest.srcFile("tests/AndroidManifest.xml")
+            java.srcDir("tests/src")
+            res.srcDir("tests/res")
+            resources.srcDir("tests/src")
+        }
+    }
+    libraryVariants.all {
+        generateBuildConfigProvider?.configure {
+            enabled = false
+        }
+    }
 }
 
 val ktlint by configurations.registering
@@ -19,6 +42,12 @@ dependencies {
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
 
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    
+    androidTestImplementation(kotlin("stdlib", VERSION_KOTLIN))
+    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
+    androidTestImplementation(androidx("test", "runner", VERSION_RUNNER))
+    androidTestImplementation(androidx("test", "rules", VERSION_RULES))
 
     ktlint {
         invoke(ktlint())

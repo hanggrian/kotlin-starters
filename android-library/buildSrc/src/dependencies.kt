@@ -17,4 +17,13 @@ inline val PluginDependenciesSpec.`git-publish` get() = id("org.ajoberstar.git-p
 
 fun DependencyHandler.ktlint() = "com.pinterest:ktlint:$VERSION_KTLINT"
 
+fun DependencyHandler.android() = "com.android.tools.build:gradle:$VERSION_ANDROID_PLUGIN"
+fun PluginDependenciesSpec.android(submodule: String) = id("com.android.$submodule")
+
+fun DependencyHandler.androidx(
+    repository: String,
+    module: String = repository,
+    version: String = VERSION_ANDROIDX
+): String = "androidx.$repository:$module:$version"
+
 private fun String?.wrap(wrapper: (String) -> String) = this?.let(wrapper).orEmpty()
