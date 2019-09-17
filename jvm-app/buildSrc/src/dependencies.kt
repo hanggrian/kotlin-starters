@@ -6,9 +6,6 @@ fun DependencyHandler.kotlinx(
     version: String? = null
 ) = "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$it" } ?: ""}"
 
-fun DependencyHandler.dokka(module: String? = null) = "org.jetbrains.dokka:dokka-${module.wrap { "$it-" }}gradle-plugin:$VERSION_DOKKA"
-fun PluginDependenciesSpec.dokka(module: String? = null) = id("org.jetbrains.dokka${module.wrap { "-$it" }}")
-
 fun DependencyHandler.gitPublish() = "org.ajoberstar:gradle-git-publish:$VERSION_GIT_PUBLISH"
 inline val PluginDependenciesSpec.`git-publish` get() = id("org.ajoberstar.git-publish")
 

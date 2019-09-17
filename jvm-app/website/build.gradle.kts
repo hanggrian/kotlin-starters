@@ -10,9 +10,3 @@ gitPublish {
         "../$RELEASE_ARTIFACT/build/docs"
     )
 }
-
-tasks {
-    "gitPublishCopy" {
-        dependsOn(":$RELEASE_ARTIFACT:dokka")
-    }
-}

@@ -1,13 +1,12 @@
 plugins {
     kotlin("jvm")
-    dokka()
     application
 }
 
 group = RELEASE_GROUP
 version = RELEASE_VERSION
 
-application.mainClassName = "com.example.MyApp"
+application.mainClassName = "$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp"
 
 sourceSets {
     get("main").java.srcDir("src")
@@ -48,13 +47,5 @@ tasks {
         classpath(configurations["ktlint"])
         main = "com.pinterest.ktlint.Main"
         args("-F", "src/**/*.kt")
-    }
-
-    "dokka"(org.jetbrains.dokka.gradle.DokkaTask::class) {
-        outputDirectory = "$buildDir/docs"
-        doFirst {
-            file(outputDirectory).deleteRecursively()
-            buildDir.resolve("gitPublish").deleteRecursively()
-        }
     }
 }

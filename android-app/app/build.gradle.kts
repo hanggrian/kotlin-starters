@@ -3,7 +3,6 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
-    dokka("android")
 }
 
 android {
@@ -85,13 +84,5 @@ tasks {
         classpath(configurations["ktlint"])
         main = "com.pinterest.ktlint.Main"
         args("-F", "src/**/*.kt")
-    }
-
-    "dokka"(org.jetbrains.dokka.gradle.DokkaTask::class) {
-        outputDirectory = "$buildDir/docs"
-        doFirst {
-            file(outputDirectory).deleteRecursively()
-            buildDir.resolve("gitPublish").deleteRecursively()
-        }
     }
 }

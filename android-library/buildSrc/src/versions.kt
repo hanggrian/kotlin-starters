@@ -1,6 +1,6 @@
 const val VERSION_GRADLE = "5.6.1"
 const val VERSION_KOTLIN = "1.3.50"
-const val VERSION_COROUTINES = "1.3.0"
+const val VERSION_COROUTINES = "1.3.1"
 
 internal const val VERSION_DOKKA = "0.9.18"
 internal const val VERSION_BINTRAY_RELEASE = "0.9.1"
