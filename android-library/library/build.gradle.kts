@@ -42,7 +42,7 @@ dependencies {
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
 
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
-    
+
     androidTestImplementation(kotlin("stdlib", VERSION_KOTLIN))
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
@@ -86,7 +86,7 @@ tasks {
     }
 }
 
-bintrayReleaseFix()
+publishKotlinFix()
 publish {
     bintrayUser = BINTRAY_USER
     bintrayKey = BINTRAY_KEY
