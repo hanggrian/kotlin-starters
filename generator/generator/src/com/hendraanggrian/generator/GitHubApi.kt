@@ -37,11 +37,8 @@ object GitHubApi {
         val name: String
     ) {
 
-        fun bestGuess(): String? {
-            val tagName = tagName.clean()
-            val name = name.clean()
-            return tagName ?: name
-        }
+        fun bestGuess(): String? =
+            tagName.clean() ?: name.clean()
 
         private fun String.clean(): String? {
             if (isEmpty() || none { it.isDigit() }) {
