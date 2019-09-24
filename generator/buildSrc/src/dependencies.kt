@@ -3,11 +3,6 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 
 fun DependencyHandler.ktor(module: String) = "io.ktor:ktor-$module:$VERSION_KTOR"
 
-fun DependencyHandler.kotlinx(
-    module: String,
-    version: String? = null
-) = "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$it" } ?: ""}"
-
 fun DependencyHandler.kotlinPoetKTX() = "com.hendraanggrian:kotlinpoet-ktx:$VERSION_KOTLINPOET_KTX"
 
 fun DependencyHandler.gitPublish() = "org.ajoberstar:gradle-git-publish:$VERSION_GIT_PUBLISH"

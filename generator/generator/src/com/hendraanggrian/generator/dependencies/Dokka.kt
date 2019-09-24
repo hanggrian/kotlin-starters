@@ -1,34 +1,27 @@
 package com.hendraanggrian.generator.dependencies
 
-import com.hendraanggrian.generator.DependencyBuilder
-import com.hendraanggrian.kotlinpoet.asNullable
-import com.squareup.kotlinpoet.STRING
+import com.hendraanggrian.generator.Dependency
+import com.hendraanggrian.kotlinpoet.FileSpecBuilder
 
-fun DependencyBuilder.dokka() {
-    "dokka" {
+object Dokka : Dependency("dokka") {
+
+    init {
+        fetch("VERSION_DOKKA", "Kotlin", "dokka")
+    }
+
+    override fun FileSpecBuilder.initialize() {
         properties {
-            constVal("VERSION_DOKKA", "Kotlin", "dokka")
+            constVal("VERSION_DOKKA")
         }
         functions {
-            "dokka" {
-                receiver = dependencyHandler
-                returns<String>()
-                parameters {
-                    add("module", STRING.asNullable()) {
-                        defaultValue("null")
-                    }
-                }
-                append("return \"org.jetbrains.dokka:dokka-\${module.wrap { \"\$it-\" }}gradle-plugin:\$VERSION_DOKKA\"")
+            dependency("dokka", "module" to true) {
+                append(
+                    "return %S",
+                    "org.jetbrains.dokka:dokka-\${module.wrap { \"\$it-\" }}gradle-plugin:\$VERSION_DOKKA"
+                )
             }
-            "dokka" {
-                receiver = pluginDependenciesSpec
-                returns<String>()
-                parameters {
-                    add("module", STRING.asNullable()) {
-                        defaultValue("null")
-                    }
-                }
-                appendln("return id(\"org.jetbrains.dokka\${module.wrap { \"-\$it\" }}\")")
+            plugin("dokka", "module" to true) {
+                appendln("return id(%S)", "org.jetbrains.dokka\${module.wrap { \"-\$it\" }}")
             }
         }
     }

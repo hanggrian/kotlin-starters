@@ -1,25 +1,24 @@
 package com.hendraanggrian.generator.dependencies
 
-import com.hendraanggrian.generator.DependencyBuilder
-import com.hendraanggrian.kotlinpoet.asNullable
-import com.squareup.kotlinpoet.STRING
+import com.hendraanggrian.generator.Dependency
+import com.hendraanggrian.kotlinpoet.FileSpecBuilder
 
-fun DependencyBuilder.kotlin() {
-    "kotlin" {
+object Kotlin : Dependency("kotlin") {
+
+    init {
+        fetch("VERSION_KOTLIN", "JetBrains", "kotlin")
+        fetch("VERSION_COROUTINES", "Kotlin", "kotlinx.coroutines")
+    }
+
+    override fun FileSpecBuilder.initialize() {
         properties {
-            constVal("VERSION_KOTLIN", "JetBrains", "kotlin")
-            constVal("VERSION_COROUTINES", "Kotlin", "kotlinx.coroutines")
+            constVal("VERSION_KOTLIN")
+            constVal("VERSION_COROUTINES")
         }
-        functions.add("kotlinx") {
-            receiver = dependencyHandler
-            returns<String>()
-            parameters {
-                add<String>("module")
-                add("version", STRING.asNullable()) {
-                    defaultValue("null")
-                }
+        functions {
+            dependency("kotlinx", "module" to false, "version" to true) {
+                append("return %S", "org.jetbrains.kotlinx:kotlinx-\$module\${version?.let { \":\$it\" } ?: \"\" }\"")
             }
-            append("return \"org.jetbrains.kotlinx:kotlinx-\$module\${version?.let { \":\$it\" } ?: \"\" }\"")
         }
     }
 }
