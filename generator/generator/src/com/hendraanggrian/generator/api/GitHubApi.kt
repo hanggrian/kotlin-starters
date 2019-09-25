@@ -1,17 +1,9 @@
 package com.hendraanggrian.generator.api
 
 import com.google.gson.annotations.SerializedName
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
-import io.ktor.client.features.json.GsonSerializer
-import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.request.get
 
-object GitHubApi : Api("https://api.github.com", HttpClient(OkHttp) {
-    install(JsonFeature) {
-        serializer = GsonSerializer()
-    }
-}) {
+object GitHubApi : Api("https://api.github.com") {
 
     suspend fun getLatestRelease(owner: String, repo: String): String = client
         .get<List<Release>> { apiUrl("repos/$owner/$repo/releases") }

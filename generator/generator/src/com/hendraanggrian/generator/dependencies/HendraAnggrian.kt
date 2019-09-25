@@ -6,11 +6,11 @@ object HendraAnggrian : Dependency("hendraanggrian") {
 
     override fun FileSpecBuilder.initialize() {
         functions {
-            dependency("hendraanggrian", "module" to false, "version" to false) {
-                append("return %S", "com.hendraanggrian:\$module:\$version")
+            dependencyFun("hendraanggrian", "module" to false, "version" to false) {
+                append("return %P", "com.hendraanggrian:\$module:\$version")
             }
-            plugin("dokka", "module" to false) {
-                appendln("return id(%S)", "com.hendraanggrian\$module")
+            pluginFun("dokka", "module" to false) {
+                appendln("return id(%P)", "com.hendraanggrian\$module")
             }
         }
     }

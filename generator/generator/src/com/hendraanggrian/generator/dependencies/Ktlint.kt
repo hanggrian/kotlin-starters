@@ -2,15 +2,15 @@ package com.hendraanggrian.generator.dependencies
 
 import com.hendraanggrian.kotlinpoet.FileSpecBuilder
 
-object Ktor : Dependency("ktor") {
+object Ktlint : Dependency("ktlint") {
 
     override fun FileSpecBuilder.initialize() {
         properties {
-            mavenCentralVal("VERSION_KTOR", "io.ktor", "ktor")
+            mavenCentralVal("VERSION_KTLINT", "com.pinterest", "ktlint")
         }
         functions {
-            dependencyFun("ktor", "module" to false) {
-                append("return %S", "io.ktor:ktor-\$module:\$VERSION_KTOR")
+            dependencyFun("ktlint") {
+                append("return %P", "com.pinterest:ktlint:\$VERSION_KTLINT")
             }
         }
     }

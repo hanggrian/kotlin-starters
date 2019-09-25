@@ -1,5 +1,6 @@
 package com.hendraanggrian.generator.dependencies
 
+import com.hendraanggrian.generator.api.BintrayApi
 import com.hendraanggrian.generator.api.GitHubApi
 import com.hendraanggrian.generator.api.MavenCentralApi
 import com.hendraanggrian.kotlinpoet.FileSpecBuilder
@@ -32,14 +33,17 @@ abstract class Dependency(val name: String) {
         MavenCentralApi.getLatestVersion(group, artifact)
     }
 
+    private fun fetchBintray(name: String, subject: String, repo: String, `package`: String): Unit = fetch(name) {
+        println("Fetching api.bintray.com/$subject/$repo/$`package`")
+        BintrayApi.getLatestVersion(subject, repo, `package`)
+    }
+
     private fun fetch(name: String, getter: suspend () -> String) {
-        println("Registering $name...")
         var version = map[name]
         if (version == null) {
             version = runBlocking { getter() }
             map[name] = version
             println("Saved: $version")
-            println()
         }
     }
 
@@ -63,17 +67,41 @@ abstract class Dependency(val name: String) {
         newVal(name, isInternal)
     }
 
-    protected fun FunSpecContainer.dependency(
+    protected fun PropertySpecContainer.bintrayVal(
+        name: String,
+        subject: String,
+        repo: String,
+        `package`: String,
+        isInternal: Boolean = false
+    ) {
+        fetchBintray(name, subject, repo, `package`)
+        newVal(name, isInternal)
+    }
+
+    protected fun FunSpecContainer.dependencyFun(
         name: String,
         vararg params: Pair<String, Boolean>,
         builderAction: FunSpecBuilder.() -> Unit
     ) = newFun(DEPENDENCY_HANDLER, name, *params, builderAction = builderAction)
 
-    protected fun FunSpecContainer.plugin(
+    protected fun FunSpecContainer.pluginFun(
         name: String,
         vararg params: Pair<String, Boolean>,
         builderAction: FunSpecBuilder.() -> Unit
     ) = newFun(PLUGIN_DEPENDENCIES_SPEC, name, *params, builderAction = builderAction)
+
+    protected fun PropertySpecContainer.pluginVal(
+        name: String,
+        builderAction: FunSpecBuilder.() -> Unit
+    ) {
+        add<String>(name) {
+            receiver = PLUGIN_DEPENDENCIES_SPEC
+            getter {
+                addModifiers(KModifier.INLINE)
+                builderAction()
+            }
+        }
+    }
 
     private fun PropertySpecContainer.newVal(
         name: String,
