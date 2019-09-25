@@ -1,5 +1,6 @@
 package com.hendraanggrian.generator
 
+import com.hendraanggrian.generator.api.GitHubApi
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals

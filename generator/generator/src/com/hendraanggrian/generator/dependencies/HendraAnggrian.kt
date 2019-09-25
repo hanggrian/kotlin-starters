@@ -1,6 +1,5 @@
 package com.hendraanggrian.generator.dependencies
 
-import com.hendraanggrian.generator.Dependency
 import com.hendraanggrian.kotlinpoet.FileSpecBuilder
 
 object HendraAnggrian : Dependency("hendraanggrian") {

@@ -1,5 +1,6 @@
 package com.hendraanggrian.generator
 
+import com.hendraanggrian.generator.dependencies.Dependency
 import com.hendraanggrian.kotlinpoet.buildFile
 import java.io.File
 
