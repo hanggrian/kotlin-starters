@@ -1,10 +1,7 @@
-import kotlin.String
-import org.gradle.api.artifacts.dsl.DependencyHandler
-import org.gradle.plugin.use.PluginDependenciesSpec
+internal const val VERSION_DOKKA: String = "0.9.18"
 
-const val VERSION_DOKKA: String = "0.9.18"
+fun Dependencies.dokka(module: String? = null) =
+    "org.jetbrains.dokka:dokka${module?.let { "-$it" } ?: ""}-gradle-plugin:$VERSION_DOKKA"
 
-fun DependencyHandler.dokka(module: String? = null): String =
-    """org.jetbrains.dokka:dokka-${module.wrap { "$it-" }}gradle-plugin:$VERSION_DOKKA"""
-fun PluginDependenciesSpec.dokka(module: String? = null): String =
-    id("""org.jetbrains.dokka${module.wrap { "-$it" }}""")
+fun Plugins.dokka(module: String? = null) =
+    id("org.jetbrains.dokka${module?.let { "-$it" } ?: ""}")
