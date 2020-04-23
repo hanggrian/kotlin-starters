@@ -1,7 +1,7 @@
 plugins {
     android("library")
     kotlin("android")
-    dokka("android")
+    dokka
     `bintray-release`
 }
 
@@ -16,7 +16,7 @@ android {
     sourceSets {
         getByName("main") {
             manifest.srcFile("AndroidManifest.xml")
-            java.srcDirs("src")
+            java.srcDir("src")
             res.srcDir("res")
             resources.srcDir("src")
         }
@@ -40,14 +40,16 @@ val ktlint by configurations.registering
 dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
+    api(androidx("appcompat"))
 
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
 
-    androidTestImplementation(kotlin("stdlib", VERSION_KOTLIN))
-    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
+    androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
+    androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))
+    androidTestImplementation(androidx("test.ext", "junit-ktx", VERSION_ANDROIDX_JUNIT))
+    androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
-    androidTestImplementation(androidx("test", "runner", VERSION_RUNNER))
-    androidTestImplementation(androidx("test", "rules", VERSION_RULES))
 
     ktlint {
         invoke(ktlint())
@@ -97,5 +99,5 @@ publish {
     artifactId = RELEASE_ARTIFACT
     publishVersion = RELEASE_VERSION
     desc = RELEASE_DESC
-    website = RELEASE_WEBSITE
+    website = RELEASE_WEB
 }

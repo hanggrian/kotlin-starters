@@ -3,8 +3,8 @@ plugins {
 }
 
 gitPublish {
-    repoUri = RELEASE_WEBSITE
-    branch = "gh-pages"
+    repoUri.set(RELEASE_WEB)
+    branch.set("gh-pages")
     contents.from(
         "src",
         "../$RELEASE_ARTIFACT/build/docs"

@@ -19,7 +19,7 @@ android {
     sourceSets {
         getByName("main") {
             manifest.srcFile("AndroidManifest.xml")
-            java.srcDirs("src")
+            java.srcDir("src")
             res.srcDir("res")
             resources.srcDir("src")
         }
@@ -47,5 +47,5 @@ android {
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(project(":$RELEASE_ARTIFACT"))
-    implementation(androidx("appcompat", version = "$VERSION_ANDROIDX-rc01"))
+    implementation(material())
 }
