@@ -1,22 +1,11 @@
-[![download](https://api.bintray.com/packages/hendraanggrian/maven/library/images/download.svg)](https://bintray.com/hendraanggrian/maven/library/_latestVersion)
-[![build](https://travis-ci.com/hendraanggrian/library.svg)](https://travis-ci.com/hendraanggrian/library)
+[![release](https://img.shields.io/github/release/hendraanggrian/app.svg)]
+[![build](https://travis-ci.com/hendraanggrian/app.svg)](https://travis-ci.com/hendraanggrian/app)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+[![license](https://img.shields.io/badge/license-Apache--2.0-green.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 My Library
 ==========
 Some cool stuff going on here.
-
-Download
---------
-```gradle
-repositories {
-    jcenter()
-}
-
-dependencies {
-    implementation "com.hendraanggrian:library:$version"
-}
-```
 
 Usage
 -----

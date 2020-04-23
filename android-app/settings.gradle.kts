@@ -1,2 +1,2 @@
-include(RELEASE_ARTIFACT)
+include("app")
 include("website")
