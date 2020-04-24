@@ -1,3 +1,3 @@
-include(RELEASE_ARTIFACT)
-include("demo")
+include("library")
+include("example")
 include("website")

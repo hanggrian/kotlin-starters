@@ -1,11 +1,14 @@
 plugins {
-    kotlin("jvm")
     application
+    kotlin("jvm")
 }
 
 application.mainClassName = "com.example.MyApp"
 
-sourceSets["main"].java.srcDir("src")
+sourceSets.getByName("main") {
+    java.srcDir("src")
+    resources.srcDir("res")
+}
 
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))

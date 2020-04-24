@@ -1,4 +1,4 @@
-package com.hendraanggrian.plugin
+package com.hendraanggrian.app
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -6,6 +6,6 @@ import kotlin.test.assertEquals
 class MyTest {
 
     @Test fun test() {
-        assertEquals("yo!", MyPlugin().toString())
+        assertEquals("yo!", MyApp().toString())
     }
 }

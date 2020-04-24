@@ -5,8 +5,5 @@ plugins {
 gitPublish {
     repoUri.set(RELEASE_WEB)
     branch.set("gh-pages")
-    contents.from(
-        "src",
-        "../$RELEASE_ARTIFACT/build/docs"
-    )
+    contents.from("src")
 }

@@ -1,6 +1,7 @@
 plugins {
-    kotlin("jvm")
     application
+    kotlin("jvm")
+    kotlin("kapt")
 }
 
 group = RELEASE_GROUP
@@ -9,15 +10,21 @@ version = RELEASE_VERSION
 application.mainClassName = "$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp"
 
 sourceSets {
-    get("main").java.srcDir("src")
-    get("test").java.srcDir("tests/src")
+    getByName("main") {
+        java.srcDir("src")
+        resources.srcDir("res")
+    }
+    getByName("test") {
+        java.srcDir("tests/src")
+        resources.srcDir("tests/res")
+    }
 }
 
 val ktlint by configurations.registering
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
+    api(kotlin("stdlib", VERSION_KOTLIN))
+    api(kotlinx("coroutines-core", VERSION_COROUTINES))
 
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
 

@@ -1,3 +1,3 @@
 include("library")
-include("demo")
+include("example")
 include("website")

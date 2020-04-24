@@ -5,8 +5,7 @@ import kotlin.test.assertEquals
 
 class MyTest {
 
-    @Test
-    fun test() {
+    @Test fun test() {
         assertEquals("yo!", MyClass().toString())
     }
 }
