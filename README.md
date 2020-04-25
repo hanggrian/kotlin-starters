@@ -1,14 +1,19 @@
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+[![license](https://img.shields.io/github/license/hendraanggrian/library)](http://www.apache.org/licenses/LICENSE-2.0)
+
 Kotlin Project Templates
 ------------------------
-My Kotlin project templates, only tested on IntelliJ IDEA.
+Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
+
+Each template includes:
+* Gradle DSL scripts with `buildSrc` directory containing release and dependencies information.
+* Kotlin Gradle plugin, Standard and Testing library with JUnit.
+* Ktlint code style.
+* Git Publish plugin, necessary for uploading website module to `gh-pages`.
+* Travis configuration file.
 
 |  | jvm-library | jvm-app | android-library | android-app | gradle-plugin | Note |
-|-------------------------|--------------------|--------------------|--------------------|--------------------|--------------------|-----------------------------------------------------------------------------------|
-| Gradle version | 6.3 | 6.3 | 5.6.4 | 6.3 | 6.3 | `android-library` are stuck to Gradle version 5 until Bintray Release is updated. |
-| Kotlin Standard Library | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Also includes Kotlin testing library with JUnit. |
+|------------------------|--------------------|--------------------|--------------------|--------------------|--------------------|---------------------------------------------------------------------|
 | Kotlin Kapt plugin |  | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | Dokka plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: | When paired with Git Publish, also uploads Dokka generated content. |
-| Git Publish plugin | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Necessary for uploading website to `gh-pages`. |
 | Bintray Release plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| Ktlint code style | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| Travis config file | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
