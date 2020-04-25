@@ -6,14 +6,21 @@ Kotlin Project Templates
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
 Each template includes:
-* Gradle DSL scripts with `buildSrc` directory containing release and dependencies information.
-* Kotlin Gradle plugin, Standard and Testing library with JUnit.
-* Ktlint code style.
-* Git Publish plugin, necessary for uploading website module to `gh-pages`.
-* Travis configuration file.
+* Gradle Kotlin DSL scripts with `buildSrc` directory containing release and dependencies information.
+* [Kotlin Standard Library] and [Kotlin Test Library].
+* [ktlint] code style.
+* [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
+* [Travis CI] configuration file.
 
 |  | jvm-library | jvm-app | android-library | android-app | gradle-plugin | Note |
 |------------------------|--------------------|--------------------|--------------------|--------------------|--------------------|---------------------------------------------------------------------|
 | Kotlin Kapt plugin |  | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | Dokka plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: | When paired with Git Publish, also uploads Dokka generated content. |
-| Bintray Release plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [bintray-release] plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: |  |
+
+[Kotlin Standard Library]: https://kotlinlang.org/api/latest/jvm/stdlib/
+[Kotlin Test Library]: https://kotlinlang.org/api/latest/kotlin.test/
+[ktlint]: https://github.com/pinterest/ktlint
+[gradle-git-publish]: https://github.com/ajoberstar/gradle-git-publish
+[Travis CI]: https://travis-ci.com
+[bintray-release]: https://github.com/novoda/bintray-release
