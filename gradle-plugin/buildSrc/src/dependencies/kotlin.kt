@@ -1,6 +1,6 @@
-const val VERSION_KOTLIN = "1.3.72"
-const val VERSION_COROUTINES = "1.3.5"
-private const val VERSION_DOKKA = "0.10.1"
+const val VERSION_KOTLIN = "1.4.0"
+const val VERSION_COROUTINES = "1.3.9"
+private const val VERSION_DOKKA = "1.4.0-rc"
 
 fun Dependencies.kotlinx(module: String, version: String? = null) =
     "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$it" }.orEmpty()}"

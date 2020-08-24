@@ -12,11 +12,13 @@ Each template includes:
 * [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
 * [Travis CI] configuration file.
 
-|  | jvm-library | jvm-app | android-library | android-app | gradle-plugin | Note |
-|------------------------|--------------------|--------------------|--------------------|--------------------|--------------------|---------------------------------------------------------------------|
-| Kotlin Kapt plugin |  | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| Dokka plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: | When paired with Git Publish, also uploads Dokka generated content. |
-| [bintray-release] plugin | :heavy_check_mark: |  | :heavy_check_mark: |  | :heavy_check_mark: |  |
+|                 | Gradle |        Kapt        |        Dokka       |  [bintray-release] |
+|-----------------|:------:|:------------------:|:------------------:|:------------------:|
+| jvm-library     |    6   |                    | :heavy_check_mark: | :heavy_check_mark: |
+| jvm-app         |    6   | :heavy_check_mark: |                    |                    |
+| android-library |    5   |                    | :heavy_check_mark: | :heavy_check_mark: |
+| android-app     |    6   | :heavy_check_mark: |                    |                    |
+| gradle-plugin   |    6   |                    | :heavy_check_mark: | :heavy_check_mark: |
 
 [Kotlin Standard Library]: https://kotlinlang.org/api/latest/jvm/stdlib/
 [Kotlin Test Library]: https://kotlinlang.org/api/latest/kotlin.test/

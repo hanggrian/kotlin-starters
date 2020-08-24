@@ -54,7 +54,7 @@ tasks {
         args("-F", "src/**/*.kt")
     }
 
-    "dokka"(org.jetbrains.dokka.gradle.DokkaTask::class) {
+    dokkaHtml.configure {
         outputDirectory = "$buildDir/docs"
         doFirst {
             file(outputDirectory).deleteRecursively()
