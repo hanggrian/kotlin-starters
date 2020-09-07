@@ -1,3 +1,5 @@
+import java.net.URL
+
 plugins {
     kotlin("jvm")
     dokka
@@ -55,7 +57,16 @@ tasks {
     }
 
     dokkaHtml.configure {
-        outputDirectory = "$buildDir/docs"
+        dokkaSourceSets {
+            named("main") {
+                moduleDisplayName.set(RELEASE_ARTIFACT)
+                sourceLink {
+                    localDirectory.set(file("src"))
+                    remoteUrl.set(URL("$RELEASE_WEB/blob/master/$RELEASE_ARTIFACT"))
+                    remoteLineSuffix.set("#L")
+                }
+            }
+        }
         doFirst {
             file(outputDirectory).deleteRecursively()
             buildDir.resolve("gitPublish").deleteRecursively()
