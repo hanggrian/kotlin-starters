@@ -1,5 +1,6 @@
 const val RELEASE_USER = "hendraanggrian"
-const val RELEASE_GROUP = "com.$RELEASE_USER"
+const val RELEASE_GROUP = "io.github.$RELEASE_USER"
 const val RELEASE_ARTIFACT = "app"
 const val RELEASE_VERSION = "0.1"
-const val RELEASE_WEB = "https://github.com/$RELEASE_USER/$RELEASE_ARTIFACT"
+const val RELEASE_DESCRIPTION = "Lorem imsum."
+const val RELEASE_URL = "https://github.com/$RELEASE_USER/$RELEASE_ARTIFACT"
