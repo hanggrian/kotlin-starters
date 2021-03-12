@@ -7,10 +7,10 @@ gitPublish {
     branch.set("gh-pages")
     contents.from(
         "src",
-        "../$RELEASE_ARTIFACT/build/dokka"
+        "../$RELEASE_ARTIFACT/build/dokka/html"
     )
 }
 
-tasks.named("gitPublishCopy") {
+tasks.gitPublishCopy {
     dependsOn(":$RELEASE_ARTIFACT:dokkaHtml")
 }

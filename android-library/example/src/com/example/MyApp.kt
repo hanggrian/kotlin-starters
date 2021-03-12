@@ -2,16 +2,17 @@ package com.example
 
 import android.app.Application
 import android.util.Log
+import io.github.hendraanggrian.library.MyClass
 
 class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("MyApp", "Started")
+        Log.d(MyClass().toString(), "Started")
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        Log.d("MyApp", "Killed")
+        Log.d(MyClass().toString(), "Killed")
     }
 }

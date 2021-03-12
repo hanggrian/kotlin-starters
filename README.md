@@ -12,7 +12,7 @@ Each template includes:
 * [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
 * [Travis CI] configuration file.
 
-|                 | Gradle |        Kapt        |        Dokka       |  [bintray-release] |
+|                 | Gradle |        Kapt        |        Dokka       |    Maven Central   |
 |-----------------|:------:|:------------------:|:------------------:|:------------------:|
 | jvm-library     |    6   |                    | :heavy_check_mark: | :heavy_check_mark: |
 | jvm-app         |    6   | :heavy_check_mark: |                    |                    |
@@ -25,4 +25,3 @@ Each template includes:
 [ktlint]: https://github.com/pinterest/ktlint
 [gradle-git-publish]: https://github.com/ajoberstar/gradle-git-publish
 [Travis CI]: https://travis-ci.com
-[bintray-release]: https://github.com/novoda/bintray-release

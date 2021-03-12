@@ -8,7 +8,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'com.hendraanggrian.plugin'
+apply plugin: 'io.github.hendraanggrian.plugin'
 
 group 'com.example'
 version '1.0'

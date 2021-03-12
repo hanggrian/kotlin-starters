@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.hendraanggrian:library:$version"
+    implementation "io.github.hendraanggrian:library:$version"
 }
 ```
 

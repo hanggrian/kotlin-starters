@@ -1,6 +1,6 @@
 package com.example
 
-import com.hendraanggrian.library.MyClass
+import io.github.hendraanggrian.library.MyClass
 
 class MyApp {
 

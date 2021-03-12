@@ -24,11 +24,6 @@ android {
             resources.srcDir("src")
         }
     }
-    applicationVariants.all {
-        generateBuildConfigProvider?.configure {
-            enabled = false
-        }
-    }
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false

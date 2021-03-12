@@ -36,65 +36,42 @@ android {
     }
 }
 
-val ktlint by configurations.registering
-
 dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
     api(androidx("appcompat"))
-
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
-
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test.ext", "junit-ktx", VERSION_ANDROIDX_JUNIT))
     androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
-
-    ktlint {
-        invoke(ktlint())
-    }
 }
+
+ktlint()
 
 tasks {
-    val ktlint by registering(JavaExec::class) {
-        group = LifecycleBasePlugin.VERIFICATION_GROUP
-        inputs.dir("src")
-        outputs.dir("src")
-        description = "Check Kotlin code style."
-        classpath(configurations["ktlint"])
-        main = "com.pinterest.ktlint.Main"
-        args("src/**/*.kt")
+    dokkaJavadoc {
+        dokkaSourceSets {
+            "main" {
+                sourceLink {
+                    localDirectory.set(projectDir.resolve("src"))
+                    remoteUrl.set(getReleaseSourceUrl())
+                    remoteLineSuffix.set("#L")
+                }
+            }
+        }
     }
-    "check" {
-        dependsOn(ktlint)
+    val dokkaJar by registering(Jar::class) {
+        archiveClassifier.set("javadoc")
+        from(dokkaJavadoc)
+        dependsOn(dokkaJavadoc)
     }
-    register("ktlintFormat", JavaExec::class) {
-        group = "formatting"
-        inputs.dir("src")
-        outputs.dir("src")
-        description = "Fix Kotlin code style deviations."
-        classpath(configurations["ktlint"])
-        main = "com.pinterest.ktlint.Main"
-        args("-F", "src/**/*.kt")
-    }
-
-    dokkaHtml {
-        moduleName.set(RELEASE_ARTIFACT)
-        outputDirectory.set(buildDir.resolve("dokka"))
+    val sourcesJar by registering(Jar::class) {
+        archiveClassifier.set("sources")
+        from(android.sourceSets.getByName("main").java.srcDirs)
     }
 }
 
-val dokkaJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(tasks.dokkaHtml)
-    dependsOn(tasks.dokkaHtml)
-}
-
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
-mavenCentral(dokkaJar, sourcesJar)
+publishAndroid()
