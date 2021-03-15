@@ -7,6 +7,9 @@ import org.gradle.kotlin.dsl.withType
 import org.gradle.plugins.signing.Sign
 import org.gradle.plugins.signing.SigningExtension
 
+const val REPOSITORIES_URL_RELEASES = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+const val REPOSITORIES_URL_SNAPSHOT = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+
 private val OSSRH_USERNAME get() = System.getenv("OSSRH_USERNAME")
 private val OSSRH_PASSWORD get() = System.getenv("OSSRH_PASSWORD")
 
@@ -23,9 +26,7 @@ private fun org.gradle.api.Project.publish(softwareComponent: String, libraryNam
     extensions.configure<PublishingExtension>("publishing") {
         repositories {
             maven {
-                val releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                val snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-                url = `java.net`.URI(if (isReleaseSnapshot()) snapshotsRepoUrl else releasesRepoUrl)
+                url = `java.net`.URI(if (isReleaseSnapshot()) REPOSITORIES_URL_SNAPSHOT else REPOSITORIES_URL_RELEASES)
                 credentials {
                     username = OSSRH_USERNAME
                     password = OSSRH_PASSWORD

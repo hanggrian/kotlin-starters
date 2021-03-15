@@ -1,3 +1,6 @@
+group = RELEASE_GROUP
+version = RELEASE_VERSION
+
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -5,9 +8,6 @@ plugins {
     `maven-publish`
     signing
 }
-
-group = RELEASE_GROUP
-version = RELEASE_VERSION
 
 sourceSets {
     getByName("main") {
@@ -30,8 +30,8 @@ gradlePlugin {
 }
 
 dependencies {
-    api(kotlin("stdlib", VERSION_KOTLIN))
-    api(kotlinx("coroutines-core", VERSION_COROUTINES))
+    implementation(kotlin("stdlib", VERSION_KOTLIN))
+    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
 }
 

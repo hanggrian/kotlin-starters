@@ -12,13 +12,13 @@ Each template includes:
 * [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
 * [Travis CI] configuration file.
 
-|                 | Gradle |        Kapt        |        Dokka       |    Maven Central   |
-|-----------------|:------:|:------------------:|:------------------:|:------------------:|
-| jvm-library     |    6   |                    | :heavy_check_mark: | :heavy_check_mark: |
-| jvm-app         |    6   | :heavy_check_mark: |                    |                    |
-| android-library |    5   |                    | :heavy_check_mark: | :heavy_check_mark: |
-| android-app     |    6   | :heavy_check_mark: |                    |                    |
-| gradle-plugin   |    6   |                    | :heavy_check_mark: | :heavy_check_mark: |
+|                 |        Kapt        |        Dokka       |    Maven Central   |
+|-----------------:------------------:|:------------------:|:------------------:|
+| jvm-library     |                    | :heavy_check_mark: | :heavy_check_mark: |
+| jvm-app         | :heavy_check_mark: |                    |                    |
+| android-library |                    | :heavy_check_mark: | :heavy_check_mark: |
+| android-app     | :heavy_check_mark: |                    |                    |
+| gradle-plugin   |                    | :heavy_check_mark: | :heavy_check_mark: |
 
 [Kotlin Standard Library]: https://kotlinlang.org/api/latest/jvm/stdlib/
 [Kotlin Test Library]: https://kotlinlang.org/api/latest/kotlin.test/

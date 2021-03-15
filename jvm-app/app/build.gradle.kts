@@ -1,11 +1,11 @@
+group = RELEASE_GROUP
+version = RELEASE_VERSION
+
 plugins {
     application
     kotlin("jvm")
     kotlin("kapt")
 }
-
-group = RELEASE_GROUP
-version = RELEASE_VERSION
 
 application.mainClass.set("$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp")
 
