@@ -10,17 +10,17 @@ plugins {
 }
 
 sourceSets {
-    getByName("main") {
+    main {
         java.srcDir("src")
         resources.srcDir("res")
     }
-    create("integrationTest") {
+    register("integrationTest") {
         java.srcDir("integration-tests/src")
         resources.srcDir("integration-tests/res")
         compileClasspath += sourceSets.main.get().output + configurations.testRuntimeClasspath
         runtimeClasspath += output + compileClasspath
     }
-    create("functionalTest") {
+    register("functionalTest") {
         java.srcDir("functional-tests/src")
         resources.srcDir("functional-tests/res")
         compileClasspath += sourceSets.main.get().output + configurations.testRuntimeClasspath
@@ -29,7 +29,7 @@ sourceSets {
 }
 
 gradlePlugin {
-    (plugins) {
+    plugins {
         register(RELEASE_ARTIFACT) {
             id = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
             implementationClass = "$id.MyPlugin"
@@ -85,7 +85,7 @@ tasks {
             }
         }
     }
-    val dokkaJar by registering(Jar::class) {
+    val javadocJar by registering(Jar::class) {
         archiveClassifier.set("javadoc")
         from(dokkaJavadoc)
         dependsOn(dokkaJavadoc)

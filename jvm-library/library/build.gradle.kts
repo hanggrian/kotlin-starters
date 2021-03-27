@@ -9,11 +9,11 @@ plugins {
 }
 
 sourceSets {
-    getByName("main") {
+    main {
         java.srcDir("src")
         resources.srcDir("res")
     }
-    getByName("test") {
+    test {
         java.srcDir("tests/src")
         resources.srcDir("tests/res")
     }
@@ -39,7 +39,7 @@ tasks {
             }
         }
     }
-    val dokkaJar by registering(Jar::class) {
+    val javadocJar by registering(Jar::class) {
         archiveClassifier.set("javadoc")
         from(dokkaJavadoc)
         dependsOn(dokkaJavadoc)

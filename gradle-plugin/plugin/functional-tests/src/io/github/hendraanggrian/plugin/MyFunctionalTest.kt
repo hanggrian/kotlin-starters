@@ -67,7 +67,7 @@ class MyFunctionalTest {
             myPlugin {
                 line.set("A")
             }
-            tasks.myTask {
+            tasks.getByName<io.github.hendraanggrian.plugin.MyTask>("myTask") {
                 line.set("B")
             }
             """.trimIndent()

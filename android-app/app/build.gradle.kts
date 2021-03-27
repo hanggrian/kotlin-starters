@@ -18,13 +18,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     sourceSets {
-        getByName("main") {
+        named("main") {
             manifest.srcFile("AndroidManifest.xml")
             java.srcDir("src")
             res.srcDir("res")
             resources.srcDir("src")
         }
-        getByName("androidTest") {
+        named("androidTest") {
             setRoot("tests")
             manifest.srcFile("tests/AndroidManifest.xml")
             java.srcDir("tests/src")
@@ -33,11 +33,11 @@ android {
         }
     }
     buildTypes {
-        getByName("debug") {
+        named("debug") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
-        getByName("release") {
+        named("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }

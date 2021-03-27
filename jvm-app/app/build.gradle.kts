@@ -7,14 +7,16 @@ plugins {
     kotlin("kapt")
 }
 
-application.mainClass.set("$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp")
+application {
+    mainClass.set("$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp")
+}
 
 sourceSets {
-    getByName("main") {
+    main {
         java.srcDir("src")
         resources.srcDir("res")
     }
-    getByName("test") {
+    test {
         java.srcDir("tests/src")
         resources.srcDir("tests/res")
     }

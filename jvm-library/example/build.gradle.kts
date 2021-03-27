@@ -1,12 +1,17 @@
+group = "com.example"
+version = "1.0"
+
 plugins {
     application
     kotlin("jvm")
 }
 
-application.mainClass.set("com.example.MyApp")
+application {
+    mainClass.set("com.example.MyApp")
+}
 
 sourceSets {
-    getByName("main") {
+    main {
         java.srcDir("src")
         resources.srcDir("res")
     }
