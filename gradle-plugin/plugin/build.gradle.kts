@@ -5,8 +5,7 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     dokka
-    `maven-publish`
-    signing
+    `gradle-publish`
 }
 
 sourceSets {
@@ -29,12 +28,6 @@ sourceSets {
 }
 
 gradlePlugin {
-    plugins {
-        register(RELEASE_ARTIFACT) {
-            id = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
-            implementationClass = "$id.MyPlugin"
-        }
-    }
     testSourceSets(sourceSets["integrationTest"])
     testSourceSets(sourceSets["functionalTest"])
 }
@@ -73,27 +66,10 @@ tasks {
         mustRunAfter(test)
     }
     check { dependsOn(integrationTest, functionalTest) }
-
-    dokkaJavadoc {
-        dokkaSourceSets {
-            "main" {
-                sourceLink {
-                    localDirectory.set(projectDir.resolve("src"))
-                    remoteUrl.set(getReleaseSourceUrl())
-                    remoteLineSuffix.set("#L")
-                }
-            }
-        }
-    }
-    val javadocJar by registering(Jar::class) {
-        archiveClassifier.set("javadoc")
-        from(dokkaJavadoc)
-        dependsOn(dokkaJavadoc)
-    }
-    val sourcesJar by registering(Jar::class) {
-        archiveClassifier.set("sources")
-        from(sourceSets.main.get().allSource)
-    }
 }
 
-publishJvm()
+publishPlugin(
+    "My Plugin",
+    "$RELEASE_GROUP.$RELEASE_ARTIFACT.MyPlugin",
+    "template", "dummy"
+)
