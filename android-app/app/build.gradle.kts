@@ -47,7 +47,7 @@ android {
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(material())
-    testImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))

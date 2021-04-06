@@ -1,18 +1,17 @@
-package com.example
+package com.hendraanggrian.app
 
 import android.app.Application
 import android.util.Log
-import com.hendraanggrian.library.MyClass
 
 class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d(MyClass().toString(), "Started")
+        Log.d("MyApp", "Started")
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        Log.d(MyClass().toString(), "Killed")
+        Log.d("MyApp", "Killed")
     }
 }

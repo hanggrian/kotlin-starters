@@ -11,7 +11,7 @@ group 'com.example'
 version '1.0'
 
 apply plugin: 'java'
-apply plugin: 'io.github.hendraanggrian.plugin'
+apply plugin: 'com.hendraanggrian.plugin'
 
 myPlugin {
 }

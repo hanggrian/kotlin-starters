@@ -38,7 +38,7 @@ dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
     api(androidx("appcompat"))
-    testImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))
