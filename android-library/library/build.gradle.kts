@@ -55,20 +55,20 @@ tasks {
             "main" {
                 sourceLink {
                     localDirectory.set(projectDir.resolve("src"))
-                    remoteUrl.set(getReleaseSourceUrl())
+                    remoteUrl.set(getGithubRemoteUrl())
                     remoteLineSuffix.set("#L")
                 }
             }
         }
     }
-    val javadocJar by registering(Jar::class) {
+    register<Jar>("javadocJar") {
         archiveClassifier.set("javadoc")
         from(dokkaJavadoc)
         dependsOn(dokkaJavadoc)
     }
-    val sourcesJar by registering(Jar::class) {
+    register<Jar>("sourcesJar") {
         archiveClassifier.set("sources")
-        from(android.sourceSets.getByName("main").java.srcDirs)
+        from(android.sourceSets["main"].java.srcDirs)
     }
 }
 

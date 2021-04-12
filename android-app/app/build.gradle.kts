@@ -10,7 +10,7 @@ android {
     defaultConfig {
         minSdkVersion(SDK_MIN)
         targetSdkVersion(SDK_TARGET)
-        applicationId = "com.example"
+        applicationId = RELEASE_GROUP
         versionName = RELEASE_VERSION
     }
     compileOptions {

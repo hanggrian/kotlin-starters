@@ -1,7 +1,8 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven(REPOSITORIES_GIT_PUBLISH)
     }
     dependencies {
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
@@ -14,6 +15,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }

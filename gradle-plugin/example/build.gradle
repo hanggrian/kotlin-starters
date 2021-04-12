@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath files('plugin-0.1.jar')

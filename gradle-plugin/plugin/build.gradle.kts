@@ -28,6 +28,14 @@ sourceSets {
 }
 
 gradlePlugin {
+    plugins {
+        register(RELEASE_ARTIFACT) {
+            id = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
+            implementationClass = "$id.MyPlugin"
+            displayName = "My Plugin"
+            description = RELEASE_DESCRIPTION
+        }
+    }
     testSourceSets(sourceSets["integrationTest"])
     testSourceSets(sourceSets["functionalTest"])
 }
@@ -44,7 +52,7 @@ dependencies {
 ktlint()
 
 tasks {
-    val deploy by registering {
+    register("deploy") {
         dependsOn("build")
         projectDir.resolve("build/libs").listFiles()?.forEach {
             it.renameTo(File(rootDir.resolve("example"), it.name))
@@ -52,6 +60,7 @@ tasks {
     }
 
     val integrationTest by registering(Test::class) {
+        dependsOn("pluginUnderTestMetadata")
         description = "Runs the integration tests."
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         testClassesDirs = sourceSets["integrationTest"].output.classesDirs
@@ -68,8 +77,4 @@ tasks {
     check { dependsOn(integrationTest, functionalTest) }
 }
 
-publishPlugin(
-    "My Plugin",
-    "$RELEASE_GROUP.$RELEASE_ARTIFACT.MyPlugin",
-    "template", "dummy"
-)
+publishPlugin("template", "dummy")

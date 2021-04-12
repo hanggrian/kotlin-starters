@@ -1,17 +1,15 @@
 package com.hendraanggrian.plugin
 
 import org.gradle.testkit.runner.GradleRunner
-import org.gradle.testkit.runner.TaskOutcome
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
 import java.io.File
 import java.io.IOException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class MyFunctionalTest {
+class MyIntegrationTest {
 
     @Rule @JvmField val testProjectDir = TemporaryFolder()
     private lateinit var settingsFile: File
@@ -30,10 +28,10 @@ class MyFunctionalTest {
     }
 
     @Test
-    fun myTaskTest() {
+    fun myExtensionTest() {
         settingsFile.writeText(
             """
-            rootProject.name = "my-task-test"
+            rootProject.name = "my-extension-test"
             """.trimIndent()
         )
         buildFile.writeText(
@@ -44,14 +42,11 @@ class MyFunctionalTest {
             myPlugin {
                 line.set("A")
             }
-            tasks.getByName<com.hendraanggrian.plugin.MyTask>("myTask") {
-                line.set("B")
-            }
+            println(extensions.getByName<com.hendraanggrian.plugin.MyExtension>("myPlugin").line.get())
             """.trimIndent()
         )
-        runner.withArguments("myTask").build().let {
-            assertTrue("B" in it.output)
-            assertEquals(TaskOutcome.SUCCESS, it.task(":myTask")!!.outcome)
+        runner.build().let {
+            assertTrue("A" in it.output)
         }
     }
 }

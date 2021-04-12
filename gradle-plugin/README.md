@@ -11,7 +11,7 @@ Download
 --------
 ```gradle
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
