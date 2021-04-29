@@ -1,22 +1,17 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven(REPOSITORIES_GIT_PUBLISH)
+        gradlePluginPortal()
     }
     dependencies {
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
-        classpath(dokka())
-        classpath(gitPublish())
+        classpath(dokka)
+        classpath(`git-publish`)
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
-    }
-    tasks {
-        withType<Delete> {
-            delete(projectDir.resolve("out"))
-        }
     }
 }

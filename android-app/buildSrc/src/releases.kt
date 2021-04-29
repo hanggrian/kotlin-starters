@@ -1,3 +1,6 @@
+const val SDK_MIN = 14
+const val SDK_TARGET = 30
+
 const val RELEASE_GROUP = "com.hendraanggrian"
 const val RELEASE_ARTIFACT = "app"
 const val RELEASE_VERSION = "0.1"

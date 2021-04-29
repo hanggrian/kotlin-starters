@@ -34,6 +34,8 @@ android {
     }
 }
 
+ktlint()
+
 dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
     api(kotlinx("coroutines-core", VERSION_COROUTINES))
@@ -47,8 +49,6 @@ dependencies {
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
 }
 
-ktlint()
-
 tasks {
     dokkaJavadoc {
         dokkaSourceSets {
@@ -61,15 +61,6 @@ tasks {
             }
         }
     }
-    register<Jar>("javadocJar") {
-        archiveClassifier.set("javadoc")
-        from(dokkaJavadoc)
-        dependsOn(dokkaJavadoc)
-    }
-    register<Jar>("sourcesJar") {
-        archiveClassifier.set("sources")
-        from(android.sourceSets["main"].java.srcDirs)
-    }
 }
 
-publishAndroid()
+mavenPublishAndroid(sources = android.sourceSets["main"].java.srcDirs)

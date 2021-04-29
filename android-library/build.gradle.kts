@@ -1,20 +1,20 @@
 buildscript {
     repositories {
-        google()
         mavenCentral()
-        maven(REPOSITORIES_GIT_PUBLISH)
+        gradlePluginPortal()
+        google()
     }
     dependencies {
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
-        classpath(android())
-        classpath(dokka())
-        classpath(gitPublish())
+        classpath(android)
+        classpath(dokka)
+        classpath(`git-publish`)
     }
 }
 
 allprojects {
     repositories {
-        google()
         mavenCentral()
+        google()
     }
 }

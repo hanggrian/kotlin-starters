@@ -44,6 +44,8 @@ android {
     }
 }
 
+ktlint()
+
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(material())
@@ -55,5 +57,3 @@ dependencies {
     androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
 }
-
-ktlint()

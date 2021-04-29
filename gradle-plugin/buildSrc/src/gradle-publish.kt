@@ -1,12 +1,9 @@
-const val VERSION_GRADLE_PUBLISH = "0.13.0"
+import org.gradle.api.Project
 
-fun org.gradle.api.artifacts.dsl.DependencyHandler.gradlePublish() =
-    "com.gradle.publish:plugin-publish-plugin:$VERSION_GRADLE_PUBLISH"
+val Dependencies.`gradle-publish` get() = "com.gradle.publish:plugin-publish-plugin:0.13.0"
+val Plugins.`gradle-publish` get() = id("com.gradle.plugin-publish")
 
-val org.gradle.plugin.use.PluginDependenciesSpec.`gradle-publish`
-    get() = id("com.gradle.plugin-publish")
-
-fun org.gradle.api.Project.publishPlugin(vararg tags: String) {
+fun Project.gradlePublish(vararg tags: String) {
     checkNotNull(plugins.findPlugin("com.gradle.plugin-publish")) { "Missing plugin `java-gradle-plugin` for this publication" }
     extensions.configure<com.gradle.publish.PluginBundleExtension>("pluginBundle") {
         website = RELEASE_GITHUB
