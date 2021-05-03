@@ -8,7 +8,7 @@ plugins {
 }
 
 application {
-    mainClass.set("$RELEASE_GROUP.$RELEASE_ARTIFACT.MyApp")
+    mainClass.set("$RELEASE_GROUP.app.MyApp")
 }
 
 sourceSets {

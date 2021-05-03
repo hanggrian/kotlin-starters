@@ -28,13 +28,11 @@ sourceSets {
 }
 
 gradlePlugin {
-    plugins {
-        register(RELEASE_ARTIFACT) {
-            id = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
-            implementationClass = "$id.MyPlugin"
-            displayName = "My Plugin"
-            description = RELEASE_DESCRIPTION
-        }
+    val simplePlugin by plugins.registering {
+        id = "$RELEASE_GROUP.plugin"
+        implementationClass = "$RELEASE_GROUP.plugin.MyPlugin"
+        displayName = "My Plugin"
+        description = RELEASE_DESCRIPTION
     }
     testSourceSets(sourceSets["integrationTest"])
     testSourceSets(sourceSets["functionalTest"])
@@ -52,13 +50,6 @@ dependencies {
 }
 
 tasks {
-    register("deploy") {
-        dependsOn("build")
-        projectDir.resolve("build/libs").listFiles()?.forEach {
-            it.renameTo(File(rootDir.resolve("example"), it.name))
-        }
-    }
-
     // TODO: find out why integration test is throwing
     //  "Test runtime classpath does not contain plugin metadata file 'plugin-under-test-metadata.properties'"
     /*val integrationTest by registering(Test::class) {
@@ -78,4 +69,9 @@ tasks {
     check { dependsOn(/*integrationTest, */functionalTest) }
 }
 
-gradlePublish("template", "dummy")
+pluginBundle {
+    website = RELEASE_GITHUB
+    vcsUrl = RELEASE_GITHUB
+    description = RELEASE_DESCRIPTION
+    tags = listOf("hello", "world")
+}
