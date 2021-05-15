@@ -1,3 +1,3 @@
 include("plugin")
-include("example")
+include("sample")
 include("website")

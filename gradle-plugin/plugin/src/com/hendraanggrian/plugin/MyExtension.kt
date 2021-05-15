@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 package com.hendraanggrian.plugin
 
 import org.gradle.api.Project
