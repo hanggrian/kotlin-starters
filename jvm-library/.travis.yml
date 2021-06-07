@@ -1,9 +1,12 @@
 language: java
-dist: trusty
-sudo: required
+install: skip
 
-jdk:
-  - oraclejdk8
-  
-os:
-  - linux
+os: linux
+dist: trusty
+jdk: oraclejdk8
+
+script:
+  - ./gradlew build
+
+env:
+  - OSSRH_USERNAME=stub OSSRH_PASSWORD=stub
