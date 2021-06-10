@@ -10,7 +10,8 @@ android {
     defaultConfig {
         minSdkVersion(SDK_MIN)
         targetSdkVersion(SDK_TARGET)
-        applicationId = RELEASE_GROUP
+        multiDexEnabled = true
+        applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
         versionName = RELEASE_VERSION
     }
     compileOptions {
@@ -49,6 +50,8 @@ ktlint()
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(material())
+    implementation(androidx("multidex", version = VERSION_MULTIDEX))
+    implementation(androidx("core", "core-ktx"))
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))

@@ -1,9 +1,9 @@
 package com.hendraanggrian.app
 
-import android.app.Application
 import android.util.Log
+import androidx.multidex.MultiDexApplication
 
-class MyApp : Application() {
+class MyApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()

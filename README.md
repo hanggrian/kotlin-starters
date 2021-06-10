@@ -1,8 +1,9 @@
-[![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![license](https://img.shields.io/github/license/hendraanggrian/kt-project-templates)](https://www.apache.org/licenses/LICENSE-2.0)
+[![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081)](https://ktlint.github.io)
+[![license](https://img.shields.io/github/license/hendraanggrian/kt-project-templates)](https://github.com/hendraanggrian/kt-project-templates/blob/main/LICENSE)
 
 Kotlin Project Templates
 ------------------------
+
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
 Each template includes:
