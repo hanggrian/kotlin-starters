@@ -7,7 +7,6 @@
 
     <application android:theme="@style/Theme.AppCompat.DayNight">
         <uses-library android:name="android.test.runner" />
-
         <activity android:name=".MyTestActivity" />
     </application>
 </manifest>

@@ -13,6 +13,7 @@ android {
         multiDexEnabled = true
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
         versionName = RELEASE_VERSION
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -52,6 +53,7 @@ dependencies {
     implementation(material())
     implementation(androidx("multidex", version = VERSION_MULTIDEX))
     implementation(androidx("core", "core-ktx"))
+    androidTestImplementation(material())
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
