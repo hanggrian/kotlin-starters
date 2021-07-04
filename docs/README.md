@@ -1,5 +1,4 @@
 [![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081)](https://ktlint.github.io)
-[![license](https://img.shields.io/github/license/hendraanggrian/kt-project-templates)](https://github.com/hendraanggrian/kt-project-templates/blob/main/LICENSE)
 
 Kotlin Project Templates
 ------------------------
