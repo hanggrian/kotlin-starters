@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(SDK_TARGET)
+    compileSdk = SDK_TARGET
     defaultConfig {
-        minSdkVersion(SDK_MIN)
-        targetSdkVersion(SDK_TARGET)
+        minSdk = SDK_MIN
+        targetSdk = SDK_TARGET
         multiDexEnabled = true
         applicationId = "com.example.$RELEASE_ARTIFACT"
-        versionName = RELEASE_VERSION
+        version = RELEASE_VERSION
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
