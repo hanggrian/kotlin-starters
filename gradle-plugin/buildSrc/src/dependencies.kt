@@ -4,9 +4,9 @@ internal typealias Dependencies = org.gradle.api.artifacts.dsl.DependencyHandler
 val Dependencies.`gradle-publish` get() = "com.gradle.publish:plugin-publish-plugin:0.14.0"
 val Plugins.`gradle-publish` get() = id("com.gradle.plugin-publish")
 
-const val VERSION_KOTLIN = "1.5.10"
-const val VERSION_COROUTINES = "1.4.3"
-val Dependencies.dokka get() = "org.jetbrains.dokka:dokka-gradle-plugin:1.4.32"
+const val VERSION_KOTLIN = "1.5.21"
+const val VERSION_COROUTINES = "1.5.1"
+val Dependencies.dokka get() = "org.jetbrains.dokka:dokka-gradle-plugin:1.5.0"
 val Plugins.dokka get() = id("org.jetbrains.dokka")
 fun Dependencies.kotlinx(module: String, version: String? = null) =
     "org.jetbrains.kotlinx:kotlinx-$module${version?.let { ":$it" }.orEmpty()}"
