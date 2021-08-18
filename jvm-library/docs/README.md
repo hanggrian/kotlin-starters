@@ -21,6 +21,6 @@ dependencies {
 ```
 
 Usage
------
+=====
 
 How-to.

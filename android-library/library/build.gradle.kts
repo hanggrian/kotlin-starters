@@ -61,6 +61,9 @@ tasks {
             }
         }
     }
+    dokkaHtml {
+        outputDirectory.set(buildDir.resolve("dokka/$RELEASE_ARTIFACT"))
+    }
 }
 
 mavenPublishAndroid(sources = android.sourceSets["main"].java.srcDirs)

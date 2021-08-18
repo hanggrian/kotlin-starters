@@ -67,6 +67,10 @@ tasks {
         mustRunAfter(test)
     }
     check { dependsOn(/*integrationTest, */functionalTest) }
+
+    dokkaHtml {
+        outputDirectory.set(buildDir.resolve("dokka/$RELEASE_ARTIFACT"))
+    }
 }
 
 pluginBundle {
