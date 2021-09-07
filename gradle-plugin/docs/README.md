@@ -10,14 +10,27 @@ Some cool stuff going on here.
 Download
 --------
 
+Using plugins DSL:
+
 ```gradle
-repositories {
-    mavenCentral()
+plugins {
+    id('com.hendraanggrian.plugin') version "$version"
+}
+```
+
+Using legacy plugin application:
+
+```gradle
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("com.hendraanggrian:plugin:$version")
+    }
 }
 
-dependencies {
-    implementation "com.hendraanggrian:plugin:$version"
-}
+apply plugin: 'com.hendraanggrian.plugin'
 ```
 
 Usage

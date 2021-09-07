@@ -20,6 +20,8 @@ dependencies {
 }
 ```
 
+Snapshots of the development version are available in [Sonatype's snapshots repository](https://s01.oss.sonatype.org/content/repositories/snapshots).
+
 Usage
 =====
 
