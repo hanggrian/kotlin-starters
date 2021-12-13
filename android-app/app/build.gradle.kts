@@ -52,7 +52,7 @@ dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(material())
     implementation(androidx("multidex", version = VERSION_MULTIDEX))
-    implementation(androidx("core", "core-ktx"))
+    implementation(androidx("core", "core-ktx", "1.7.0"))
     androidTestImplementation(material())
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))

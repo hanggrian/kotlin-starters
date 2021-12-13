@@ -4,7 +4,7 @@ dist: trusty
 jdk: oraclejdk11
 
 env:
-  - OSSRH_USERNAME=stub OSSRH_PASSWORD=stub
+  - OSSRH_USER=stub OSSRH_PASS=stub
 
 android:
   components:

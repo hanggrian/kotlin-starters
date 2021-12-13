@@ -6,11 +6,11 @@ Kotlin Project Templates
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
 Each template includes:
-* Gradle Kotlin DSL scripts with `buildSrc` directory containing release and dependencies information.
-* [Kotlin Standard Library] and [Kotlin Test Library] with JUnit dependencies.
-* [ktlint] code style.
-* [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
-* [Travis CI] configuration file.
+- Gradle Kotlin DSL scripts with `buildSrc` directory containing release and dependencies information.
+- [Kotlin Standard Library] and [Kotlin Test Library] with JUnit dependencies.
+- [ktlint] code style.
+- [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
+- [Travis CI] configuration file.
 
 Full configuration:
 |                 | Plugins                              | Publications           | Others           |

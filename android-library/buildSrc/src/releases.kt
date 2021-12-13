@@ -1,5 +1,5 @@
 const val SDK_MIN = 14
-const val SDK_TARGET = 30
+const val SDK_TARGET = 31
 
 const val RELEASE_GROUP = "com.hendraanggrian"
 const val RELEASE_ARTIFACT = "library"
