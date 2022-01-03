@@ -13,10 +13,6 @@ android {
         applicationId = "com.example.$RELEASE_ARTIFACT"
         version = RELEASE_VERSION
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     sourceSets {
         named("main") {
             manifest.srcFile("AndroidManifest.xml")
@@ -45,5 +41,5 @@ dependencies {
     implementation(project(":$RELEASE_ARTIFACT"))
     implementation(material())
     implementation(androidx("multidex", version = VERSION_MULTIDEX))
-    implementation(androidx("core", "core-ktx"))
+    implementation(androidx("core", "core-ktx", version = "1.4.0-alpha01"))
 }

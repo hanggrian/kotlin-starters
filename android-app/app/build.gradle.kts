@@ -15,10 +15,6 @@ android {
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     sourceSets {
         named("main") {
             manifest.srcFile("AndroidManifest.xml")
@@ -52,7 +48,7 @@ dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(material())
     implementation(androidx("multidex", version = VERSION_MULTIDEX))
-    implementation(androidx("core", "core-ktx", "1.7.0"))
+    implementation(androidx("core", "core-ktx", "1.4.0-alpha01"))
     androidTestImplementation(material())
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
