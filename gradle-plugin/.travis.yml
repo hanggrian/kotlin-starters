@@ -4,7 +4,7 @@ dist: trusty
 jdk: oraclejdk11
 
 script:
-  - ./gradlew build
+  - ./gradlew build --info
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

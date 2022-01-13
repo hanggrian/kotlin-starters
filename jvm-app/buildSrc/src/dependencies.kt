@@ -1,5 +1,5 @@
-internal typealias Plugins = org.gradle.plugin.use.PluginDependenciesSpec
 internal typealias Dependencies = org.gradle.api.artifacts.dsl.DependencyHandler
+internal typealias Plugins = org.gradle.plugin.use.PluginDependenciesSpec
 
 const val VERSION_KOTLIN = "1.6.10"
 const val VERSION_DOKKA = "1.6.0"

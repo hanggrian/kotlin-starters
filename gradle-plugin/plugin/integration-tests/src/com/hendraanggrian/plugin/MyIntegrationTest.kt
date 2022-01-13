@@ -12,14 +12,17 @@ import kotlin.test.assertTrue
 class MyIntegrationTest {
 
     @Rule @JvmField val testProjectDir = TemporaryFolder()
-    private lateinit var settingsFile: File
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner
 
     @BeforeTest
     @Throws(IOException::class)
     fun setup() {
-        settingsFile = testProjectDir.newFile("settings.gradle.kts")
+        testProjectDir.newFile("settings.gradle.kts").writeText(
+            """
+            rootProject.name = "my-extension-test"
+            """.trimIndent()
+        )
         buildFile = testProjectDir.newFile("build.gradle.kts")
         runner = GradleRunner.create()
             .withPluginClasspath()
@@ -29,11 +32,6 @@ class MyIntegrationTest {
 
     @Test
     fun myExtensionTest() {
-        settingsFile.writeText(
-            """
-            rootProject.name = "my-extension-test"
-            """.trimIndent()
-        )
         buildFile.writeText(
             """
             plugins {

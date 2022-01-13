@@ -14,14 +14,17 @@ import kotlin.test.assertTrue
 class MyFunctionalTest {
 
     @Rule @JvmField val testProjectDir = TemporaryFolder()
-    private lateinit var settingsFile: File
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner
 
     @BeforeTest
     @Throws(IOException::class)
     fun setup() {
-        settingsFile = testProjectDir.newFile("settings.gradle.kts")
+        testProjectDir.newFile("settings.gradle.kts").writeText(
+            """
+            rootProject.name = "my-task-test"
+            """.trimIndent()
+        )
         buildFile = testProjectDir.newFile("build.gradle.kts")
         runner = GradleRunner.create()
             .withPluginClasspath()
@@ -31,11 +34,6 @@ class MyFunctionalTest {
 
     @Test
     fun myTaskTest() {
-        settingsFile.writeText(
-            """
-            rootProject.name = "my-task-test"
-            """.trimIndent()
-        )
         buildFile.writeText(
             """
             plugins {
