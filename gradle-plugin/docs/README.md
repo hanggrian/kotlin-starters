@@ -36,4 +36,4 @@ apply plugin: 'com.hendraanggrian.plugin'
 Usage
 -----
 
-How-to.
+Work in progress.

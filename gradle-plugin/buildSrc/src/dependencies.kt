@@ -1,7 +1,7 @@
 internal typealias Dependencies = org.gradle.api.artifacts.dsl.DependencyHandler
 internal typealias Plugins = org.gradle.plugin.use.PluginDependenciesSpec
 
-val Dependencies.`gradle-publish` get() = "com.gradle.publish:plugin-publish-plugin:0.18.0"
+val Dependencies.`gradle-publish` get() = "com.gradle.publish:plugin-publish-plugin:1.0.0-rc-2"
 val Plugins.`gradle-publish` get() = id("com.gradle.plugin-publish")
 
 const val VERSION_KOTLIN = "1.6.10"

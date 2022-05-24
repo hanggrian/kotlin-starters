@@ -25,4 +25,4 @@ Snapshots of the development version are available in [Sonatype's snapshots repo
 Usage
 -----
 
-How-to.
+Work in progress.

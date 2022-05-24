@@ -2,12 +2,12 @@
 [![build](https://img.shields.io/travis/com/jetbrains/pty4j)](https://www.travis-ci.com/github/jetbrains/pty4j)
 [![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081)](https://ktlint.github.io)
 
-My Library
-==========
+My App
+======
 
 Some cool stuff going on here.
 
 Usage
 -----
 
-How-to.
+Work in progress.

@@ -5,14 +5,17 @@ Kotlin Project Templates
 
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
-Each template includes:
-- Gradle Kotlin DSL scripts with `buildSrc` directory containing release and dependencies information.
-- [Kotlin Standard Library] and [Kotlin Test Library] with JUnit dependencies.
+Components included in each template:
+- Kotlin language:
+  - [Gradle Kotlin DSL] scripts with `buildSrc` directory containing release and dependencies information.
+  - [Kotlin Standard Library] and [Kotlin Test Library] with JUnit dependencies.
 - [ktlint] code style.
-- [gradle-git-publish] plugin, necessary for uploading website module to `gh-pages`.
+- Website module:
+  - [Minimal] theme displaying README's content and documentation links (if any).
+  - [gradle-git-publish] plugin, necessary for uploading to [GitHub Pages](http://pages.github.com).
 - [Travis CI] configuration file.
 
-Full configuration:
+Situational components differ by platform:
 |                 | Plugins                              | Publications           | Others           |
 |-----------------|--------------------------------------|------------------------|------------------|
 | jvm-library     | [Dokka]                              | [Maven Central]        |                  |
@@ -21,9 +24,11 @@ Full configuration:
 | android-app     | [Android], [kapt]                    |                        |                  |
 | gradle-plugin   | [Gradle Plugin Development], [Dokka] | [Gradle Plugin Portal] | [Gradle TestKit] |
 
-[Kotlin Standard Library]: https://kotlinlang.org/api/latest/jvm/stdlib/
-[Kotlin Test Library]: https://kotlinlang.org/api/latest/kotlin.test/
+[Gradle Kotlin DSL]: https://docs.gradle.org/current/userguide/kotlin_dsl.html
+[Kotlin Standard Library]: https://kotlinlang.org/api/latest/jvm/stdlib
+[Kotlin Test Library]: https://kotlinlang.org/api/latest/kotlin.test
 [ktlint]: https://github.com/pinterest/ktlint
+[Minimal]: https://github.com/hendraanggrian/minimal
 [gradle-git-publish]: https://github.com/ajoberstar/gradle-git-publish
 [Travis CI]: https://travis-ci.com
 [Dokka]: https://github.com/Kotlin/dokka

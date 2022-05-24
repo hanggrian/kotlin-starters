@@ -1,34 +1,58 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>My App</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <title>kt-project-templates by Hendra Anggrian</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="stylesheets/styles.css"/>
+    <link rel="stylesheet" href="stylesheets/styles_dark.css" id="styles_dark" disabled="true"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <script>
+      function toggleDark() {
+        var styles_dark = document.getElementById("styles_dark");
+        styles_dark.disabled = !styles_dark.disabled;
+      }
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        toggleDark();
+      }
+    </script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"/>
     <![endif]-->
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>My App</h1>
-        <p>A very awesome app</p>
-        <p class="view"><a href="http://github.com/hendraanggrian/app">View the Project on GitHub <small>hendraanggrian/app</small></a></p>
+        <h1>kt-project-templates</h1>
+        <p>Personal Kotlin project templates</p>
+        <p class="view"><a href="http://github.com/hendraanggrian/kt-project-templates">View the Project on GitHub <small>hendraanggrian/kt-project-templates</small></a></p>
         <ul>
-          <li><a href="https://github.com/hendraanggrian/app/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/hendraanggrian/app/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="http://github.com/hendraanggrian/app/releases">View <strong>Releases</strong></a></li>
+          <li><a href="https://github.com/hendraanggrian/kt-project-templates/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hendraanggrian/kt-project-templates/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="http://github.com/hendraanggrian/kt-project-templates">Fork On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
+<p><a href="https://github.com/jetbrains/kotlin/releases"><img
+src="https://img.shields.io/github/release/jetbrains/kotlin"
+alt="version" /></a> <a
+href="https://www.travis-ci.com/github/jetbrains/pty4j"><img
+src="https://img.shields.io/travis/com/jetbrains/pty4j"
+alt="build" /></a> <a href="https://ktlint.github.io"><img
+src="https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081"
+alt="analysis" /></a></p>
+<h1 id="my-app">My App</h1>
+<p>Some cool stuff going on here.</p>
+<h2 id="usage">Usage</h2>
+<p>Work in progress.</p>
       </section>
       <footer>
+        <p><button class="material-symbols-outlined" title="Toggle Dark Mode" onclick="toggleDark()">lightbulb</button></p>
         <p>This project is maintained by <a href="http://github.com/hendraanggrian">Hendra Anggrian</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/hendraanggrian/minimal">minimal</a></small>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
