@@ -1,5 +1,3 @@
-@file:Suppress("UNUSED_VARIABLE")
-
 import org.gradle.api.Project
 import org.gradle.api.attributes.Bundling
 import org.gradle.api.tasks.JavaExec
@@ -10,6 +8,7 @@ import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.provideDelegate
+import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.registering
 import org.gradle.language.base.plugins.LifecycleBasePlugin
 
@@ -30,7 +29,6 @@ fun Project.ktlint(vararg rulesets: Any) {
             rulesets.forEach { invoke(it) }
         }
     }
-
     val outputDir = "${project.buildDir}/reports/ktlint/"
     val inputFiles = project.fileTree(mapOf("dir" to "src", "include" to "**/*.kt"))
     tasks {
@@ -43,10 +41,10 @@ fun Project.ktlint(vararg rulesets: Any) {
             mainClass.set("com.pinterest.ktlint.Main")
             args("src/**/*.kt")
         }
-        val check by getting {
+        named("check") {
             dependsOn(ktlintCheck)
         }
-        val ktlintFormat by registering(JavaExec::class) {
+        register<JavaExec>("ktlintFormat") {
             group = "formatting"
             inputs.files(inputFiles)
             outputs.dir(outputDir)

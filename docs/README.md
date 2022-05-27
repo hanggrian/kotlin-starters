@@ -1,7 +1,7 @@
 [![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081)](https://ktlint.github.io)
 
 Kotlin Project Templates
-------------------------
+========================
 
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
@@ -12,7 +12,7 @@ Components included in each template:
 - [ktlint] code style.
 - Website module:
   - [Minimal] theme displaying README's content and documentation links (if any).
-  - [gradle-git-publish] plugin, necessary for uploading to [GitHub Pages](http://pages.github.com).
+  - [gradle-git-publish] plugin, necessary for uploading to [GitHub Pages](https://pages.github.com).
 - [Travis CI] configuration file.
 
 Situational components differ by platform:
