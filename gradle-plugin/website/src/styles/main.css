@@ -336,6 +336,12 @@ footer button:active {
   header li, header ul li + li + li {
     width: 33%;
   }
+
+  footer button {
+    position: fixed;
+    right: 25px;
+    bottom: 26px;
+  }
 }
 
 @media print {
