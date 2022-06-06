@@ -50,7 +50,7 @@ dependencies {
 
 tasks {
     dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/$RELEASE_ARTIFACT"))
+        outputDirectory.set(buildDir.resolve("dokka/dokka"))
     }
 }
 

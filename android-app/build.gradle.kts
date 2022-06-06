@@ -7,6 +7,7 @@ buildscript {
     dependencies {
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
         classpath(android)
+        classpath(minimal)
         classpath(`git-publish`)
     }
 }

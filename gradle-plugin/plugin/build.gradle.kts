@@ -45,8 +45,10 @@ dependencies {
     implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
     "integrationTestImplementation"(gradleTestKit())
     "integrationTestImplementation"(kotlin("test-junit", VERSION_KOTLIN))
+    "integrationTestImplementation"(google("truth", version = VERSION_TRUTH))
     "functionalTestImplementation"(gradleTestKit())
     "functionalTestImplementation"(kotlin("test-junit", VERSION_KOTLIN))
+    "functionalTestImplementation"(google("truth", version = VERSION_TRUTH))
 }
 
 tasks {
@@ -69,7 +71,7 @@ tasks {
     check { dependsOn(/*integrationTest, */functionalTest) }
 
     dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/$RELEASE_ARTIFACT"))
+        outputDirectory.set(buildDir.resolve("dokka/dokka"))
     }
 }
 

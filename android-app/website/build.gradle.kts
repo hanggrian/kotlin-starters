@@ -1,15 +1,29 @@
 plugins {
+    minimal
     `git-publish`
 }
 
+minimal {
+    authorName.set("Hendra Anggrian")
+    authorUrl.set("https://github.com/hendraanggrian")
+    projectDescription.set(RELEASE_DESCRIPTION)
+    projectUrl.set(RELEASE_GITHUB)
+    pages {
+        index(rootDir.resolve("docs/README.md"))
+    }
+}
+
 gitPublish {
-    repoUri.set("git@github.com:hendraanggrian/kt-project-templates.git")
+    repoUri.set("git@github.com:hendraanggrian/$RELEASE_ARTIFACT.git")
     branch.set("gh-pages")
-    contents.from("src")
+    contents.from("$buildDir/minimal")
 }
 
 tasks {
     register("clean") {
         delete(buildDir)
+    }
+    gitPublishCopy {
+        dependsOn(deployPages)
     }
 }

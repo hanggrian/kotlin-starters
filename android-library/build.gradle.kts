@@ -8,6 +8,7 @@ buildscript {
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
         classpath(android)
         classpath(dokka)
+        classpath(minimal)
         classpath(`git-publish`)
     }
 }
