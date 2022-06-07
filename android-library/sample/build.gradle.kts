@@ -4,6 +4,12 @@ plugins {
     kotlin("android.extensions")
 }
 
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 android {
     compileSdk = SDK_TARGET
     defaultConfig {
@@ -13,21 +19,20 @@ android {
         applicationId = "com.example.$RELEASE_ARTIFACT"
         version = RELEASE_VERSION
     }
-    sourceSets {
-        named("main") {
-            manifest.srcFile("AndroidManifest.xml")
-            java.srcDir("src")
-            res.srcDir("res")
-            resources.srcDir("src")
-        }
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildTypes {
         named("debug") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         named("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }

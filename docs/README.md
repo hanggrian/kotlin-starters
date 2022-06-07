@@ -1,4 +1,4 @@
-[![analysis](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081)](https://ktlint.github.io)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-ff4081)](https://ktlint.github.io)
 
 Kotlin Project Templates
 ========================
@@ -9,7 +9,6 @@ Components included in each template:
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) scripts with `buildSrc` containing project-level helpers.
   - Apply plugin using [legacy plugin application](https://docs.gradle.org/current/userguide/plugins.html#sec:old_plugin_application) for better integration with `buildSrc`.
-  - Flattened source sets `src`, `res`, and subsequently `tests/src`, `tests/res`.
 - Kotlin framework:
   - [Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib).
   - [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines).

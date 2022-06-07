@@ -2,26 +2,27 @@ group = RELEASE_GROUP
 version = RELEASE_VERSION
 
 plugins {
-    `java-gradle-plugin`
     `kotlin-dsl`
     dokka
     `gradle-publish`
 }
 
-sourceSets {
-    main {
-        java.srcDir("src")
-        resources.srcDir("res")
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
     }
+}
+
+sourceSets {
     register("integrationTest") {
-        java.srcDir("integration-tests/src")
-        resources.srcDir("integration-tests/res")
+        java.srcDir("src/integrationTest/kotlin")
+        resources.srcDir("src/integrationTest/resources")
         compileClasspath += sourceSets.main.get().output + configurations.testRuntimeClasspath
         runtimeClasspath += output + compileClasspath
     }
     register("functionalTest") {
-        java.srcDir("functional-tests/src")
-        resources.srcDir("functional-tests/res")
+        java.srcDir("src/functionalTest/kotlin")
+        resources.srcDir("src/functionalTest/resources")
         compileClasspath += sourceSets.main.get().output + configurations.testRuntimeClasspath
         runtimeClasspath += output + compileClasspath
     }
@@ -38,7 +39,12 @@ gradlePlugin {
     testSourceSets(sourceSets["functionalTest"])
 }
 
-ktlint()
+pluginBundle {
+    website = RELEASE_GITHUB
+    vcsUrl = "$RELEASE_GITHUB.git"
+    description = RELEASE_DESCRIPTION
+    tags = listOf("hello", "world")
+}
 
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
@@ -75,9 +81,4 @@ tasks {
     }
 }
 
-pluginBundle {
-    website = RELEASE_GITHUB
-    vcsUrl = "$RELEASE_GITHUB.git"
-    description = RELEASE_DESCRIPTION
-    tags = listOf("hello", "world")
-}
+ktlint()

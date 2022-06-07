@@ -6,6 +6,7 @@ plugins {
 minimal {
     authorName.set("Hendra Anggrian")
     authorUrl.set("https://github.com/hendraanggrian")
+    projectName.set(RELEASE_ARTIFACT)
     projectDescription.set(RELEASE_DESCRIPTION)
     projectUrl.set(RELEASE_GITHUB)
     headerButtons {
@@ -27,6 +28,6 @@ tasks {
         delete(buildDir)
     }
     gitPublishCopy {
-        dependsOn(deployPages, ":dokkaHtmlMultiModule")
+        dependsOn(":dokkaHtmlMultiModule")
     }
 }

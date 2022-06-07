@@ -5,6 +5,12 @@ plugins {
     kotlin("kapt")
 }
 
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 android {
     compileSdk = SDK_TARGET
     defaultConfig {
@@ -15,34 +21,24 @@ android {
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    sourceSets {
-        named("main") {
-            manifest.srcFile("AndroidManifest.xml")
-            java.srcDir("src")
-            res.srcDir("res")
-            resources.srcDir("src")
-        }
-        named("androidTest") {
-            setRoot("tests")
-            manifest.srcFile("tests/AndroidManifest.xml")
-            java.srcDir("tests/src")
-            res.srcDir("tests/res")
-            resources.srcDir("tests/src")
-        }
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildTypes {
         named("debug") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         named("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 }
-
-ktlint()
 
 dependencies {
     implementation(kotlin("stdlib", VERSION_KOTLIN))
@@ -58,3 +54,5 @@ dependencies {
     androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
 }
+
+ktlint()

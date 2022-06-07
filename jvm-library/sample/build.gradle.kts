@@ -6,15 +6,14 @@ plugins {
     kotlin("jvm")
 }
 
-application {
-    mainClass.set("com.example.MyApp")
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
-sourceSets {
-    main {
-        java.srcDir("src")
-        resources.srcDir("res")
-    }
+application {
+    mainClass.set("com.example.MyApp")
 }
 
 dependencies {

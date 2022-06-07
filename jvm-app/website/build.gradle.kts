@@ -6,6 +6,7 @@ plugins {
 minimal {
     authorName.set("Hendra Anggrian")
     authorUrl.set("https://github.com/hendraanggrian")
+    projectName.set(RELEASE_ARTIFACT)
     projectDescription.set(RELEASE_DESCRIPTION)
     projectUrl.set(RELEASE_GITHUB)
     pages {
@@ -22,8 +23,5 @@ gitPublish {
 tasks {
     register("clean") {
         delete(buildDir)
-    }
-    gitPublishCopy {
-        dependsOn(deployPages)
     }
 }

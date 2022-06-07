@@ -8,18 +8,11 @@ plugins {
     signing
 }
 
-sourceSets {
-    main {
-        java.srcDir("src")
-        resources.srcDir("res")
-    }
-    test {
-        java.srcDir("tests/src")
-        resources.srcDir("tests/res")
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
-
-ktlint()
 
 dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
@@ -34,4 +27,5 @@ tasks {
     }
 }
 
+ktlint()
 mavenPublishJvm()

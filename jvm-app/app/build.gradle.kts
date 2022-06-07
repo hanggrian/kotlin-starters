@@ -7,22 +7,15 @@ plugins {
     kotlin("kapt")
 }
 
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
 application {
     mainClass.set("$RELEASE_GROUP.app.MyApp")
 }
-
-sourceSets {
-    main {
-        java.srcDir("src")
-        resources.srcDir("res")
-    }
-    test {
-        java.srcDir("tests/src")
-        resources.srcDir("tests/res")
-    }
-}
-
-ktlint()
 
 dependencies {
     api(kotlin("stdlib", VERSION_KOTLIN))
@@ -30,3 +23,5 @@ dependencies {
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
     testImplementation(google("truth", version = VERSION_TRUTH))
 }
+
+ktlint()
