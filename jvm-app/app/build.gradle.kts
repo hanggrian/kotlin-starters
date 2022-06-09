@@ -1,16 +1,8 @@
-group = RELEASE_GROUP
-version = RELEASE_VERSION
-
 plugins {
     application
     kotlin("jvm")
     kotlin("kapt")
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-    }
+    spotless
 }
 
 application {
@@ -18,10 +10,8 @@ application {
 }
 
 dependencies {
-    api(kotlin("stdlib", VERSION_KOTLIN))
-    api(kotlinx("coroutines-core", VERSION_COROUTINES))
+    implementation(kotlin("stdlib", VERSION_KOTLIN))
+    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
     testImplementation(google("truth", version = VERSION_TRUTH))
 }
-
-ktlint()

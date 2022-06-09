@@ -1,16 +1,8 @@
-group = RELEASE_GROUP
-version = RELEASE_VERSION
-
 plugins {
     `kotlin-dsl`
     dokka
+    spotless
     `gradle-publish`
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-    }
 }
 
 sourceSets {
@@ -40,8 +32,8 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = RELEASE_GITHUB
-    vcsUrl = "$RELEASE_GITHUB.git"
+    website = RELEASE_URL
+    vcsUrl = "$RELEASE_URL.git"
     description = RELEASE_DESCRIPTION
     tags = listOf("hello", "world")
 }
@@ -75,10 +67,4 @@ tasks {
         mustRunAfter(test)
     }
     check { dependsOn(/*integrationTest, */functionalTest) }
-
-    dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
-    }
 }
-
-ktlint()

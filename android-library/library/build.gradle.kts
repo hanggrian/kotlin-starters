@@ -2,14 +2,8 @@ plugins {
     android("library")
     kotlin("android")
     dokka
-    `maven-publish`
-    signing
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
-    }
+    spotless
+    `gradle-maven-publish`
 }
 
 android {
@@ -31,10 +25,14 @@ android {
     }
 }
 
+mavenPublishing {
+    configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary())
+}
+
 dependencies {
-    api(kotlin("stdlib", VERSION_KOTLIN))
-    api(kotlinx("coroutines-core", VERSION_COROUTINES))
-    api(androidx("appcompat"))
+    implementation(kotlin("stdlib", VERSION_KOTLIN))
+    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
+    implementation(androidx("appcompat"))
     androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
     androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
     androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
@@ -43,12 +41,3 @@ dependencies {
     androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
     androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
 }
-
-tasks {
-    dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
-    }
-}
-
-ktlint()
-mavenPublishAndroid(sources = android.sourceSets["main"].java.srcDirs)

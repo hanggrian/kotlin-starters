@@ -4,12 +4,6 @@ plugins {
     kotlin("android.extensions")
 }
 
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
-    }
-}
-
 android {
     compileSdk = SDK_TARGET
     defaultConfig {

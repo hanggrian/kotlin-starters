@@ -20,7 +20,7 @@ pages {
 gitPublish {
     repoUri.set("git@github.com:$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
     branch.set("gh-pages")
-    contents.from(pages.outputDirectory, "$rootDir/$RELEASE_ARTIFACT/build/dokka")
+    contents.from(pages.outputDirectory, "$rootDir/build/dokka")
 }
 
 tasks {
@@ -28,6 +28,6 @@ tasks {
         delete(buildDir)
     }
     gitPublishCopy {
-        dependsOn(":$RELEASE_ARTIFACT:dokkaHtml")
+        dependsOn(":dokkaHtmlMultiModule")
     }
 }

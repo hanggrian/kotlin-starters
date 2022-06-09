@@ -29,11 +29,6 @@ subprojects {
             }
         }
     }
-    plugins.withType<org.jetbrains.dokka.gradle.DokkaPlugin> {
-        tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
-            outputDirectory.set(buildDir.resolve("dokka/dokka"))
-        }
-    }
     plugins.withType<com.diffplug.gradle.spotless.SpotlessPlugin> {
         extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
             kotlin {
@@ -71,5 +66,16 @@ subprojects {
                 }
             }
         }
+    }
+}
+
+plugins.apply(org.jetbrains.dokka.gradle.DokkaPlugin::class)
+
+tasks {
+    register("clean") {
+        delete(buildDir)
+    }
+    named<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>("dokkaHtmlMultiModule") {
+        outputDirectory.set(buildDir.resolve("dokka/dokka"))
     }
 }

@@ -6,12 +6,6 @@ plugins {
     kotlin("jvm")
 }
 
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-    }
-}
-
 application {
     mainClass.set("com.example.MyApp")
 }
