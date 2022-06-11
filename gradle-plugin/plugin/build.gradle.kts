@@ -1,8 +1,8 @@
 plugins {
     `kotlin-dsl`
-    dokka
-    spotless
-    `gradle-publish`
+    id("org.jetbrains.dokka")
+    id("com.diffplug.spotless")
+    id("com.gradle.plugin-publish")
 }
 
 sourceSets {
@@ -21,10 +21,10 @@ sourceSets {
 }
 
 gradlePlugin {
-    val simplePlugin by plugins.registering {
+    plugins.register("myPlugin") {
         id = "$RELEASE_GROUP.plugin"
-        implementationClass = "$RELEASE_GROUP.plugin.MyPlugin"
-        displayName = "My Plugin"
+        implementationClass = "$id.MyPlugin"
+        displayName = "My plugin"
         description = RELEASE_DESCRIPTION
     }
     testSourceSets(sourceSets["integrationTest"])
@@ -38,15 +38,17 @@ pluginBundle {
     tags = listOf("hello", "world")
 }
 
+val integrationTestImplementation by configurations.getting
+val functionalTestImplementation by configurations.getting
+
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
-    "integrationTestImplementation"(gradleTestKit())
-    "integrationTestImplementation"(kotlin("test-junit", VERSION_KOTLIN))
-    "integrationTestImplementation"(google("truth", version = VERSION_TRUTH))
-    "functionalTestImplementation"(gradleTestKit())
-    "functionalTestImplementation"(kotlin("test-junit", VERSION_KOTLIN))
-    "functionalTestImplementation"(google("truth", version = VERSION_TRUTH))
+    implementation(libs.kotlinx.coroutines)
+    integrationTestImplementation(gradleTestKit())
+    integrationTestImplementation(testLibs.kotlin.junit)
+    integrationTestImplementation(testLibs.truth)
+    functionalTestImplementation(gradleTestKit())
+    functionalTestImplementation(testLibs.kotlin.junit)
+    functionalTestImplementation(testLibs.truth)
 }
 
 tasks {

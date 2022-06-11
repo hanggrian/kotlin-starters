@@ -1,21 +1,17 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinJvm
+
 plugins {
     kotlin("jvm")
-    dokka
-    spotless
-    `gradle-maven-publish`
+    id("org.jetbrains.dokka")
+    id("com.diffplug.spotless")
+    id("com.vanniktech.maven.publish.base")
 }
 
-mavenPublishing {
-    configure(
-        com.vanniktech.maven.publish.JavaLibrary(
-            com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaJavadoc")
-        )
-    )
-}
+mavenPublishing.configure(KotlinJvm(JavadocJar.Dokka("dokkaJavadoc")))
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
-    testImplementation(kotlin("test-junit", VERSION_KOTLIN))
-    testImplementation(google("truth", version = VERSION_TRUTH))
+    implementation(libs.kotlinx.coroutines)
+    testImplementation(testLibs.kotlin.junit)
+    testImplementation(testLibs.truth)
 }

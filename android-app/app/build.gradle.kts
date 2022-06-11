@@ -1,16 +1,16 @@
 plugins {
-    android("application")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
-    spotless
+    id("com.android.application")
+    id("com.diffplug.spotless")
 }
 
 android {
-    compileSdk = SDK_TARGET
+    compileSdk = sdk.versions.target.get().toInt()
     defaultConfig {
-        minSdk = SDK_MIN
-        targetSdk = SDK_TARGET
+        minSdk = sdk.versions.min.get().toInt()
+        targetSdk = compileSdk
         multiDexEnabled = true
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
         version = RELEASE_VERSION
@@ -21,31 +21,25 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "${JavaVersion.VERSION_11}"
     }
     buildTypes {
         named("debug") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         named("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 }
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    implementation(material())
-    implementation(androidx("multidex", version = VERSION_MULTIDEX))
-    implementation(androidx("core", "core-ktx", "1.4.0-alpha01"))
-    androidTestImplementation(material())
-    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
-    androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test.ext", "junit-ktx", VERSION_ANDROIDX_JUNIT))
-    androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
-    androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
+    implementation(libs.material)
+    implementation(libs.androidx.multidex)
+    implementation(libs.androidx.core.ktx)
+    androidTestImplementation(libs.material)
+    androidTestImplementation(testLibs.kotlin.junit)
+    androidTestImplementation(testLibs.bundles.androidx)
 }

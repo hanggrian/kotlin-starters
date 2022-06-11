@@ -1,16 +1,19 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+
 plugins {
-    android("library")
     kotlin("android")
-    dokka
-    spotless
-    `gradle-maven-publish`
+    id("com.android.library")
+    id("org.jetbrains.dokka")
+    id("com.diffplug.spotless")
+    id("com.vanniktech.maven.publish.base")
 }
 
 android {
-    compileSdk = SDK_TARGET
+    compileSdk = sdk.versions.target.get().toInt()
     defaultConfig {
-        minSdk = SDK_MIN
-        targetSdk = SDK_TARGET
+        minSdk = sdk.versions.min.get().toInt()
+        targetSdk = compileSdk
+        version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
@@ -18,26 +21,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "${JavaVersion.VERSION_11}"
     }
     buildFeatures {
         buildConfig = false
     }
 }
 
-mavenPublishing {
-    configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary())
-}
+mavenPublishing.configure(AndroidSingleVariantLibrary())
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    implementation(kotlinx("coroutines-core", VERSION_COROUTINES))
-    implementation(androidx("appcompat"))
-    androidTestImplementation(kotlin("test-junit", VERSION_KOTLIN))
-    androidTestImplementation(androidx("test", "core-ktx", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test", "runner", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test", "rules", VERSION_ANDROIDX_TEST))
-    androidTestImplementation(androidx("test.ext", "junit-ktx", VERSION_ANDROIDX_JUNIT))
-    androidTestImplementation(androidx("test.ext", "truth", VERSION_ANDROIDX_TRUTH))
-    androidTestImplementation(androidx("test.espresso", "espresso-core", VERSION_ESPRESSO))
+    implementation(libs.kotlinx.coroutines)
+    implementation(libs.androidx.appcompat)
+    androidTestImplementation(testLibs.kotlin.junit)
+    androidTestImplementation(testLibs.bundles.androidx)
 }

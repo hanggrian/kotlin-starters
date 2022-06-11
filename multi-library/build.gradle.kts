@@ -1,15 +1,19 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
+
 buildscript {
     repositories {
         mavenCentral()
         gradlePluginPortal()
     }
     dependencies {
-        classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
-        classpath(dokka)
-        classpath(spotless)
-        classpath(`gradle-maven-publish`)
-        classpath(pages) { features("pages-minimal") }
-        classpath(`git-publish`)
+        classpath(plugs.kotlin)
+        classpath(plugs.dokka)
+        classpath(plugs.spotless)
+        classpath(plugs.maven.publish)
+        classpath(plugs.pages) { features("pages-minimal") }
+        classpath(plugs.git.publish)
     }
 }
 
@@ -22,28 +26,22 @@ allprojects {
 }
 
 subprojects {
-    plugins.withType<org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin> {
-        extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension> {
-            jvmToolchain {
-                (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-            }
+    afterEvaluate {
+        extensions.find<org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension>()?.jvmToolchain {
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
         }
-    }
-    plugins.withType<com.diffplug.gradle.spotless.SpotlessPlugin> {
-        extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
-            kotlin {
-                ktlint()
-            }
+        tasks.find<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
+            outputDirectory.set(buildDir.resolve("dokka/dokka"))
         }
-    }
-    plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
-        extensions.configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
+        extensions.find<SpotlessExtension>()?.kotlin {
+            ktlint()
+        }
+        extensions.find<MavenPublishBaseExtension> {
             publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
             signAllPublications()
             pom {
-                name.set(RELEASE_ARTIFACT)
+                name.set(project.name)
                 description.set(RELEASE_DESCRIPTION)
-                inceptionYear.set("2022")
                 url.set(RELEASE_URL)
                 licenses {
                     license {
@@ -52,6 +50,11 @@ subprojects {
                         distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
+                scm {
+                    connection.set("scm:git:https://github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
+                    developerConnection.set("scm:git:ssh://git@github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
+                    url.set(RELEASE_URL)
+                }
                 developers {
                     developer {
                         id.set(DEVELOPER_ID)
@@ -59,23 +62,13 @@ subprojects {
                         url.set(DEVELOPER_URL)
                     }
                 }
-                scm {
-                    url.set(RELEASE_URL)
-                    connection.set("scm:git:git://github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
-                }
             }
         }
     }
 }
 
-plugins.apply(org.jetbrains.dokka.gradle.DokkaPlugin::class)
+plugins.apply("org.jetbrains.dokka")
 
-tasks {
-    register("clean") {
-        delete(buildDir)
-    }
-    named<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>("dokkaHtmlMultiModule") {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
-    }
+tasks.named<DokkaMultiModuleTask>("dokkaHtmlMultiModule") {
+    outputDirectory.set(buildDir.resolve("dokka/dokka"))
 }

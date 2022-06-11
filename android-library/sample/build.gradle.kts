@@ -1,24 +1,23 @@
 plugins {
-    android("application")
     kotlin("android")
     kotlin("android.extensions")
+    id("com.android.application")
 }
 
 android {
-    compileSdk = SDK_TARGET
+    compileSdk = sdk.versions.target.get().toInt()
     defaultConfig {
-        minSdk = SDK_MIN
-        targetSdk = SDK_TARGET
+        minSdk = sdk.versions.min.get().toInt()
+        targetSdk = compileSdk
         multiDexEnabled = true
         applicationId = "com.example.$RELEASE_ARTIFACT"
-        version = RELEASE_VERSION
     }
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_11
         sourceCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "${JavaVersion.VERSION_11}"
     }
     buildTypes {
         named("debug") {
@@ -36,9 +35,8 @@ android {
 }
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
     implementation(project(":$RELEASE_ARTIFACT"))
-    implementation(material())
-    implementation(androidx("multidex", version = VERSION_MULTIDEX))
-    implementation(androidx("core", "core-ktx", version = "1.4.0-alpha01"))
+    implementation(libs.material)
+    implementation(libs.androidx.multidex)
+    implementation(libs.androidx.core.ktx)
 }

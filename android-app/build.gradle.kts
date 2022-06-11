@@ -1,3 +1,9 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+import com.diffplug.gradle.spotless.SpotlessPlugin
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformAndroidPlugin
+
 buildscript {
     repositories {
         mavenCentral()
@@ -5,11 +11,11 @@ buildscript {
         google()
     }
     dependencies {
-        classpath(android)
-        classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
-        classpath(spotless)
-        classpath(pages) { features("pages-minimal") }
-        classpath(`git-publish`)
+        classpath(plugs.kotlin)
+        classpath(plugs.android)
+        classpath(plugs.spotless)
+        classpath(plugs.pages) { features("pages-minimal") }
+        classpath(plugs.git.publish)
     }
 }
 
@@ -23,18 +29,12 @@ allprojects {
 }
 
 subprojects {
-    plugins.withType<org.jetbrains.kotlin.gradle.plugin.KotlinPlatformAndroidPlugin> {
-        extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
-            jvmToolchain {
-                (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
-            }
+    afterEvaluate {
+        extensions.find<KotlinProjectExtension>()?.jvmToolchain {
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
         }
-    }
-    plugins.withType<com.diffplug.gradle.spotless.SpotlessPlugin> {
-        extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
-            kotlin {
-                ktlint()
-            }
+        extensions.find<SpotlessExtension>()?.kotlin {
+            ktlint()
         }
     }
 }
