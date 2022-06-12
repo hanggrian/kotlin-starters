@@ -1,17 +1,19 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.SonatypeHost
+import kotlinx.kover.api.KoverExtension
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 buildscript {
     repositories {
-        mavenCentral()
         gradlePluginPortal()
+        mavenCentral()
         google()
     }
     dependencies {
         classpath(plugs.kotlin)
+        classpath(plugs.kotlin.kover)
         classpath(plugs.dokka)
         classpath(plugs.android)
         classpath(plugs.spotless)
@@ -33,7 +35,11 @@ allprojects {
 subprojects {
     afterEvaluate {
         extensions.find<KotlinProjectExtension>()?.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+        }
+        extensions.find<KoverExtension> {
+            generateReportOnCheck = false
+            instrumentAndroidPackage = true
         }
         tasks.find<DokkaTask>("dokkaHtml") {
             outputDirectory.set(buildDir.resolve("dokka/dokka"))

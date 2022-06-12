@@ -1,15 +1,12 @@
-[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-ff4081)](https://ktlint.github.io)
-
-Kotlin Project Templates
-========================
+# Kotlin Project Templates
 
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
 Components included in each template:
 
 - Gradle build tool:
-  - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) scripts with `buildSrc` containing project-level helpers.
-  - Apply plugin using [legacy plugin application](https://docs.gradle.org/current/userguide/plugins.html#sec:old_plugin_application) because not all plugins are hosted in [Gradle Plugin Portal].
+  - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) scripts with `buildSrc` containing project helpers.
+  - Apply plugin using [legacy plugin application](https://docs.gradle.org/current/userguide/plugins.html#sec:old_plugin_application) because classpath need to exist in root `build.gradle.kts`.
   - Version catalog configured in `settings.gradle.kts`.
 - Kotlin framework:
   - [Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib).
@@ -24,6 +21,7 @@ Components included in each template:
 - [Travis CI] configuration file.
 
 Situational components differ by target:
+
 |                 | Plugins                              | Publications           | Others           |
 |-----------------|--------------------------------------|------------------------|------------------|
 | android-app     | [Android], [kapt]                    |                        |                  |

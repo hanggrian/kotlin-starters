@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 
 plugins {
     kotlin("android")
+    id("kover")
     id("com.android.library")
     id("org.jetbrains.dokka")
     id("com.diffplug.spotless")
@@ -9,19 +10,19 @@ plugins {
 }
 
 android {
-    compileSdk = sdk.versions.target.get().toInt()
+    compileSdk = sdk.versions.androidTarget.getInt()
     defaultConfig {
-        minSdk = sdk.versions.min.get().toInt()
-        targetSdk = compileSdk
+        minSdk = sdk.versions.androidMin.getInt()
+        targetSdk = sdk.versions.androidTarget.getInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
-        targetCompatibility = JavaVersion.VERSION_11
-        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = sdk.versions.jdk.getJavaVersion()
+        sourceCompatibility = sdk.versions.jdk.getJavaVersion()
     }
     kotlinOptions {
-        jvmTarget = "${JavaVersion.VERSION_11}"
+        jvmTarget = sdk.versions.jdk.get()
     }
     buildFeatures {
         buildConfig = false

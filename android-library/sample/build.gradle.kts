@@ -5,19 +5,19 @@ plugins {
 }
 
 android {
-    compileSdk = sdk.versions.target.get().toInt()
+    compileSdk = sdk.versions.androidTarget.getInt()
     defaultConfig {
-        minSdk = sdk.versions.min.get().toInt()
-        targetSdk = compileSdk
+        minSdk = sdk.versions.androidMin.getInt()
+        targetSdk = sdk.versions.androidTarget.getInt()
         multiDexEnabled = true
         applicationId = "com.example.$RELEASE_ARTIFACT"
     }
     compileOptions {
-        targetCompatibility = JavaVersion.VERSION_11
-        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = sdk.versions.jdk.getJavaVersion()
+        sourceCompatibility = sdk.versions.jdk.getJavaVersion()
     }
     kotlinOptions {
-        jvmTarget = "${JavaVersion.VERSION_11}"
+        jvmTarget = sdk.versions.jdk.get()
     }
     buildTypes {
         named("debug") {

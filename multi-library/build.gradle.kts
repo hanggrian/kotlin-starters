@@ -4,11 +4,12 @@ import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 
 buildscript {
     repositories {
-        mavenCentral()
         gradlePluginPortal()
+        mavenCentral()
     }
     dependencies {
         classpath(plugs.kotlin)
+        classpath(plugs.kotlin.kover)
         classpath(plugs.dokka)
         classpath(plugs.spotless)
         classpath(plugs.maven.publish)
@@ -28,7 +29,7 @@ allprojects {
 subprojects {
     afterEvaluate {
         extensions.find<org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension>()?.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
         tasks.find<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
             outputDirectory.set(buildDir.resolve("dokka/dokka"))

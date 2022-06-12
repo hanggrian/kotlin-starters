@@ -1,17 +1,16 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
-import com.diffplug.gradle.spotless.SpotlessPlugin
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import kotlinx.kover.api.KoverExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformAndroidPlugin
 
 buildscript {
     repositories {
-        mavenCentral()
         gradlePluginPortal()
+        mavenCentral()
         google()
     }
     dependencies {
         classpath(plugs.kotlin)
+        classpath(plugs.kotlin.kover)
         classpath(plugs.android)
         classpath(plugs.spotless)
         classpath(plugs.pages) { features("pages-minimal") }
@@ -31,7 +30,11 @@ allprojects {
 subprojects {
     afterEvaluate {
         extensions.find<KotlinProjectExtension>()?.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(11))
+            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+        }
+        extensions.find<KoverExtension> {
+            generateReportOnCheck = false
+            instrumentAndroidPackage = true
         }
         extensions.find<SpotlessExtension>()?.kotlin {
             ktlint()
