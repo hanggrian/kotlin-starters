@@ -26,6 +26,6 @@ tasks {
         delete(buildDir)
     }
     gitPublishCopy {
-        dependsOn(":dokkaHtmlMultiModule")
+        dependsOn(deployPages, ":dokkaHtmlMultiModule")
     }
 }

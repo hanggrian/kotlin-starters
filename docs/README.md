@@ -9,16 +9,16 @@ Components included in each template:
   - Apply plugin using [legacy plugin application](https://docs.gradle.org/current/userguide/plugins.html#sec:old_plugin_application) because classpath need to exist in root `build.gradle.kts`.
   - Version catalog configured in `settings.gradle.kts`.
 - Kotlin framework:
-  - [Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib).
-  - [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines).
+  - [Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib/) and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
+  - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
 - Test dependencies:
-  - [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test) with JUnit dependencies.
-  - [Google Truth](https://github.com/google/truth) assertion.
-- [ktlint](https://github.com/pinterest/ktlint) code style, imported using [Spotless](https://github.com/diffplug/spotless) plugin.
+  - [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test/) with JUnit dependencies.
+  - [Google Truth](https://github.com/google/truth/) assertion.
+- [ktlint](https://github.com/pinterest/ktlint/) code style, imported using [Spotless](https://github.com/diffplug/spotless/) plugin.
 - Website module:
-  - [Minimal](https://github.com/hendraanggrian/minimal) theme displaying README's content and documentation links (if any).
-  - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish) plugin, necessary for uploading to [GitHub Pages](https://pages.github.com).
-- [Travis CI] configuration file.
+  - [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/) webpage displaying README's content and documentation links (if any).
+  - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish/) plugin, necessary for uploading to [GitHub Pages](https://pages.github.com/).
+- [Travis CI](https://travis-ci.com/) configuration file.
 
 Situational components differ by target:
 
@@ -31,11 +31,10 @@ Situational components differ by target:
 | jvm-library     | [Dokka]                              | [Maven Central]        |                  |
 | multi-module    | [Dokka]                              | [Maven Central]        |                  |
 
-[Travis CI]: https://travis-ci.com
-[Dokka]: https://github.com/Kotlin/dokka
+[Dokka]: https://github.com/Kotlin/dokka/
 [kapt]: https://kotlinlang.org/docs/kapt.html
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
-[Android]: https://developer.android.com/studio/build
+[Android]: https://developer.android.com/studio/build/
 [Gradle Plugin Development]: https://docs.gradle.org/current/userguide/java_gradle_plugin.html
 [Gradle TestKit]: https://docs.gradle.org/current/userguide/test_kit.html
 [Maven Central]: https://search.maven.org/

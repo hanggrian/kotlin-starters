@@ -9,8 +9,8 @@ dependencyResolutionManagement {
             version("jdk", "8")
         }
         register("plugs") {
-            val koverVersion = "0.5.0"
-            val spotlessVersion = "6.7.0"
+            val koverVersion = "0.5.1"
+            val spotlessVersion = "6.7.2"
             val mavenPublishVersion = "0.20.0"
             val pagesVersion = "0.1"
             val gitPublishVersion = "3.0.1"

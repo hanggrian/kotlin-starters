@@ -2,6 +2,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kover")
     id("com.android.application")
     id("com.diffplug.spotless")
 }

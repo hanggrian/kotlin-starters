@@ -1,5 +1,6 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import kotlinx.kover.api.KoverExtension
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
 
 buildscript {
@@ -30,6 +31,9 @@ subprojects {
     afterEvaluate {
         extensions.find<org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension>()?.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+        }
+        extensions.find<KoverExtension> {
+            generateReportOnCheck = false
         }
         tasks.find<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
             outputDirectory.set(buildDir.resolve("dokka/dokka"))

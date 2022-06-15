@@ -2,6 +2,7 @@ plugins {
     application
     kotlin("jvm")
     kotlin("kapt")
+    id("kover")
     id("com.diffplug.spotless")
 }
 
