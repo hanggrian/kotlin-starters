@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.multidex.MultiDexApplication
 
 class MyApp : MultiDexApplication() {
-
     override fun onCreate() {
         super.onCreate()
         Log.d("MyApp", "Started")

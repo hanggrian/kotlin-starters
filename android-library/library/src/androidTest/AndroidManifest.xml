@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hendraanggrian.app">
+    package="com.hendraanggrian.library">
 
     <uses-sdk tools:overrideLibrary="androidx.test, android.app, androidx.test.rule, androidx.test.espresso, androidx.test.espresso.idling" />
 
-    <application
-        android:name="androidx.multidex.MultiDexApplication"
-        android:theme="@style/Theme.AppCompat.DayNight"
-        tools:replace="android:name,android:theme">
+    <application android:theme="@style/Theme.AppCompat.DayNight">
         <uses-library android:name="android.test.runner" />
-        <activity android:name=".MyTestActivity" />
+        <activity android:name=".MyLibraryTestActivity" />
     </application>
 </manifest>

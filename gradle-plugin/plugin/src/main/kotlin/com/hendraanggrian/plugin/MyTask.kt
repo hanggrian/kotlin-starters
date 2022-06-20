@@ -7,7 +7,6 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.property
 
 open class MyTask : DefaultTask() {
-
     @Input
     val line: Property<String> = project.objects.property()
 

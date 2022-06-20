@@ -8,7 +8,6 @@ import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.registering
 
 class MyPlugin : Plugin<Project> {
-
     override fun apply(project: Project) {
         val extension = project.extensions.create<MyExtension>("myPlugin", project)
         val myTask by project.tasks.registering(MyTask::class) {

@@ -1,9 +1,9 @@
 plugins {
+    id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
     id("kover")
-    id("com.android.application")
     id("com.diffplug.spotless")
 }
 
@@ -12,10 +12,10 @@ android {
     defaultConfig {
         minSdk = sdk.versions.androidMin.getInt()
         targetSdk = sdk.versions.androidTarget.getInt()
-        multiDexEnabled = true
-        applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+        applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
     }
     compileOptions {
         targetCompatibility = sdk.versions.jdk.getJavaVersion()
@@ -35,6 +35,17 @@ android {
         }
     }
 }
+
+kotlin.jvmToolchain {
+    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+}
+
+kover {
+    generateReportOnCheck = false
+    instrumentAndroidPackage = true
+}
+
+spotless.kotlin { ktlint() }
 
 dependencies {
     implementation(libs.material)

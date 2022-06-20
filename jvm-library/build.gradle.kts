@@ -1,8 +1,3 @@
-import com.diffplug.gradle.spotless.SpotlessExtension
-import com.vanniktech.maven.publish.MavenPublishBaseExtension
-import com.vanniktech.maven.publish.SonatypeHost
-import kotlinx.kover.api.KoverExtension
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 buildscript {
@@ -33,43 +28,6 @@ subprojects {
     afterEvaluate {
         extensions.find<KotlinProjectExtension>()?.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
-        }
-        extensions.find<KoverExtension> {
-            generateReportOnCheck = false
-        }
-        tasks.find<DokkaTask>("dokkaHtml") {
-            outputDirectory.set(buildDir.resolve("dokka/dokka"))
-        }
-        extensions.find<SpotlessExtension>()?.kotlin {
-            ktlint()
-        }
-        extensions.find<MavenPublishBaseExtension> {
-            publishToMavenCentral(SonatypeHost.S01)
-            signAllPublications()
-            pom {
-                name.set(project.name)
-                description.set(RELEASE_DESCRIPTION)
-                url.set(RELEASE_URL)
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:https://github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
-                    url.set(RELEASE_URL)
-                }
-                developers {
-                    developer {
-                        id.set(DEVELOPER_ID)
-                        name.set(DEVELOPER_NAME)
-                        url.set(DEVELOPER_URL)
-                    }
-                }
-            }
         }
     }
 }

@@ -1,5 +1,7 @@
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import kotlinx.kover.api.KoverExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 buildscript {
@@ -24,20 +26,5 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-    }
-}
-
-subprojects {
-    afterEvaluate {
-        extensions.find<KotlinProjectExtension>()?.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
-        }
-        extensions.find<KoverExtension> {
-            generateReportOnCheck = false
-            instrumentAndroidPackage = true
-        }
-        extensions.find<SpotlessExtension>()?.kotlin {
-            ktlint()
-        }
     }
 }

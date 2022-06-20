@@ -10,7 +10,6 @@ import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class MyIntegrationTest {
-
     @Rule @JvmField val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner

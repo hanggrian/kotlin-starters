@@ -1,7 +1,3 @@
-import com.diffplug.gradle.spotless.SpotlessExtension
-import org.jetbrains.dokka.gradle.DokkaTask
-import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
-
 buildscript {
     repositories {
         gradlePluginPortal()
@@ -22,19 +18,5 @@ allprojects {
     version = RELEASE_VERSION
     repositories {
         mavenCentral()
-    }
-}
-
-subprojects {
-    afterEvaluate {
-        extensions.find<KotlinProjectExtension>()?.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
-        }
-        tasks.find<DokkaTask>("dokkaHtml") {
-            outputDirectory.set(buildDir.resolve("dokka/dokka"))
-        }
-        extensions.find<SpotlessExtension>()?.kotlin {
-            ktlint()
-        }
     }
 }

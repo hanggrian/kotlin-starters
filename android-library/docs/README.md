@@ -1,5 +1,6 @@
-[![Travis CI](https://img.shields.io/travis/com/jetbrains/pty4j)](https://www.travis-ci.com/github/jetbrains/pty4j/)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jetbrains.kotlin/kotlin-stdlib)](https://search.maven.org/artifact/org.jetbrains.kotlin/kotlin-stdlib/)
+[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/library)](https://www.travis-ci.com/github/hendraanggrian/library/)
+[![Codecov](https://img.shields.io/codecov/c/github/hendraanggrian/library)](https://app.codecov.io/gh/hendraanggrian/library/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.hendraanggrian.library/library)](https://search.maven.org/artifact/com.hendraanggrian.library/library/)
 [![OpenJDK](https://img.shields.io/badge/jdk-11+-informational)](https://openjdk.java.net/projects/jdk/11/)
 
 # My Library

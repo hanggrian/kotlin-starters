@@ -1,6 +1,3 @@
-import com.vanniktech.maven.publish.JavadocJar
-import com.vanniktech.maven.publish.KotlinJvm
-
 plugins {
     kotlin("jvm")
     id("kover")
@@ -8,8 +5,6 @@ plugins {
     id("com.diffplug.spotless")
     id("com.vanniktech.maven.publish.base")
 }
-
-mavenPublishing.configure(KotlinJvm(JavadocJar.Dokka("dokkaJavadoc")))
 
 dependencies {
     implementation(libs.kotlinx.coroutines)

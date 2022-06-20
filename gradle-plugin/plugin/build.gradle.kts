@@ -6,6 +6,12 @@ plugins {
     id("com.gradle.plugin-publish")
 }
 
+kotlin.jvmToolchain {
+    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+}
+
+spotless.kotlin { ktlint() }
+
 sourceSets {
     register("integrationTest") {
         java.srcDir("src/integrationTest/kotlin")
@@ -70,4 +76,9 @@ tasks {
         mustRunAfter(test)
     }
     check { dependsOn(/*integrationTest, */functionalTest) }
+
+
+    dokkaHtml {
+        outputDirectory.set(buildDir.resolve("dokka/dokka"))
+    }
 }

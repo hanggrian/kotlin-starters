@@ -18,7 +18,9 @@ Components included in each template:
 - Website module:
   - [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/) webpage displaying README's content and documentation links (if any).
   - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish/) plugin, necessary for uploading to [GitHub Pages](https://pages.github.com/).
-- [Travis CI](https://travis-ci.com/) configuration file.
+- Third-party services:
+  - [Travis CI](https://travis-ci.com/) configuration file.
+  - [Codecov](https://about.codecov.io/) integration within Travis CI, except for Gradle plugin.
 
 Situational components differ by target:
 
