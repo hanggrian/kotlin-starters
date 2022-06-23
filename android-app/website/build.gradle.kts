@@ -10,9 +10,6 @@ pages.minimal {
     projectDescription = RELEASE_DESCRIPTION
     projectUrl = RELEASE_URL
     markdownFile = rootDir.resolve("docs/README.md")
-    headerButtons {
-        button("View", "Documentation", "dokka")
-    }
 }
 
 gitPublish {
@@ -26,6 +23,6 @@ tasks {
         delete(buildDir)
     }
     gitPublishCopy {
-        dependsOn(deployPages, ":$RELEASE_ARTIFACT:dokkaHtml")
+        dependsOn(deployPages)
     }
 }

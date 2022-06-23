@@ -11,42 +11,29 @@ dependencyResolutionManagement {
             version("androidTarget", "32")
         }
         register("plugs") {
-            val koverVersion = "0.5.1"
-            val androidVersion = "7.2.1"
-            val spotlessVersion = "6.7.2"
-            val mavenPublishVersion = "0.20.0"
-            val pagesVersion = "0.1"
-            val gitPublishVersion = "3.0.1"
+            library("android", "com.android.tools.build:gradle:7.2.1")
             library("kotlin", "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-            library("kotlin.kover", "org.jetbrains.kotlinx:kover:$koverVersion")
+            library("kotlin.kover", "org.jetbrains.kotlinx:kover:0.5.1")
             library("dokka", "org.jetbrains.dokka:dokka-gradle-plugin:$kotlinVersion")
-            library("android", "com.android.tools.build:gradle:$androidVersion")
-            library("spotless", "com.diffplug.spotless:spotless-plugin-gradle:$spotlessVersion")
-            library("maven-publish", "com.vanniktech:gradle-maven-publish-plugin:$mavenPublishVersion")
-            library("pages", "com.hendraanggrian:pages-gradle-plugin:$pagesVersion")
-            library("git-publish", "org.ajoberstar.git-publish:gradle-git-publish:$gitPublishVersion")
+            library("spotless", "com.diffplug.spotless:spotless-plugin-gradle:6.7.2")
+            library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
+            library("git-publish", "org.ajoberstar.git-publish:gradle-git-publish:3.0.1")
         }
         register("libs") {
-            val coroutinesVersion = "1.6.2"
-            val androidxCoreKtxVersion = "1.4.0-alpha01"
-            val multidexVersion = "2.0.1"
-            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
             library("material", "com.google.android.material:material:$androidxVersion")
             library("androidx-appcompat", "androidx.appcompat:appcompat:$androidxVersion")
-            library("androidx-core-ktx", "androidx.core:core-ktx:$androidxCoreKtxVersion")
-            library("androidx-multidex", "androidx.multidex:multidex:$multidexVersion")
+            library("androidx-core-ktx", "androidx.core:core-ktx:1.4.0-alpha01")
+            library("androidx-multidex", "androidx.multidex:multidex:2.0.1")
         }
         register("testLibs") {
-            val androidxJunitVersion = "1.1.3"
-            val androidxTruthVersion = "1.4.0"
-            val androidxEspressoVersion = "3.4.0"
             library("kotlin-junit", "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
             library("androidx-core-ktx", "androidx.test:core-ktx:$androidxVersion")
             library("androidx-runner", "androidx.test:runner:$androidxVersion")
             library("androidx-rules", "androidx.test:rules:$androidxVersion")
-            library("androidx-junit-ktx", "androidx.test.ext:junit-ktx:$androidxJunitVersion")
-            library("androidx-truth", "androidx.test.ext:truth:$androidxTruthVersion")
-            library("androidx-espresso-core", "androidx.test.espresso:espresso-core:$androidxEspressoVersion")
+            library("androidx-junit-ktx", "androidx.test.ext:junit-ktx:1.1.3")
+            library("androidx-truth", "androidx.test.ext:truth:1.4.0")
+            library("androidx-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
             bundle(
                 "androidx",
                 listOf(

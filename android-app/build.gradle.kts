@@ -11,9 +11,9 @@ buildscript {
         google()
     }
     dependencies {
+        classpath(plugs.android)
         classpath(plugs.kotlin)
         classpath(plugs.kotlin.kover)
-        classpath(plugs.android)
         classpath(plugs.spotless)
         classpath(plugs.pages) { features("pages-minimal") }
         classpath(plugs.git.publish)

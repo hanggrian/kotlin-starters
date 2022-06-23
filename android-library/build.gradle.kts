@@ -11,10 +11,10 @@ buildscript {
         google()
     }
     dependencies {
+        classpath(plugs.android)
         classpath(plugs.kotlin)
         classpath(plugs.kotlin.kover)
         classpath(plugs.dokka)
-        classpath(plugs.android)
         classpath(plugs.spotless)
         classpath(plugs.maven.publish)
         classpath(plugs.pages) { features("pages-minimal") }
@@ -42,11 +42,11 @@ subprojects {
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             }
             compileOptions {
-                targetCompatibility = sdk.versions.jdk.getJavaVersion()
-                sourceCompatibility = sdk.versions.jdk.getJavaVersion()
+                targetCompatibility = JavaVersion.VERSION_1_8
+                sourceCompatibility = JavaVersion.VERSION_1_8
             }
             (this as ExtensionAware).extensions.configure<KotlinJvmOptions>("kotlinOptions") {
-                jvmTarget = sdk.versions.jdk.get()
+                jvmTarget = JavaVersion.VERSION_1_8.toString()
             }
         }
         extensions.find<LibraryExtension> { configureAndroid() }

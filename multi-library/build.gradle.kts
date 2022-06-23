@@ -2,9 +2,9 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.SonatypeHost
 import kotlinx.kover.api.KoverExtension
 import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 buildscript {
@@ -39,7 +39,7 @@ subprojects {
         extensions.find<KoverExtension> { generateReportOnCheck = false }
         extensions.find<SpotlessExtension>()?.kotlin { ktlint() }
         extensions.find<MavenPublishBaseExtension> {
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+            publishToMavenCentral(SonatypeHost.S01)
             signAllPublications()
             pom {
                 name.set(project.name)

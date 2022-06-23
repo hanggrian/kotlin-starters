@@ -5,6 +5,10 @@ plugins {
 }
 
 android {
+    defaultConfig {
+        multiDexEnabled = true
+        applicationId = "com.example"
+    }
     buildTypes {
         named("debug") {
             isMinifyEnabled = true

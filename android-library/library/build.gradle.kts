@@ -10,10 +10,8 @@ plugins {
     id("com.vanniktech.maven.publish.base")
 }
 
-android {
-    buildFeatures {
-        buildConfig = false
-    }
+android.buildFeatures {
+    buildConfig = false
 }
 
 kover {

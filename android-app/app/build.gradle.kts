@@ -18,11 +18,11 @@ android {
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
     }
     compileOptions {
-        targetCompatibility = sdk.versions.jdk.getJavaVersion()
-        sourceCompatibility = sdk.versions.jdk.getJavaVersion()
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = sdk.versions.jdk.get()
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     buildTypes {
         named("debug") {

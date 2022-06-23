@@ -22,4 +22,7 @@ tasks {
     register("clean") {
         delete(buildDir)
     }
+    gitPublishCopy {
+        dependsOn(deployPages)
+    }
 }
