@@ -3,11 +3,11 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     id("com.android.library")
-    kotlin("android")
-    id("kover")
-    id("org.jetbrains.dokka")
-    id("com.diffplug.spotless")
-    id("com.vanniktech.maven.publish.base")
+    alias(plugs.plugins.kotlin.android)
+    alias(plugs.plugins.kotlinx.kover)
+    alias(plugs.plugins.dokka)
+    alias(plugs.plugins.spotless)
+    alias(plugs.plugins.mvn.publish)
 }
 
 android.buildFeatures {

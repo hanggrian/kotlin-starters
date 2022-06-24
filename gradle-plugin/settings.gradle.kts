@@ -9,12 +9,14 @@ dependencyResolutionManagement {
             version("jdk", "8")
         }
         register("plugs") {
-            library("kotlin", "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-            library("dokka", "org.jetbrains.dokka:dokka-gradle-plugin:$kotlinVersion")
-            library("spotless", "com.diffplug.spotless:spotless-plugin-gradle:6.7.2")
-            library("plugin-publish", "com.gradle.publish:plugin-publish-plugin:1.0.0-rc-2")
+            plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").version(kotlinVersion)
+            plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").version(kotlinVersion)
+            plugin("kotlinx-kover", "org.jetbrains.kotlinx.kover").version("0.5.1")
+            plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
+            plugin("spotless", "com.diffplug.spotless").version("6.7.2")
+            plugin("gradle-publish", "com.gradle.plugin-publish").version("1.0.0-rc-3")
+            plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
-            library("git-publish", "org.ajoberstar.git-publish:gradle-git-publish:3.0.1")
         }
         register("libs") {
             library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")

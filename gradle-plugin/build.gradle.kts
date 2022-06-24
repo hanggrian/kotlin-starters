@@ -4,12 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(plugs.kotlin)
-        classpath(plugs.dokka)
-        classpath(plugs.spotless)
-        classpath(plugs.plugin.publish)
         classpath(plugs.pages) { features("pages-minimal") }
-        classpath(plugs.git.publish)
     }
 }
 

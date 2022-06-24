@@ -1,6 +1,7 @@
 plugins {
     application
-    kotlin("jvm")
+    alias(plugs.plugins.kotlin.jvm)
+    alias(plugs.plugins.kotlin.kapt)
 }
 
 application.mainClass.set("com.example.MyApp")

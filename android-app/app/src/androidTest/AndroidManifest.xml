@@ -7,8 +7,7 @@
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
-        android:theme="@style/Theme.AppCompat.DayNight"
-        tools:replace="android:name,android:theme">
+        android:theme="@style/Theme.AppCompat.DayNight">
         <uses-library android:name="android.test.runner" />
         <activity android:name=".MyTestActivity" />
     </application>

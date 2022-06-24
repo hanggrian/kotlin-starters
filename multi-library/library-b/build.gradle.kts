@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm")
-    id("kover")
-    id("org.jetbrains.dokka")
-    id("com.diffplug.spotless")
-    id("com.vanniktech.maven.publish.base")
+    alias(plugs.plugins.kotlin.jvm)
+    alias(plugs.plugins.kotlinx.kover)
+    alias(plugs.plugins.dokka)
+    alias(plugs.plugins.spotless)
+    alias(plugs.plugins.mvn.publish)
 }
 
 dependencies {

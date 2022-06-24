@@ -1,4 +1,4 @@
-# Kotlin Project Templates
+# Kotlin Project Starters
 
 Personal Gradle project templates with emphasis on Kotlin, separated by target platform and kind of distribution.
 
@@ -6,17 +6,17 @@ Components included in each template:
 
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) scripts with `buildSrc` containing project helpers.
-  - Apply plugin using [legacy plugin application](https://docs.gradle.org/current/userguide/plugins.html#sec:old_plugin_application) because classpath need to exist in root `build.gradle.kts`.
-  - Version catalog configured in `settings.gradle.kts`.
+  - Apply plugin using [plugins DSL](https://docs.gradle.org/current/userguide/plugins.html).
+  - [Version catalogs](https://docs.gradle.org/current/userguide/platforms.html) to avoid typing unsafe dependencies.
 - Kotlin framework:
-  - [Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib/) and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
+  - Plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
   - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
 - Test dependencies:
   - [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test/) with JUnit dependencies.
   - [Google Truth](https://github.com/google/truth/) assertion.
 - [ktlint](https://github.com/pinterest/ktlint/) code style, imported using [Spotless](https://github.com/diffplug/spotless/) plugin.
 - Website module:
-  - [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/) webpage displaying README's content and documentation links (if any).
+  - [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/) webpage displaying README's content and documentation links (except for apps).
   - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish/) plugin, necessary for uploading to [GitHub Pages](https://pages.github.com/).
 - Third-party services:
   - [Travis CI](https://travis-ci.com/) configuration file.

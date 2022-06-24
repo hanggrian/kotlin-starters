@@ -10,16 +10,17 @@ dependencyResolutionManagement {
             version("jdk", "8")
         }
         register("plugs") {
-            library("kotlin", "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-            library("kotlin.kover", "org.jetbrains.kotlinx:kover:0.5.1")
-            library("dokka", "org.jetbrains.dokka:dokka-gradle-plugin:$kotlinVersion")
-            library("spotless", "com.diffplug.spotless:spotless-plugin-gradle:6.7.2")
-            library("maven-publish", "com.vanniktech:gradle-maven-publish-plugin:0.20.0")
+            plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").version(kotlinVersion)
+            plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").version(kotlinVersion)
+            plugin("kotlinx-kover", "org.jetbrains.kotlinx.kover").version("0.5.1")
+            plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
+            plugin("spotless", "com.diffplug.spotless").version("6.7.2")
+            plugin("mvn-publish", "com.vanniktech.maven.publish.base").version("0.20.0")
+            plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
-            library("git-publish", "org.ajoberstar.git-publish:gradle-git-publish:3.0.1")
         }
         register("libs") {
-            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
         }
         register("testLibs") {
             library("kotlin-junit", "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")

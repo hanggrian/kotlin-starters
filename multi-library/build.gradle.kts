@@ -1,11 +1,14 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
+import com.diffplug.gradle.spotless.SpotlessPlugin
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.MavenPublishBasePlugin
 import com.vanniktech.maven.publish.SonatypeHost
+import kotlinx.kover.KoverPlugin
 import kotlinx.kover.api.KoverExtension
-import org.jetbrains.dokka.gradle.DokkaMultiModuleTask
-import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
 
 buildscript {
     repositories {
@@ -13,14 +16,17 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(plugs.kotlin)
-        classpath(plugs.kotlin.kover)
-        classpath(plugs.dokka)
-        classpath(plugs.spotless)
-        classpath(plugs.maven.publish)
         classpath(plugs.pages) { features("pages-minimal") }
-        classpath(plugs.git.publish)
     }
+}
+
+plugins {
+    alias(plugs.plugins.kotlin.jvm) apply false
+    alias(plugs.plugins.kotlin.kapt) apply false
+    alias(plugs.plugins.kotlinx.kover) apply false
+    alias(plugs.plugins.dokka)
+    alias(plugs.plugins.spotless) apply false
+    alias(plugs.plugins.mvn.publish) apply false
 }
 
 allprojects {
@@ -32,13 +38,15 @@ allprojects {
 }
 
 subprojects {
-    afterEvaluate {
-        extensions.find<KotlinProjectExtension>()?.jvmToolchain {
+    withPlugin<KotlinPlatformJvmPlugin> {
+        kotlinExtension.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
-        extensions.find<KoverExtension> { generateReportOnCheck = false }
-        extensions.find<SpotlessExtension>()?.kotlin { ktlint() }
-        extensions.find<MavenPublishBaseExtension> {
+    }
+    withPlugin<KoverPlugin> { the<KoverExtension>().generateReportOnCheck = false }
+    withPlugin<SpotlessPlugin> { the<SpotlessExtension>().kotlin { ktlint() } }
+    withPluginEagerly<MavenPublishBasePlugin> {
+        configure<MavenPublishBaseExtension> {
             publishToMavenCentral(SonatypeHost.S01)
             signAllPublications()
             pom {
@@ -70,8 +78,11 @@ subprojects {
     }
 }
 
-plugins.apply("org.jetbrains.dokka")
-
-tasks.named<DokkaMultiModuleTask>("dokkaHtmlMultiModule") {
-    outputDirectory.set(buildDir.resolve("dokka/dokka"))
+tasks {
+    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
+        delete(buildDir)
+    }
+    dokkaHtmlMultiModule {
+        outputDirectory.set(buildDir.resolve("dokka/dokka"))
+    }
 }

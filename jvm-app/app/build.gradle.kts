@@ -1,9 +1,9 @@
 plugins {
     application
-    kotlin("jvm")
-    kotlin("kapt")
-    id("kover")
-    id("com.diffplug.spotless")
+    alias(plugs.plugins.kotlin.jvm)
+    alias(plugs.plugins.kotlin.kapt)
+    alias(plugs.plugins.kotlinx.kover)
+    alias(plugs.plugins.spotless)
 }
 
 application.mainClass.set("$RELEASE_GROUP.app.MyApp")

@@ -1,13 +1,14 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
+    alias(plugs.plugins.kotlin.android)
+    alias(plugs.plugins.kotlin.android.extensions)
+    alias(plugs.plugins.kotlin.kapt)
 }
 
 android {
     defaultConfig {
-        multiDexEnabled = true
         applicationId = "com.example"
+        multiDexEnabled = true
     }
     buildTypes {
         named("debug") {

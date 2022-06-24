@@ -1,4 +1,5 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
 
 buildscript {
     repositories {
@@ -6,14 +7,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(plugs.kotlin)
-        classpath(plugs.kotlin.kover)
-        classpath(plugs.dokka)
-        classpath(plugs.spotless)
-        classpath(plugs.maven.publish)
         classpath(plugs.pages) { features("pages-minimal") }
-        classpath(plugs.git.publish)
     }
+}
+
+plugins {
+    alias(plugs.plugins.kotlin.jvm) apply false
+    alias(plugs.plugins.kotlin.kapt) apply false
 }
 
 allprojects {
@@ -25,8 +25,8 @@ allprojects {
 }
 
 subprojects {
-    afterEvaluate {
-        extensions.find<KotlinProjectExtension>()?.jvmToolchain {
+    withPlugin<KotlinPlatformJvmPlugin> {
+        kotlinExtension.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
     }

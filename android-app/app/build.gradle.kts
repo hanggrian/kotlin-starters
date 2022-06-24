@@ -1,17 +1,17 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
-    kotlin("kapt")
-    id("kover")
-    id("com.diffplug.spotless")
+    alias(plugs.plugins.kotlin.android)
+    alias(plugs.plugins.kotlin.android.extensions)
+    alias(plugs.plugins.kotlin.kapt)
+    alias(plugs.plugins.kotlinx.kover)
+    alias(plugs.plugins.spotless)
 }
 
 android {
-    compileSdk = sdk.versions.androidTarget.getInt()
+    compileSdk = sdk.versions.androidTarget.get().toInt()
     defaultConfig {
-        minSdk = sdk.versions.androidMin.getInt()
-        targetSdk = sdk.versions.androidTarget.getInt()
+        minSdk = sdk.versions.androidMin.get().toInt()
+        targetSdk = sdk.versions.androidTarget.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
