@@ -19,7 +19,7 @@ dependencyResolutionManagement {
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
         }
         register("libs") {
-            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
         }
         register("testLibs") {
             library("kotlin-junit", "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")

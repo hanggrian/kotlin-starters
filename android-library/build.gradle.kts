@@ -5,7 +5,7 @@ import com.android.build.gradle.LibraryPlugin
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformAndroidPlugin
+import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
 
 buildscript {
     repositories {
@@ -37,12 +37,12 @@ allprojects {
 subprojects {
     withPlugin<LibraryPlugin> { configure<LibraryExtension>(::androidConfig) }
     withPlugin<AppPlugin> { configure<BaseAppModuleExtension>(::androidConfig) }
-    withPlugin<KotlinPlatformAndroidPlugin> {
+    withPluginEagerly<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
         (the<BaseExtension>() as ExtensionAware).extensions
-            .getByType<KotlinJvmOptions>().jvmTarget = JavaVersion.VERSION_1_8.toString()
+            .getByType<KotlinJvmOptions>().jvmTarget = JavaVersion.toVersion(sdk.versions.androidJdk.get()).toString()
     }
 }
 
@@ -55,7 +55,7 @@ fun androidConfig(extension: BaseExtension) {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        targetCompatibility = JavaVersion.VERSION_1_8
-        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
+        sourceCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
     }
 }

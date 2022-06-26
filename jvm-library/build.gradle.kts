@@ -1,5 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 buildscript {
     repositories {
@@ -25,7 +25,7 @@ allprojects {
 }
 
 subprojects {
-    withPlugin<KotlinPlatformJvmPlugin> {
+    withPluginEagerly<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }

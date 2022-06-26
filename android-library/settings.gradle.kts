@@ -8,6 +8,7 @@ dependencyResolutionManagement {
         val androidxVersion = "1.4.0"
         register("sdk") {
             version("jdk", "11")
+            version("androidJdk", "8")
             version("androidMin", "14")
             version("androidTarget", "32")
         }
@@ -24,7 +25,7 @@ dependencyResolutionManagement {
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
         }
         register("libs") {
-            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
             library("material", "com.google.android.material:material:$androidxVersion")
             library("androidx-appcompat", "androidx.appcompat:appcompat:$androidxVersion")
             library("androidx-core-ktx", "androidx.core:core-ktx:1.4.0-alpha01")

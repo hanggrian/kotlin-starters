@@ -7,6 +7,7 @@ dependencyResolutionManagement {
         val androidxVersion = "1.4.0"
         register("sdk") {
             version("jdk", "11")
+            version("androidJdk", "8")
             version("androidMin", "14")
             version("androidTarget", "32")
         }
@@ -16,13 +17,12 @@ dependencyResolutionManagement {
             plugin("kotlin-android-extensions", "org.jetbrains.kotlin.android.extensions").version(kotlinVersion)
             plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").version(kotlinVersion)
             plugin("kotlinx-kover", "org.jetbrains.kotlinx.kover").version("0.5.1")
-            plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
             plugin("spotless", "com.diffplug.spotless").version("6.7.2")
             plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
         }
         register("libs") {
-            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+            library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
             library("material", "com.google.android.material:material:$androidxVersion")
             library("androidx-appcompat", "androidx.appcompat:appcompat:$androidxVersion")
             library("androidx-core-ktx", "androidx.core:core-ktx:1.4.0-alpha01")
