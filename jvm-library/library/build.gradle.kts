@@ -7,12 +7,14 @@ plugins {
     alias(plugs.plugins.kotlinx.kover)
     alias(plugs.plugins.dokka)
     alias(plugs.plugins.spotless)
-    alias(plugs.plugins.mvn.publish)
+    alias(plugs.plugins.maven.publish)
 }
 
 kover.generateReportOnCheck = false
 
-spotless.kotlin { ktlint() }
+spotless.kotlin {
+    ktlint()
+}
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01)
@@ -50,8 +52,6 @@ dependencies {
     testImplementation(testLibs.truth)
 }
 
-tasks {
-    dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
-    }
+tasks.dokkaHtml {
+    outputDirectory.set(buildDir.resolve("dokka/dokka"))
 }

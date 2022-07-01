@@ -3,7 +3,7 @@ plugins {
     alias(plugs.plugins.kotlinx.kover)
     alias(plugs.plugins.dokka)
     alias(plugs.plugins.spotless)
-    alias(plugs.plugins.mvn.publish)
+    alias(plugs.plugins.maven.publish)
 }
 
 dependencies {

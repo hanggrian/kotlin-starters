@@ -20,7 +20,7 @@ dependencyResolutionManagement {
             plugin("kotlinx-kover", "org.jetbrains.kotlinx.kover").version("0.5.1")
             plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
             plugin("spotless", "com.diffplug.spotless").version("6.7.2")
-            plugin("mvn-publish", "com.vanniktech.maven.publish.base").version("0.20.0")
+            plugin("maven-publish", "com.vanniktech.maven.publish.base").version("0.20.0")
             plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
         }
@@ -33,19 +33,11 @@ dependencyResolutionManagement {
         }
         register("testLibs") {
             library("kotlin-junit", "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
-            library("androidx-core-ktx", "androidx.test:core-ktx:$androidxVersion")
+            library("androidx-core", "androidx.test:core:$androidxVersion")
             library("androidx-runner", "androidx.test:runner:$androidxVersion")
-            library("androidx-rules", "androidx.test:rules:$androidxVersion")
-            library("androidx-junit-ktx", "androidx.test.ext:junit-ktx:1.1.3")
-            library("androidx-truth", "androidx.test.ext:truth:1.4.0")
-            library("androidx-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
-            bundle(
-                "androidx",
-                listOf(
-                    "androidx-core-ktx", "androidx-runner", "androidx-rules",
-                    "androidx-junit-ktx", "androidx-truth", "androidx-espresso-core"
-                )
-            )
+            library("androidx-junit", "androidx.test.ext:junit:1.1.3")
+            library("robolectric", "org.robolectric:robolectric:4.8.1")
+            library("truth", "com.google.truth:truth:1.1.3")
         }
     }
 }

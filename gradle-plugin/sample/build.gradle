@@ -1,10 +1,6 @@
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath files('plugin-0.1.jar')
-    }
+    repositories.mavenCentral()
+    dependencies.classpath files('plugin-0.1.jar')
 }
 
 group 'com.example'

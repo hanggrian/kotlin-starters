@@ -14,7 +14,9 @@ kotlin.jvmToolchain {
 
 kover.generateReportOnCheck = false
 
-spotless.kotlin { ktlint() }
+spotless.kotlin {
+    ktlint()
+}
 
 dependencies {
     implementation(libs.kotlinx.coroutines)

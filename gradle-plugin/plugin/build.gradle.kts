@@ -37,7 +37,9 @@ kotlin.jvmToolchain {
     (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
 }
 
-spotless.kotlin { ktlint() }
+spotless.kotlin {
+    ktlint()
+}
 
 pluginBundle {
     website = RELEASE_URL
@@ -76,8 +78,9 @@ tasks {
         classpath = sourceSets["functionalTest"].runtimeClasspath
         mustRunAfter(test)
     }
-    check { dependsOn(/*integrationTest, */functionalTest) }
-
+    check {
+        dependsOn(/*integrationTest, */functionalTest)
+    }
 
     dokkaHtml {
         outputDirectory.set(buildDir.resolve("dokka/dokka"))

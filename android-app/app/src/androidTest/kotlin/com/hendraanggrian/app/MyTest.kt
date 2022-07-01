@@ -2,10 +2,10 @@ package com.hendraanggrian.app
 
 import android.view.View
 import android.widget.EditText
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -24,8 +24,8 @@ class MyTest {
 
     @Test
     fun test() {
-        Espresso.onView(withId(R.id.editText)).perform(
-            ViewActions.typeText("Hello world"),
+        onView(withId(R.id.editText)).perform(
+            typeText("Hello world"),
             object : ViewAction {
                 override fun getConstraints() = ViewMatchers.isAssignableFrom(EditText::class.java)
                 override fun getDescription() = "Testing EditText"

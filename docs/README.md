@@ -4,6 +4,9 @@ Personal Gradle project templates with emphasis on Kotlin, separated by target p
 
 Components included in each template:
 
+- GitHub project layout:
+  - `docs` folder for repository documentation files, including [README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes/).
+  - [LICENSE](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository/) file in root directory.
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) scripts with `buildSrc` containing project helpers.
   - Apply plugin using [plugins DSL](https://docs.gradle.org/current/userguide/plugins.html).
@@ -24,20 +27,21 @@ Components included in each template:
 
 Situational components differ by target:
 
-|                 | Plugins                              | Publications           | Others           |
-|-----------------|--------------------------------------|------------------------|------------------|
-| android-app     | [Android], [kapt]                    |                        |                  |
-| android-library | [Android], [Dokka]                   | [Maven Central]        |                  |
-| gradle-plugin   | [Gradle Plugin Development], [Dokka] | [Gradle Plugin Portal] | [Gradle TestKit] |
-| jvm-app         | [Application], [kapt]                |                        |                  |
-| jvm-library     | [Dokka]                              | [Maven Central]        |                  |
-| multi-module    | [Dokka]                              | [Maven Central]        |                  |
+|                 | Plugins                              | Publications           | Others                  |
+|-----------------|--------------------------------------|------------------------|-------------------------|
+| android-app     | [Android], [kapt]                    |                        | Instrumentation test    |
+| android-library | [Android], [Dokka]                   | [Maven Central]        | [Robolectric] unit test |
+| gradle-plugin   | [Gradle Plugin Development], [Dokka] | [Gradle Plugin Portal] | [Gradle TestKit]        |
+| jvm-app         | [Application], [kapt]                |                        |                         |
+| jvm-library     | [Dokka]                              | [Maven Central]        |                         |
+| multi-module    | [Dokka]                              | [Maven Central]        |                         |
 
 [Dokka]: https://github.com/Kotlin/dokka/
 [kapt]: https://kotlinlang.org/docs/kapt.html
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
 [Android]: https://developer.android.com/studio/build/
 [Gradle Plugin Development]: https://docs.gradle.org/current/userguide/java_gradle_plugin.html
+[Gradle Plugin Portal]: https://plugins.gradle.org/
 [Gradle TestKit]: https://docs.gradle.org/current/userguide/test_kit.html
 [Maven Central]: https://search.maven.org/
-[Gradle Plugin Portal]: https://plugins.gradle.org/
+[Robolectric]: http://robolectric.org/

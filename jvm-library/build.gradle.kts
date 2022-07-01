@@ -6,8 +6,8 @@ buildscript {
         gradlePluginPortal()
         mavenCentral()
     }
-    dependencies {
-        classpath(plugs.pages) { features("pages-minimal") }
+    dependencies.classpath(plugs.pages) {
+        capability("pages-minimal")
     }
 }
 
@@ -19,9 +19,7 @@ plugins {
 allprojects {
     group = RELEASE_GROUP
     version = RELEASE_VERSION
-    repositories {
-        mavenCentral()
-    }
+    repositories.mavenCentral()
 }
 
 subprojects {

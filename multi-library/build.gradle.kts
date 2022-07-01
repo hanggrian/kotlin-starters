@@ -15,8 +15,8 @@ buildscript {
         gradlePluginPortal()
         mavenCentral()
     }
-    dependencies {
-        classpath(plugs.pages) { features("pages-minimal") }
+    dependencies.classpath(plugs.pages) {
+        capability("pages-minimal")
     }
 }
 
@@ -26,15 +26,13 @@ plugins {
     alias(plugs.plugins.kotlinx.kover) apply false
     alias(plugs.plugins.dokka)
     alias(plugs.plugins.spotless) apply false
-    alias(plugs.plugins.mvn.publish) apply false
+    alias(plugs.plugins.maven.publish) apply false
 }
 
 allprojects {
     group = RELEASE_GROUP
     version = RELEASE_VERSION
-    repositories {
-        mavenCentral()
-    }
+    repositories.mavenCentral()
 }
 
 subprojects {
@@ -43,8 +41,14 @@ subprojects {
             (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
     }
-    withPlugin<KoverPlugin> { the<KoverExtension>().generateReportOnCheck = false }
-    withPlugin<SpotlessPlugin> { the<SpotlessExtension>().kotlin { ktlint() } }
+    withPlugin<KoverPlugin> {
+        the<KoverExtension>().generateReportOnCheck = false
+    }
+    withPlugin<SpotlessPlugin> {
+        the<SpotlessExtension>().kotlin {
+            ktlint()
+        }
+    }
     withPluginEagerly<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
             publishToMavenCentral(SonatypeHost.S01)

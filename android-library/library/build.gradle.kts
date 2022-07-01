@@ -7,19 +7,19 @@ plugins {
     alias(plugs.plugins.kotlinx.kover)
     alias(plugs.plugins.dokka)
     alias(plugs.plugins.spotless)
-    alias(plugs.plugins.mvn.publish)
+    alias(plugs.plugins.maven.publish)
 }
 
-android.buildFeatures {
-    buildConfig = false
+android {
+    buildFeatures.buildConfig = false
+    testOptions.unitTests.isIncludeAndroidResources = true
 }
 
-kover {
-    generateReportOnCheck = false
-    instrumentAndroidPackage = true
-}
+kover.generateReportOnCheck = false
 
-spotless.kotlin { ktlint() }
+spotless.kotlin {
+    ktlint()
+}
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01)
@@ -54,8 +54,12 @@ mavenPublishing {
 dependencies {
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx.appcompat)
-    androidTestImplementation(testLibs.kotlin.junit)
-    androidTestImplementation(testLibs.bundles.androidx)
+    testImplementation(testLibs.kotlin.junit)
+    testImplementation(testLibs.androidx.core)
+    testImplementation(testLibs.androidx.runner)
+    testImplementation(testLibs.androidx.junit)
+    testImplementation(testLibs.robolectric)
+    testImplementation(testLibs.truth)
 }
 
 tasks.dokkaHtml {

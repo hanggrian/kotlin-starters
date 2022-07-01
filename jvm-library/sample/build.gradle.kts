@@ -6,6 +6,4 @@ plugins {
 
 application.mainClass.set("com.example.MyApp")
 
-dependencies {
-    implementation(project(":$RELEASE_ARTIFACT"))
-}
+dependencies.implementation(project(":$RELEASE_ARTIFACT"))

@@ -25,11 +25,10 @@ android {
         jvmTarget = JavaVersion.toVersion(sdk.versions.androidJdk.get()).toString()
     }
     buildTypes {
-        named("debug") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        debug {
+            isTestCoverageEnabled = true
         }
-        named("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -40,12 +39,11 @@ kotlin.jvmToolchain {
     (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
 }
 
-kover {
-    generateReportOnCheck = false
-    instrumentAndroidPackage = true
-}
+kover.generateReportOnCheck = false
 
-spotless.kotlin { ktlint() }
+spotless.kotlin {
+    ktlint()
+}
 
 dependencies {
     implementation(libs.material)
