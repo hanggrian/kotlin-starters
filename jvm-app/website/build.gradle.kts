@@ -1,15 +1,16 @@
 plugins {
-    id("com.hendraanggrian.pages")
+    alias(plugs.plugins.pages)
     alias(plugs.plugins.git.publish)
 }
 
-pages.minimal {
-    authorName = DEVELOPER_NAME
-    authorUrl = DEVELOPER_URL
-    projectName = RELEASE_ARTIFACT
-    projectDescription = RELEASE_DESCRIPTION
-    projectUrl = RELEASE_URL
-    markdownFile = rootDir.resolve("docs/README.md")
+pages {
+    cayman {
+        authorName = DEVELOPER_NAME
+        authorUrl = DEVELOPER_URL
+        projectName = RELEASE_ARTIFACT
+        projectDescription = RELEASE_DESCRIPTION
+        projectUrl = RELEASE_URL
+    }
 }
 
 gitPublish {
@@ -21,8 +22,5 @@ gitPublish {
 tasks {
     register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
         delete(buildDir)
-    }
-    gitPublishCopy {
-        dependsOn(deployPages)
     }
 }

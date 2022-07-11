@@ -3,7 +3,7 @@ include("website")
 
 dependencyResolutionManagement {
     versionCatalogs {
-        val kotlinVersion = "1.6.21"
+        val kotlinVersion = "1.7.0"
         val androidxVersion = "1.4.0"
         register("sdk") {
             version("jdk", "11")
@@ -19,7 +19,7 @@ dependencyResolutionManagement {
             plugin("kotlinx-kover", "org.jetbrains.kotlinx.kover").version("0.5.1")
             plugin("spotless", "com.diffplug.spotless").version("6.7.2")
             plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
-            library("pages", "com.hendraanggrian:pages-gradle-plugin:0.1")
+            plugin("pages", "com.hendraanggrian.pages").version("0.1")
         }
         register("libs") {
             library("kotlinx-coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")

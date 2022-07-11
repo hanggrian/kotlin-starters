@@ -36,7 +36,7 @@ android {
 }
 
 kotlin.jvmToolchain {
-    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+    languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
 }
 
 kover.generateReportOnCheck = false

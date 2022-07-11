@@ -15,9 +15,6 @@ buildscript {
         gradlePluginPortal()
         mavenCentral()
     }
-    dependencies.classpath(plugs.pages) {
-        capability("pages-minimal")
-    }
 }
 
 plugins {
@@ -38,7 +35,7 @@ allprojects {
 subprojects {
     withPluginEagerly<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+            languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
     }
     withPlugin<KoverPlugin> {

@@ -6,9 +6,6 @@ buildscript {
     }
     dependencies {
         classpath(plugs.android)
-        classpath(plugs.pages) {
-            capability("pages-minimal")
-        }
     }
 }
 

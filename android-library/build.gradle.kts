@@ -15,9 +15,6 @@ buildscript {
     }
     dependencies {
         classpath(plugs.android)
-        classpath(plugs.pages) {
-            capability("pages-minimal")
-        }
     }
 }
 
@@ -45,7 +42,7 @@ subprojects {
     }
     withPluginEagerly<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain {
-            (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+            languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
         }
         (the<BaseExtension>() as ExtensionAware).extensions.getByType<KotlinJvmOptions>()
             .jvmTarget = JavaVersion.toVersion(sdk.versions.androidJdk.get()).toString()
