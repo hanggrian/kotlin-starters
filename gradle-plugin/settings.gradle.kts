@@ -12,8 +12,8 @@ dependencyResolutionManagement {
             plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").version(kotlinVersion)
             plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").version(kotlinVersion)
             plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
-            plugin("spotless", "com.diffplug.spotless").version("6.7.2")
-            plugin("gradle-publish", "com.gradle.plugin-publish").version("1.0.0-rc-3")
+            plugin("spotless", "com.diffplug.spotless").version("6.8.0")
+            plugin("gradle-publish", "com.gradle.plugin-publish").version("1.0.0")
             plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             plugin("pages", "com.hendraanggrian.pages").version("0.1")
         }

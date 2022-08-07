@@ -18,10 +18,10 @@ android:
     - sys-img-armeabi-v7a-android-22
 
 before_install:
-  - wget "https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip" -O commandlinetools.zip
-  - unzip commandlinetools.zip -d $ANDROID_HOME/
-  - yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager "platforms;android-$TARGET_SDK" --sdk_root=$ANDROID_HOME
-  - yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager "build-tools;$BUILD_TOOLS" --sdk_root=$ANDROID_HOME
+  - wget "https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip" -O "commandlinetools.zip"
+  - unzip "commandlinetools.zip" -d "$ANDROID_HOME"/
+  - yes | "$ANDROID_HOME"/cmdline-tools/bin/sdkmanager "platforms;android-$TARGET_SDK" --sdk_root="$ANDROID_HOME"
+  - yes | "$ANDROID_HOME"/cmdline-tools/bin/sdkmanager "build-tools;$BUILD_TOOLS" --sdk_root="$ANDROID_HOME"
 
 before_script:
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M

@@ -1,4 +1,4 @@
-[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/plugin)](https://www.travis-ci.com/github/hendraanggrian/plugin/)
+[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/plugin)](https://travis-ci.com/github/hendraanggrian/plugin/)
 [![Plugin Portal](https://img.shields.io/maven-metadata/v.svg?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fplugin%2Fcom.hendraanggrian.plugin.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hendraanggrian.plugin)
 [![OpenJDK](https://img.shields.io/badge/jdk-1.8%2B-informational)](https://openjdk.java.net/projects/jdk8/)
 
