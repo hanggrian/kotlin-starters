@@ -13,15 +13,13 @@ buildscript {
         mavenCentral()
         google()
     }
-    dependencies {
-        classpath(plugs.android)
-    }
+    dependencies.classpath(libs.android)
 }
 
 plugins {
-    alias(plugs.plugins.kotlin.android) apply false
-    alias(plugs.plugins.kotlin.android.extensions) apply false
-    alias(plugs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.android.extensions) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
 }
 
 allprojects {
@@ -42,23 +40,23 @@ subprojects {
     }
     withPluginEagerly<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+            languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }
         (the<BaseExtension>() as ExtensionAware).extensions.getByType<KotlinJvmOptions>()
-            .jvmTarget = JavaVersion.toVersion(sdk.versions.androidJdk.get()).toString()
+            .jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
     }
 }
 
 fun androidConfig(extension: BaseExtension) {
-    extension.setCompileSdkVersion(sdk.versions.androidTarget.get().toInt())
+    extension.setCompileSdkVersion(libs.versions.sdkTarget.get().toInt())
     extension.defaultConfig {
-        minSdk = sdk.versions.androidMin.get().toInt()
-        targetSdk = sdk.versions.androidTarget.get().toInt()
+        minSdk = libs.versions.sdkMin.get().toInt()
+        targetSdk = libs.versions.sdkTarget.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        targetCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
-        sourceCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
     }
 }

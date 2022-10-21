@@ -4,9 +4,7 @@ buildscript {
         mavenCentral()
         google()
     }
-    dependencies {
-        classpath(plugs.android)
-    }
+    dependencies.classpath(libs.android)
 }
 
 allprojects {

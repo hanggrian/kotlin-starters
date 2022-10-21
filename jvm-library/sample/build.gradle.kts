@@ -1,7 +1,7 @@
 plugins {
     application
-    alias(plugs.plugins.kotlin.jvm)
-    alias(plugs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 application.mainClass.set("com.example.MyApp")

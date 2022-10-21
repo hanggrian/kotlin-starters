@@ -1,10 +1,10 @@
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    alias(plugs.plugins.kotlin.jvm)
-    alias(plugs.plugins.dokka)
-    alias(plugs.plugins.spotless)
-    alias(plugs.plugins.gradle.publish)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.gradle.publish)
 }
 
 sourceSets {
@@ -34,7 +34,7 @@ gradlePlugin {
 }
 
 kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
 }
 
 spotless.kotlin {
@@ -54,11 +54,11 @@ val functionalTestImplementation by configurations.getting
 dependencies {
     implementation(libs.kotlinx.coroutines)
     integrationTestImplementation(gradleTestKit())
-    integrationTestImplementation(testLibs.kotlin.junit)
-    integrationTestImplementation(testLibs.truth)
+    integrationTestImplementation(libs.kotlin.test.junit)
+    integrationTestImplementation(libs.truth)
     functionalTestImplementation(gradleTestKit())
-    functionalTestImplementation(testLibs.kotlin.junit)
-    functionalTestImplementation(testLibs.truth)
+    functionalTestImplementation(libs.kotlin.test.junit)
+    functionalTestImplementation(libs.truth)
 }
 
 tasks {

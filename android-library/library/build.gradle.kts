@@ -3,19 +3,17 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     id("com.android.library")
-    alias(plugs.plugins.kotlin.android)
-    alias(plugs.plugins.kotlinx.kover)
-    alias(plugs.plugins.dokka)
-    alias(plugs.plugins.spotless)
-    alias(plugs.plugins.maven.publish)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.maven.publish)
 }
 
 android {
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true
 }
-
-kover.generateReportOnCheck = false
 
 spotless.kotlin {
     ktlint()
@@ -54,12 +52,8 @@ mavenPublishing {
 dependencies {
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx.appcompat)
-    testImplementation(testLibs.kotlin.junit)
-    testImplementation(testLibs.androidx.core)
-    testImplementation(testLibs.androidx.runner)
-    testImplementation(testLibs.androidx.junit)
-    testImplementation(testLibs.robolectric)
-    testImplementation(testLibs.truth)
+    androidTestImplementation(libs.kotlin.test.junit)
+    androidTestImplementation(libs.bundles.androidx.test)
 }
 
 tasks.dokkaHtml {

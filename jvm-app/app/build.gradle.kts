@@ -1,18 +1,16 @@
 plugins {
     application
-    alias(plugs.plugins.kotlin.jvm)
-    alias(plugs.plugins.kotlin.kapt)
-    alias(plugs.plugins.kotlinx.kover)
-    alias(plugs.plugins.spotless)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.spotless)
 }
 
 application.mainClass.set("$RELEASE_GROUP.app.MyApp")
 
 kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
 }
-
-kover.generateReportOnCheck = false
 
 spotless.kotlin {
     ktlint()
@@ -20,6 +18,6 @@ spotless.kotlin {
 
 dependencies {
     implementation(libs.kotlinx.coroutines)
-    testImplementation(testLibs.kotlin.junit)
-    testImplementation(testLibs.truth)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.truth)
 }

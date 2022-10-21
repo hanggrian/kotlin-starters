@@ -9,8 +9,8 @@ buildscript {
 }
 
 plugins {
-    alias(plugs.plugins.kotlin.jvm) apply false
-    alias(plugs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
 }
 
 allprojects {
@@ -22,7 +22,7 @@ allprojects {
 subprojects {
     withPluginEagerly<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+            languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }
     }
 }

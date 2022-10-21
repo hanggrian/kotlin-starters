@@ -1,38 +1,33 @@
 package com.hendraanggrian.app
 
-import android.view.View
 import android.widget.EditText
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.UiController
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
+import androidx.appcompat.app.AppCompatActivity
 import com.hendraanggrian.app.test.R
-import org.junit.Rule
 import org.junit.runner.RunWith
+import org.robolectric.Robolectric
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
+import org.robolectric.annotation.internal.DoNotInstrument
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@LargeTest
-@RunWith(AndroidJUnit4::class)
+@RunWith(RobolectricTestRunner::class)
+@Config(minSdk = 14, maxSdk = 32)
+@DoNotInstrument
 class MyTest {
-    @Rule @JvmField val rule = ActivityTestRule(MyTestActivity::class.java)
+    private lateinit var activity: AppCompatActivity
+    private lateinit var editText: EditText
+
+    @BeforeTest
+    fun setup() {
+        activity = Robolectric.buildActivity(MyTestActivity::class.java).setup().get()
+        editText = activity.layoutInflater.inflate(R.layout.activity_test, null) as EditText
+    }
 
     @Test
     fun test() {
-        onView(withId(R.id.editText)).perform(
-            typeText("Hello world"),
-            object : ViewAction {
-                override fun getConstraints() = ViewMatchers.isAssignableFrom(EditText::class.java)
-                override fun getDescription() = "Testing EditText"
-                override fun perform(uiController: UiController?, view: View) = (view as EditText).run {
-                    assertEquals("Hello world", view.text.toString())
-                }
-            }
-        )
+        editText.setText("Hello world")
+        assertEquals("Hello world", editText.text.toString())
     }
 }

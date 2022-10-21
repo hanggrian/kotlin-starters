@@ -6,7 +6,6 @@ import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
 import com.vanniktech.maven.publish.SonatypeHost
 import kotlinx.kover.KoverPlugin
-import kotlinx.kover.api.KoverExtension
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
@@ -18,12 +17,12 @@ buildscript {
 }
 
 plugins {
-    alias(plugs.plugins.kotlin.jvm) apply false
-    alias(plugs.plugins.kotlin.kapt) apply false
-    alias(plugs.plugins.kotlinx.kover) apply false
-    alias(plugs.plugins.dokka)
-    alias(plugs.plugins.spotless) apply false
-    alias(plugs.plugins.maven.publish) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlinx.kover) apply false
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.maven.publish) apply false
 }
 
 allprojects {
@@ -35,11 +34,8 @@ allprojects {
 subprojects {
     withPluginEagerly<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+            languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }
-    }
-    withPlugin<KoverPlugin> {
-        the<KoverExtension>().generateReportOnCheck = false
     }
     withPlugin<SpotlessPlugin> {
         the<SpotlessExtension>().kotlin {

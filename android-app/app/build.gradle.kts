@@ -1,32 +1,32 @@
 plugins {
     id("com.android.application")
-    alias(plugs.plugins.kotlin.android)
-    alias(plugs.plugins.kotlin.android.extensions)
-    alias(plugs.plugins.kotlin.kapt)
-    alias(plugs.plugins.kotlinx.kover)
-    alias(plugs.plugins.spotless)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.android.extensions)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.spotless)
 }
 
 android {
-    compileSdk = sdk.versions.androidTarget.get().toInt()
+    compileSdk = libs.versions.sdkTarget.get().toInt()
     defaultConfig {
-        minSdk = sdk.versions.androidMin.get().toInt()
-        targetSdk = sdk.versions.androidTarget.get().toInt()
+        minSdk = libs.versions.sdkMin.get().toInt()
+        targetSdk = libs.versions.sdkTarget.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
     }
     compileOptions {
-        targetCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
-        sourceCompatibility = JavaVersion.toVersion(sdk.versions.androidJdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(sdk.versions.androidJdk.get()).toString()
+        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
     }
     buildTypes {
         debug {
-            isTestCoverageEnabled = true
+            enableAndroidTestCoverage = true
         }
         release {
             isMinifyEnabled = false
@@ -36,10 +36,8 @@ android {
 }
 
 kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
 }
-
-kover.generateReportOnCheck = false
 
 spotless.kotlin {
     ktlint()
@@ -50,6 +48,6 @@ dependencies {
     implementation(libs.androidx.multidex)
     implementation(libs.androidx.core.ktx)
     androidTestImplementation(libs.material)
-    androidTestImplementation(testLibs.kotlin.junit)
-    androidTestImplementation(testLibs.bundles.androidx)
+    androidTestImplementation(libs.kotlin.test.junit)
+    androidTestImplementation(libs.bundles.androidx.test)
 }
