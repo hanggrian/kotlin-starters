@@ -20,7 +20,7 @@ allprojects {
 }
 
 subprojects {
-    withPluginEagerly<KotlinPluginWrapper> {
+    plugins.withType<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }

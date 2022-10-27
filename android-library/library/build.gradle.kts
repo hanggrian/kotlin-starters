@@ -52,8 +52,8 @@ mavenPublishing {
 dependencies {
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx.appcompat)
-    androidTestImplementation(libs.kotlin.test.junit)
-    androidTestImplementation(libs.bundles.androidx.test)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.bundles.androidx.test)
 }
 
 tasks.dokkaHtml {

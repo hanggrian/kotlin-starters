@@ -18,11 +18,11 @@ android {
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
     }
     compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+        jvmTarget = JavaVersion.toVersion(libs.versions.jdkAndroid.get()).toString()
     }
     buildTypes {
         debug {
@@ -33,6 +33,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+    testOptions.unitTests.isIncludeAndroidResources = true
 }
 
 kotlin.jvmToolchain {
@@ -47,7 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.multidex)
     implementation(libs.androidx.core.ktx)
-    androidTestImplementation(libs.material)
-    androidTestImplementation(libs.kotlin.test.junit)
-    androidTestImplementation(libs.bundles.androidx.test)
+    testImplementation(libs.material)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.bundles.androidx.test)
 }

@@ -32,9 +32,9 @@ kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }
 androidx-test-junit = "androidx.test.ext:junit:1.1.3"
-roboelectric = "org.robolectric:robolectric:4.9"
+robolectric = "org.robolectric:robolectric:4.9"
 truth = "com.google.truth:truth:1.1.3"
 
 [bundles]
-androidx-test = ["androidx-test-core", "androidx-test-runner", "androidx-test-junit", "roboelectric", "truth"]
+androidx-test = ["androidx-test-core", "androidx-test-runner", "androidx-test-junit", "robolectric", "truth"]
 

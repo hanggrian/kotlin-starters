@@ -5,7 +5,6 @@ import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
 import com.vanniktech.maven.publish.SonatypeHost
-import kotlinx.kover.KoverPlugin
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
@@ -32,17 +31,17 @@ allprojects {
 }
 
 subprojects {
-    withPluginEagerly<KotlinPluginWrapper> {
+    plugins.withType<KotlinPluginWrapper> {
         kotlinExtension.jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }
     }
-    withPlugin<SpotlessPlugin> {
+    plugins.withType<SpotlessPlugin>().configureEach {
         the<SpotlessExtension>().kotlin {
             ktlint()
         }
     }
-    withPluginEagerly<MavenPublishBasePlugin> {
+    plugins.withType<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
             publishToMavenCentral(SonatypeHost.S01)
             signAllPublications()

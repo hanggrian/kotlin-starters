@@ -32,18 +32,18 @@ allprojects {
 }
 
 subprojects {
-    withPlugin<LibraryPlugin> {
+    plugins.withType<LibraryPlugin>().configureEach {
         configure<LibraryExtension>(::androidConfig)
     }
-    withPlugin<AppPlugin> {
+    plugins.withType<AppPlugin>().configureEach {
         configure<BaseAppModuleExtension>(::androidConfig)
     }
-    withPluginEagerly<KotlinAndroidPluginWrapper> {
+    plugins.withType<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
         }
         (the<BaseExtension>() as ExtensionAware).extensions.getByType<KotlinJvmOptions>()
-            .jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+            .jvmTarget = JavaVersion.toVersion(libs.versions.jdkAndroid.get()).toString()
     }
 }
 
@@ -56,7 +56,7 @@ fun androidConfig(extension: BaseExtension) {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
     }
 }
