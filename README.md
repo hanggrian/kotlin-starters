@@ -22,8 +22,9 @@ Components included in each template:
 - Test dependencies:
   - [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test/) with JUnit dependencies.
   - [Google Truth](https://github.com/google/truth/) assertion tool.
-- [ktlint](https://github.com/pinterest/ktlint/) code style, imported
-  using [Spotless](https://github.com/diffplug/spotless/) plugin.
+- Code styling:
+  - [EditorConfig](https://editorconfig.org/) file.
+  - [ktlint](https://github.com/pinterest/ktlint/) code linter.
 - Website module:
   - [Pages Gradle Plugin](https://github.com/hendraanggrian/pages-gradle-plugin/) for generating
     webpage displaying README's content and documentation links (except for apps).

@@ -1,7 +1,6 @@
 package com.hendraanggrian.app
 
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner

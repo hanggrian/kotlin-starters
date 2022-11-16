@@ -3,7 +3,6 @@ plugins {
     `kotlin-dsl`
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.dokka)
-    alias(libs.plugins.spotless)
     alias(libs.plugins.gradle.publish)
 }
 
@@ -33,13 +32,7 @@ gradlePlugin {
     testSourceSets(sourceSets["functionalTest"])
 }
 
-kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
-}
-
-spotless.kotlin {
-    ktlint()
-}
+kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 pluginBundle {
     website = RELEASE_URL
@@ -52,6 +45,8 @@ val integrationTestImplementation by configurations.getting
 val functionalTestImplementation by configurations.getting
 
 dependencies {
+    ktlint(libs.ktlint, ::ktlintAttributes)
+    ktlint(libs.lints.ktlint)
     implementation(libs.kotlinx.coroutines)
     integrationTestImplementation(gradleTestKit())
     integrationTestImplementation(libs.kotlin.test.junit)

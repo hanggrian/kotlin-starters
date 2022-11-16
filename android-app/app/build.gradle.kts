@@ -1,28 +1,27 @@
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.android.extensions)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.spotless)
 }
 
 android {
-    compileSdk = libs.versions.sdkTarget.get().toInt()
+    compileSdk = libs.versions.android.target.get().toInt()
     defaultConfig {
-        minSdk = libs.versions.sdkMin.get().toInt()
-        targetSdk = libs.versions.sdkTarget.get().toInt()
+        minSdk = libs.versions.android.min.get().toInt()
+        targetSdk = libs.versions.android.target.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
         applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
     }
     compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdkAndroid.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(libs.versions.jdkAndroid.get()).toString()
+        jvmTarget = JavaVersion.toVersion(libs.versions.android.jdk.get()).toString()
     }
     buildTypes {
         debug {
@@ -36,19 +35,14 @@ android {
     testOptions.unitTests.isIncludeAndroidResources = true
 }
 
-kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
-}
-
-spotless.kotlin {
-    ktlint()
-}
+kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 dependencies {
+    ktlint(libs.ktlint, ::ktlintAttributes)
+    ktlint(libs.lints.ktlint)
     implementation(libs.material)
     implementation(libs.androidx.multidex)
     implementation(libs.androidx.core.ktx)
-    testImplementation(libs.material)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.bundles.androidx.test)
 }

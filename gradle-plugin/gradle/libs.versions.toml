@@ -7,12 +7,14 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
-spotless = "com.diffplug.spotless:6.11.0"
 gradle-publish = "com.gradle.plugin-publish:1.0.0"
 git-publish = "org.ajoberstar.git-publish:3.0.1"
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
+# lint
+ktlint = "com.pinterest:ktlint:0.47.1"
+lints-ktlint = "com.hendraanggrian.lints:lints-ktlint:0.1-SNAPSHOT"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 # test
