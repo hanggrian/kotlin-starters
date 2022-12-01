@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.kotlin.kapt) apply false
+    kotlin("jvm") version libs.versions.kotlin apply false
+    kotlin("kapt") version libs.versions.kotlin apply false
 }
 
 allprojects {

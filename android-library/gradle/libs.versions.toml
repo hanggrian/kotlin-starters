@@ -9,13 +9,10 @@ androidx = "1.5.0"
 androidx-test = "1.4.0"
 
 [plugins]
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-android-extensions = { id = "org.jetbrains.kotlin.android.extensions", version.ref = "kotlin" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-plugin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
 maven-publish = "com.vanniktech.maven.publish.base:0.22.0"
 git-publish = "org.ajoberstar.git-publish:3.0.1"
 pages = "com.hendraanggrian.pages:0.1"
@@ -23,7 +20,7 @@ pages = "com.hendraanggrian.pages:0.1"
 [libraries]
 # lint
 ktlint = "com.pinterest:ktlint:0.47.1"
-lints-ktlint = "com.hendraanggrian.lints:lints-ktlint:0.1-SNAPSHOT"
+rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.1"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 material = { module = "com.google.android.material:material", version.ref = "androidx" }
@@ -31,7 +28,6 @@ androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "a
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx" }
 androidx-multidex = "androidx.multidex:multidex:2.0.1"
 # test
-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }
 androidx-test-junit = "androidx.test.ext:junit:1.1.3"

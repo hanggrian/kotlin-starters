@@ -7,10 +7,10 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.kotlin.kapt) apply false
-    alias(libs.plugins.kotlinx.kover) apply false
+    kotlin("jvm") version libs.versions.kotlin apply false
+    kotlin("kapt") version libs.versions.kotlin apply false
     alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlinx.kover) apply false
     alias(libs.plugins.maven.publish) apply false
 }
 
@@ -38,6 +38,6 @@ tasks {
         delete(buildDir)
     }
     dokkaHtmlMultiModule {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
+        outputDirectory.set(buildDir.resolve("dokka/dokka/"))
     }
 }

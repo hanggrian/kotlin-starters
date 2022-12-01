@@ -1,7 +1,7 @@
 plugins {
+    kotlin("jvm") version libs.versions.kotlin
+    kotlin("kapt") version libs.versions.kotlin
     application
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlinx.kover)
 }
 
@@ -11,8 +11,8 @@ kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 dependencies {
     ktlint(libs.ktlint, ::ktlintAttributes)
-    ktlint(libs.lints.ktlint)
+    ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
-    testImplementation(libs.kotlin.test.junit)
+    testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.truth)
 }

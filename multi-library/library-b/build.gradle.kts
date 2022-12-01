@@ -1,14 +1,14 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlinx.kover)
+    kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.maven.publish)
 }
 
 dependencies {
     ktlint(libs.ktlint, ::ktlintAttributes)
-    ktlint(libs.lints.ktlint)
+    ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
-    testImplementation(libs.kotlin.test.junit)
+    testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.truth)
 }

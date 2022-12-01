@@ -1,7 +1,7 @@
 plugins {
     `java-gradle-plugin`
-    `kotlin-dsl`
-    alias(libs.plugins.kotlin.jvm)
+    `kotlin-dsl` version libs.versions.gradle.kotlin.dsl
+    kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.dokka)
     alias(libs.plugins.gradle.publish)
 }
@@ -46,13 +46,13 @@ val functionalTestImplementation by configurations.getting
 
 dependencies {
     ktlint(libs.ktlint, ::ktlintAttributes)
-    ktlint(libs.lints.ktlint)
+    ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
     integrationTestImplementation(gradleTestKit())
-    integrationTestImplementation(libs.kotlin.test.junit)
+    integrationTestImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     integrationTestImplementation(libs.truth)
     functionalTestImplementation(gradleTestKit())
-    functionalTestImplementation(libs.kotlin.test.junit)
+    functionalTestImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     functionalTestImplementation(libs.truth)
 }
 
@@ -78,6 +78,6 @@ tasks {
     }
 
     dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
+        outputDirectory.set(buildDir.resolve("dokka/dokka/"))
     }
 }

@@ -1,7 +1,7 @@
 plugins {
+    kotlin("jvm") version libs.versions.kotlin
+    kotlin("kapt") version libs.versions.kotlin
     application
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlin.kapt)
 }
 
 application.mainClass.set("com.example.MyApp")

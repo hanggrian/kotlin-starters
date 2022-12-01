@@ -10,9 +10,9 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.android.extensions) apply false
-    alias(libs.plugins.kotlin.kapt) apply false
+    kotlin("android") version libs.versions.kotlin apply false
+    kotlin("android.extensions") version libs.versions.kotlin apply false
+    kotlin("kapt") version libs.versions.kotlin apply false
 }
 
 allprojects {
