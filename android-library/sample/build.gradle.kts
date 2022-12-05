@@ -16,6 +16,6 @@ android {
 dependencies {
     api(project(":$RELEASE_ARTIFACT"))
     implementation(libs.material)
-    implementation(libs.androidx.multidex)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.multidex)
 }

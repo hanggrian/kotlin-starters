@@ -38,11 +38,11 @@ android {
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 dependencies {
-    ktlint(libs.ktlint, ::ktlintAttributes)
+    ktlint(libs.ktlint, ::ktlintConfig)
     ktlint(libs.rulebook.ktlint)
     implementation(libs.material)
-    implementation(libs.androidx.multidex)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.multidex)
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.bundles.androidx.test)
 }
