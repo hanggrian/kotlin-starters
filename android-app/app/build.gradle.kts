@@ -38,7 +38,7 @@ android {
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 dependencies {
-    ktlint(libs.ktlint, ::ktlintConfig)
+    ktlint(libs.ktlint, ::configureKtlint)
     ktlint(libs.rulebook.ktlint)
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)

@@ -45,7 +45,7 @@ val integrationTestImplementation by configurations.getting
 val functionalTestImplementation by configurations.getting
 
 dependencies {
-    ktlint(libs.ktlint, ::ktlintConfig)
+    ktlint(libs.ktlint, ::configureKtlint)
     ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
     integrationTestImplementation(gradleTestKit())

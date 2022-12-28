@@ -17,12 +17,12 @@ android {
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01)
     signAllPublications()
-    pom(::pomConfig)
+    pom(::configurePom)
     configure(AndroidSingleVariantLibrary())
 }
 
 dependencies {
-    ktlint(libs.ktlint, ::ktlintConfig)
+    ktlint(libs.ktlint, ::configureKtlint)
     ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx.appcompat)

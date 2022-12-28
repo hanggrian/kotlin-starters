@@ -22,10 +22,10 @@ allprojects {
 
 subprojects {
     plugins.withType<LibraryPlugin>().configureEach {
-        configure<LibraryExtension>(::androidConfig)
+        configure<LibraryExtension>(::configureAndroid)
     }
     plugins.withType<AppPlugin>().configureEach {
-        configure<BaseAppModuleExtension>(::androidConfig)
+        configure<BaseAppModuleExtension>(::configureAndroid)
     }
     plugins.withType<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain(libs.versions.jdk.get().toInt())
@@ -34,7 +34,7 @@ subprojects {
     }
 }
 
-fun androidConfig(extension: BaseExtension) {
+fun configureAndroid(extension: BaseExtension) {
     extension.setCompileSdkVersion(libs.versions.android.target.get().toInt())
     extension.defaultConfig {
         minSdk = libs.versions.android.min.get().toInt()

@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    ktlint(libs.ktlint, ::ktlintConfig)
+    ktlint(libs.ktlint, ::configureKtlint)
     ktlint(libs.rulebook.ktlint)
     implementation(libs.kotlinx.coroutines)
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
