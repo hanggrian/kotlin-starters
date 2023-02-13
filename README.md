@@ -1,7 +1,7 @@
 # Kotlin Starters
 
-Personal Gradle project templates with emphasis on Kotlin, separated by target
-platform and kind of distribution.
+Personal Gradle project templates with emphasis on **Kotlin**, separated by
+target platform and kind of distribution.
 
 Components included in each template:
 
@@ -15,7 +15,7 @@ Components included in each template:
   - Apply plugin using [plugins DSL](https://docs.gradle.org/current/userguide/plugins.html).
   - [Version catalogs](https://docs.gradle.org/current/userguide/platforms.html)
     in TOML file to avoid typing unsafe dependencies.
-- Kotlin framework:
+- Kotlin-specific:
   - Plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
   - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
 - Test dependencies:
@@ -23,8 +23,9 @@ Components included in each template:
     JUnit dependencies.
   - [Google Truth](https://github.com/google/truth/) assertion tool.
 - Code styling:
-  - [EditorConfig](https://editorconfig.org/) file.
-  - [ktlint](https://github.com/pinterest/ktlint/) code linter.
+  - [EditorConfig](https://editorconfig.org/) root file.
+  - [KtLint](https://github.com/pinterest/ktlint/) code linter with custom rules
+    [Rulebook](https://github.com/hendraanggrian/rulebook/).
 - Website module:
   - [Pages Gradle Plugin](https://github.com/hendraanggrian/pages-gradle-plugin/)
     for generating webpage displaying README's content and documentation links
@@ -38,17 +39,17 @@ Components included in each template:
 
 Situational components differ by target:
 
-| | Plugins | Publications | Others |
+| | Plugins | Publications | Tests |
 | --- | --- | --- | --- |
-| android-app | [Android], [kapt] | | [Robolectric] unit test |
-| android-library | [Android], [Dokka] | [Maven Central] | [Robolectric] unit test |
+| android-app | [Android], [Kapt] | | [Robolectric] |
+| android-library | [Android], [Dokka] | [Maven Central] | [Robolectric] |
 | gradle-plugin | [Gradle Plugin Development], [Dokka] | [Gradle Plugin Portal] | [Gradle TestKit] |
-| jvm-app | [Application], [kapt] | | |
+| jvm-app | [Application], [Kapt] | | |
 | jvm-library | [Dokka] | [Maven Central] | |
 | multi-module | [Dokka] | [Maven Central] | |
 
 [Dokka]: https://github.com/Kotlin/dokka/
-[kapt]: https://kotlinlang.org/docs/kapt.html
+[Kapt]: https://kotlinlang.org/docs/kapt.html
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
 [Android]: https://developer.android.com/studio/build/
 [Gradle Plugin Development]: https://docs.gradle.org/current/userguide/java_gradle_plugin.html

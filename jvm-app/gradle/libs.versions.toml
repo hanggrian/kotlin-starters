@@ -4,12 +4,12 @@ kotlin = "1.7.20"
 
 [plugins]
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
-git-publish = "org.ajoberstar.git-publish:3.0.1"
+git-publish = "org.ajoberstar.git-publish:3.0.1" # max for jdk8
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
-ktlint = "com.pinterest:ktlint:0.47.1"
+ktlint = "com.pinterest:ktlint:0.48.1"
 rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.1"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"

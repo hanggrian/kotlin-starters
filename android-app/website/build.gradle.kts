@@ -19,8 +19,6 @@ gitPublish {
     contents.from(pages.outputDirectory)
 }
 
-tasks {
-    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
-        delete(buildDir)
-    }
+tasks.register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
+    delete(buildDir)
 }

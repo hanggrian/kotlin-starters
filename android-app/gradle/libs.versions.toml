@@ -1,5 +1,5 @@
 [versions]
-jdk = "11"
+jdk = "11" # min for android
 kotlin = "1.7.20"
 android-plugin = "7.3.1"
 android-jdk = "8"
@@ -11,13 +11,13 @@ androidx-test = "1.4.0"
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
-git-publish = "org.ajoberstar.git-publish:3.0.1"
+git-publish = "org.ajoberstar.git-publish:4.1.1"
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
-ktlint = "com.pinterest:ktlint:0.47.1"
-rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.1"
+ktlint = "com.pinterest:ktlint:0.48.1"
+rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.2-SNAPSHOT"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 material = { module = "com.google.android.material:material", version.ref = "androidx" }

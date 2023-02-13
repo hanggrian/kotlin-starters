@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.kotlinx.kover)
 }
 
+kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+
 android {
     compileSdk = libs.versions.android.target.get().toInt()
     defaultConfig {
@@ -34,8 +36,6 @@ android {
     }
     testOptions.unitTests.isIncludeAndroidResources = true
 }
-
-kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 dependencies {
     ktlint(libs.ktlint, ::configureKtlint)

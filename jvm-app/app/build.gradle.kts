@@ -1,13 +1,13 @@
 plugins {
-    application
     kotlin("jvm") version libs.versions.kotlin
     kotlin("kapt") version libs.versions.kotlin
+    application
     alias(libs.plugins.kotlinx.kover)
 }
 
-application.mainClass.set("$RELEASE_GROUP.app.MyApp")
-
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+
+application.mainClass.set("$RELEASE_GROUP.app.MyApp")
 
 dependencies {
     ktlint(libs.ktlint, ::configureKtlint)
