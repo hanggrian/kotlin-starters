@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.hendraanggrian.app">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
   <application
-    android:name=".MyApp"
+    android:name="com.example.app.MyApp"
     android:allowBackup="true"
     android:label="My App"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".MyActivity"
+      android:name="com.example.app.MyActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

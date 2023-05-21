@@ -10,11 +10,11 @@ gradlePlugin {
     website.set(RELEASE_URL)
     vcsUrl.set("$RELEASE_URL.git")
     plugins.register("myPlugin") {
-        id = RELEASE_GROUP
+        id = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
         displayName = "My Plugin"
         description = RELEASE_DESCRIPTION
         tags.set(listOf("hello", "world"))
-        implementationClass = "$RELEASE_GROUP.MyPlugin"
+        implementationClass = "$id.MyPlugin"
     }
     testSourceSets(sourceSets.test.get())
 }

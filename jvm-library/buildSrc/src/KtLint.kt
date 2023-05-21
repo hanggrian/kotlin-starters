@@ -16,29 +16,33 @@ val Project.ktlint: Configuration
         var ktlint = configurations.findByName("ktlint")
         if (ktlint == null) {
             ktlint = configurations.create("ktlint")
-            val outputDir = "${project.buildDir}/reports/ktlint/"
-            val inputFiles = project.fileTree(mapOf("dir" to "src", "include" to "**/*.kt"))
             tasks {
                 val ktlintCheck by registering(JavaExec::class) {
                     group = LifecycleBasePlugin.VERIFICATION_GROUP
-                    inputs.files(inputFiles)
-                    outputs.dir(outputDir)
                     description = "Check Kotlin code style."
-                    classpath(ktlint)
+                    classpath = ktlint
                     mainClass.set("com.pinterest.ktlint.Main")
-                    args = listOf("src/**/*.kt")
+                    args(
+                        "**/src/**/*.kt",
+                        "**.kts",
+                        "!**/build/**",
+                    )
                 }
                 named("check") {
                     dependsOn(ktlintCheck)
                 }
                 register<JavaExec>("ktlintFormat") {
-                    group = "formatting"
-                    inputs.files(inputFiles)
-                    outputs.dir(outputDir)
-                    description = "Fix Kotlin code style deviations."
-                    classpath(ktlint)
+                    group = LifecycleBasePlugin.VERIFICATION_GROUP
+                    description = "Check Kotlin code style and format"
+                    classpath = ktlint
                     mainClass.set("com.pinterest.ktlint.Main")
-                    args = listOf("-F", "src/**/*.kt")
+                    jvmArgs("--add-opens=java.base/java.lang=ALL-UNNAMED")
+                    args(
+                        "-F",
+                        "**/src/**/*.kt",
+                        "**.kts",
+                        "!**/build/**",
+                    )
                 }
             }
         }

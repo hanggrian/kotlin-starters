@@ -10,6 +10,8 @@ plugins {
 }
 
 android {
+    namespace = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
+    testNamespace = "$namespace.test"
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true
 }

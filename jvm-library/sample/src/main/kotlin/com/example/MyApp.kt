@@ -1,6 +1,6 @@
 package com.example
 
-import com.hendraanggrian.library.MyClass
+import com.example.library.MyClass
 
 class MyApp {
     companion object {

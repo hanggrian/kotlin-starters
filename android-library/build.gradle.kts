@@ -30,20 +30,20 @@ subprojects {
     plugins.withType<KotlinAndroidPluginWrapper> {
         kotlinExtension.jvmToolchain(libs.versions.jdk.get().toInt())
         (the<BaseExtension>() as ExtensionAware).extensions.getByType<KotlinJvmOptions>()
-            .jvmTarget = JavaVersion.toVersion(libs.versions.android.jdk.get()).toString()
+            .jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
     }
 }
 
 fun configureAndroid(extension: BaseExtension) {
-    extension.setCompileSdkVersion(libs.versions.android.target.get().toInt())
+    extension.setCompileSdkVersion(libs.versions.sdk.target.get().toInt())
     extension.defaultConfig {
-        minSdk = libs.versions.android.min.get().toInt()
-        targetSdk = libs.versions.android.target.get().toInt()
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
     }
 }

@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
-    kotlin("android.extensions") version libs.versions.kotlin
     kotlin("kapt") version libs.versions.kotlin
     alias(libs.plugins.kotlinx.kover)
 }
@@ -9,21 +8,23 @@ plugins {
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
 android {
-    compileSdk = libs.versions.android.target.get().toInt()
+    namespace = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
+    testNamespace = "$namespace.test"
+    compileSdk = libs.versions.sdk.target.get().toInt()
     defaultConfig {
-        minSdk = libs.versions.android.min.get().toInt()
-        targetSdk = libs.versions.android.target.get().toInt()
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
         version = RELEASE_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
-        applicationId = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
+        applicationId = namespace
     }
     compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.android.jdk.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(libs.versions.android.jdk.get()).toString()
+        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
     }
     buildTypes {
         debug {

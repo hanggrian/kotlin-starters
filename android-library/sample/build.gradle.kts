@@ -1,13 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
-    kotlin("android.extensions") version libs.versions.kotlin
     kotlin("kapt") version libs.versions.kotlin
 }
 
 android {
+    namespace = "com.example"
+    testNamespace = "$namespace.test"
     defaultConfig {
-        applicationId = "com.example"
+        applicationId = namespace
         multiDexEnabled = true
     }
     lint.abortOnError = false

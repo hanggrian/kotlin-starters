@@ -1,17 +1,17 @@
 [versions]
 jdk = "8"
-kotlin = "1.7.20"
+kotlin = "1.8.10"
 
 [plugins]
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.6.1"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.0"
 git-publish = "org.ajoberstar.git-publish:3.0.1" # max for jdk8
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
 ktlint = "com.pinterest:ktlint:0.48.1"
-rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.1"
+rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.2"
 # main
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
 # test
 truth = "com.google.truth:truth:1.1.3"
