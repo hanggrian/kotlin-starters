@@ -1,3 +1,5 @@
+val RELEASE_ARTIFACT: String by project
+
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
@@ -15,7 +17,7 @@ android {
 }
 
 dependencies {
-    api(project(":$RELEASE_ARTIFACT"))
+    implementation(project(":$RELEASE_ARTIFACT"))
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.multidex)

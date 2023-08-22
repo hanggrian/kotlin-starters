@@ -1,3 +1,5 @@
+val RELEASE_ARTIFACT: String by project
+
 plugins {
     kotlin("jvm") version libs.versions.kotlin
     kotlin("kapt") version libs.versions.kotlin

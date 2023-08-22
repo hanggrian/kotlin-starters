@@ -1,11 +1,18 @@
+val RELEASE_GROUP: String by project
+val RELEASE_ARTIFACT: String by project
+val RELEASE_VERSION: String by project
+
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
     kotlin("kapt") version libs.versions.kotlin
     alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.ktlint)
 }
 
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+
+ktlint.version.set(libs.versions.ktlint.get())
 
 android {
     namespace = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
@@ -39,11 +46,13 @@ android {
 }
 
 dependencies {
-    ktlint(libs.ktlint, ::configureKtlint)
-    ktlint(libs.rulebook.ktlint)
+    ktlintRuleset(libs.ktlint)
+    ktlintRuleset(libs.rulebook.ktlint)
+
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.multidex)
+
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.bundles.androidx.test)
 }
