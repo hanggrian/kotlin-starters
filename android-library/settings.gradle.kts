@@ -1,6 +1,6 @@
 pluginManagement.repositories {
-    gradlePluginPortal()
     mavenCentral()
+    gradlePluginPortal()
     google()
 }
 dependencyResolutionManagement.repositories {
@@ -11,6 +11,6 @@ dependencyResolutionManagement.repositories {
 
 rootProject.name = "android-library"
 
-include("library")
+include("library", "library-extension")
 include("sample")
 include("website")

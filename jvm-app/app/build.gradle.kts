@@ -2,7 +2,6 @@ val RELEASE_GROUP: String by project
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
-    kotlin("kapt") version libs.versions.kotlin
     application
     alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.ktlint)
@@ -10,7 +9,7 @@ plugins {
 
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
-application.mainClass.set("$RELEASE_GROUP.app.MyApp")
+application.mainClass.set("$RELEASE_GROUP.app.App")
 
 ktlint.version.set(libs.versions.ktlint.get())
 

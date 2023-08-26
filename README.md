@@ -5,6 +5,17 @@
 Personal Gradle project templates with emphasis on **Kotlin**, separated by
 target platform and kind of distribution.
 
+| | Plugins | Publication | Testing |
+| --- | :---: | :---: | :---: |
+| android-app | [Android] | &cross; | [Robolectric] |
+| android-library | [Android], [Dokka] | [Maven Central] | [Robolectric] |
+| js-app | &cross; | &cross; | &cross; |
+| jvm-app | [Application] | &cross; | &cross; |
+| jvm-library | [Dokka] | [Maven Central] | &cross; |
+| native-app | &cross; | &cross; | &cross; |
+
+## Kotlin Frameworks
+
 - Targeted plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
 - [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test/) with
   JUnit dependencies.
@@ -12,7 +23,7 @@ target platform and kind of distribution.
   ruleset [Rulebook](https://github.com/hendraanggrian/rulebook/).
 - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
 
-## Global Components
+## Project Layout
 
 - Root directory:
   - GitHub [README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes/),
@@ -35,18 +46,7 @@ target platform and kind of distribution.
   - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish/)
     plugin, necessary for uploading to [GitHub Pages](https://pages.github.com/).
 
-## Situational Components
-
-| | Plugins | Publications | Tests |
-| --- | --- | --- | --- |
-| android-app | [Android], [Kapt] | | [Robolectric] |
-| android-library | [Android], [Dokka] | [Maven Central] | [Robolectric] |
-| jvm-app | [Application], [Kapt] | | |
-| jvm-library | [Dokka] | [Maven Central] | |
-| multi-module | [Dokka] | [Maven Central] | |
-
 [Dokka]: https://github.com/Kotlin/dokka/
-[Kapt]: https://kotlinlang.org/docs/kapt.html
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
 [Android]: https://developer.android.com/studio/build/
 [Maven Central]: https://search.maven.org/

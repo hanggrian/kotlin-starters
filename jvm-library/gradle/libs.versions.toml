@@ -16,6 +16,6 @@ pages = "com.hendraanggrian.pages:0.1"
 ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.3"
 # main
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+kotlinx-coroutines-core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
 # test
 truth = "com.google.truth:truth:1.1.5"

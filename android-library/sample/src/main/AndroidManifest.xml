@@ -5,9 +5,9 @@
     android:allowBackup="true"
     android:label="My App"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme">
+    android:theme="@style/Theme.Material3.DayNight.NoActionBar">
     <activity
-      android:name="com.example.MyActivity"
+      android:name="com.example.MainActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

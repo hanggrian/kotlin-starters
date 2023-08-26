@@ -1,15 +1,3 @@
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.LibraryExtension
-import com.android.build.gradle.LibraryPlugin
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.vanniktech.maven.publish.MavenPublishBaseExtension
-import com.vanniktech.maven.publish.MavenPublishBasePlugin
-import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
-
 val DEVELOPER_ID: String by project
 val DEVELOPER_NAME: String by project
 val DEVELOPER_URL: String by project
@@ -23,8 +11,8 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     kotlin("android") version libs.versions.kotlin apply false
-    kotlin("android.extensions") version libs.versions.kotlin apply false
-    kotlin("kapt") version libs.versions.kotlin apply false
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.maven.publish) apply false
 }
 
@@ -34,20 +22,25 @@ allprojects {
 }
 
 subprojects {
-    plugins.withType<LibraryPlugin>().configureEach {
-        configure<LibraryExtension>(::configureAndroid)
+    plugins.withType<com.android.build.gradle.LibraryPlugin>().configureEach {
+        modify(the<com.android.build.gradle.LibraryExtension>())
     }
-    plugins.withType<AppPlugin>().configureEach {
-        configure<BaseAppModuleExtension>(::configureAndroid)
+    plugins.withType<com.android.build.gradle.AppPlugin>().configureEach {
+        modify(the<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>())
     }
-    plugins.withType<KotlinAndroidPluginWrapper> {
-        kotlinExtension.jvmToolchain(libs.versions.jdk.get().toInt())
-        (the<BaseExtension>() as ExtensionAware).extensions.getByType<KotlinJvmOptions>()
-            .jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+    plugins.withType<org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper>()
+        .configureEach {
+            the<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension>()
+                .jvmToolchain(libs.versions.jdk.get().toInt())
+        }
+    plugins.withType<org.jlleitschuh.gradle.ktlint.KtlintPlugin>().configureEach {
+        the<org.jlleitschuh.gradle.ktlint.KtlintExtension>()
+            .version.set(libs.versions.ktlint.get())
     }
-    plugins.withType<MavenPublishBasePlugin> {
-        configure<MavenPublishBaseExtension> {
-            publishToMavenCentral(SonatypeHost.S01)
+    plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
+        configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
+            configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary())
+            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.Companion.S01)
             signAllPublications()
             pom {
                 name.set(project.name)
@@ -77,7 +70,16 @@ subprojects {
     }
 }
 
-fun configureAndroid(extension: BaseExtension) {
+tasks {
+    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
+        delete(buildDir)
+    }
+    dokkaHtmlMultiModule {
+        outputDirectory.set(buildDir.resolve("dokka/dokka/"))
+    }
+}
+
+fun modify(extension: com.android.build.gradle.BaseExtension) {
     extension.setCompileSdkVersion(libs.versions.sdk.target.get().toInt())
     extension.defaultConfig {
         minSdk = libs.versions.sdk.min.get().toInt()

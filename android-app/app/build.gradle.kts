@@ -5,7 +5,6 @@ val RELEASE_VERSION: String by project
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
-    kotlin("kapt") version libs.versions.kotlin
     alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.ktlint)
 }

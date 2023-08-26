@@ -11,7 +11,7 @@ plugins {
 }
 
 pages {
-    resources.from("$rootDir/$RELEASE_ARTIFACT/build/dokka/")
+    resources.from("$rootDir/build/dokka/")
     styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css")
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
@@ -39,6 +39,6 @@ tasks {
         delete(buildDir)
     }
     deployPages {
-        dependsOn(":$RELEASE_ARTIFACT:dokkaHtml")
+        dependsOn(":dokkaHtmlMultiModule")
     }
 }

@@ -16,6 +16,7 @@ repositories {
 }
 dependencies {
     implementation "com.example:library:$version"
+    implementation "com.example:library-extension:$version"
 }
 ```
 

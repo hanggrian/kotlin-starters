@@ -1,9 +1,12 @@
+val RELEASE_ARTIFACT: String by project
+
 plugins {
     kotlin("jvm") version libs.versions.kotlin
-    kotlin("kapt") version libs.versions.kotlin
     application
 }
 
-application.mainClass.set("com.example.MyApp")
+application.mainClass.set("com.example.App")
 
-dependencies.implementation(project(":library"))
+dependencies {
+    implementation(project(":$RELEASE_ARTIFACT-extension"))
+}

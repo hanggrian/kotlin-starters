@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
-
 val RELEASE_GROUP: String by project
 val RELEASE_ARTIFACT: String by project
 
@@ -19,10 +17,6 @@ android {
     testOptions.unitTests.isIncludeAndroidResources = true
 }
 
-ktlint.version.set(libs.versions.ktlint.get())
-
-mavenPublishing.configure(AndroidSingleVariantLibrary())
-
 dependencies {
     ktlintRuleset(libs.ktlint)
     ktlintRuleset(libs.rulebook.ktlint)
@@ -32,8 +26,4 @@ dependencies {
 
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.bundles.androidx.test)
-}
-
-tasks.dokkaHtml {
-    outputDirectory.set(buildDir.resolve("dokka/dokka/"))
 }

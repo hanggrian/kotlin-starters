@@ -1,6 +1,6 @@
 pluginManagement.repositories {
-    gradlePluginPortal()
     mavenCentral()
+    gradlePluginPortal()
 }
 dependencyResolutionManagement.repositories {
     mavenCentral()
@@ -9,6 +9,6 @@ dependencyResolutionManagement.repositories {
 
 rootProject.name = "jvm-library"
 
-include("library")
+include("library", "library-extension")
 include("sample")
 include("website")
