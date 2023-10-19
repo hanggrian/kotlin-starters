@@ -1,4 +1,4 @@
-val RELEASE_ARTIFACT: String by project
+val releaseArtifact: String by project
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
@@ -8,5 +8,5 @@ plugins {
 application.mainClass.set("com.example.App")
 
 dependencies {
-    implementation(project(":$RELEASE_ARTIFACT-extension"))
+    implementation(project(":$releaseArtifact-extension"))
 }

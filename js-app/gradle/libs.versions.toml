@@ -3,14 +3,13 @@ kotlin = "1.9.0"
 ktlint = "0.49.1"
 
 [plugins]
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.3"
-ktlint = "org.jlleitschuh.gradle.ktlint:11.5.1"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.4"
+ktlint = "org.jlleitschuh.gradle.ktlint:11.6.1"
 git-publish = "org.ajoberstar.git-publish:3.0.1" # max for jdk8
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # main
-ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.3"
 # test
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"

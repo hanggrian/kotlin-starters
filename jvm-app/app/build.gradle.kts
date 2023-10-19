@@ -1,4 +1,4 @@
-val RELEASE_GROUP: String by project
+val releaseGroup: String by project
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
@@ -9,12 +9,11 @@ plugins {
 
 kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
 
-application.mainClass.set("$RELEASE_GROUP.app.App")
+application.mainClass.set("$releaseGroup.app.App")
 
 ktlint.version.set(libs.versions.ktlint.get())
 
 dependencies {
-    ktlintRuleset(libs.ktlint)
     ktlintRuleset(libs.rulebook.ktlint)
 
     implementation(libs.kotlinx.coroutines)

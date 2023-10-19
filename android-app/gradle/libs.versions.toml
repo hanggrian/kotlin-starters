@@ -10,14 +10,13 @@ androidx-test = "1.5.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.3"
-ktlint = "org.jlleitschuh.gradle.ktlint:11.5.1"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.4"
+ktlint = "org.jlleitschuh.gradle.ktlint:11.6.1"
 git-publish = "org.ajoberstar.git-publish:4.2.0"
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
-ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.3"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"

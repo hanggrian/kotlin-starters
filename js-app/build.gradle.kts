@@ -1,7 +1,7 @@
-val RELEASE_GROUP: String by project
-val RELEASE_VERSION: String by project
+val releaseGroup: String by project
+val releaseVersion: String by project
 
 allprojects {
-    group = RELEASE_GROUP
-    version = RELEASE_VERSION
+    group = releaseGroup
+    version = releaseVersion
 }

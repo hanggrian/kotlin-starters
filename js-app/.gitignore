@@ -10,3 +10,9 @@ local.properties
 *.iml
 .idea/
 out/
+
+# VSCode
+bin/
+
+# JS
+kotlin-js-store/

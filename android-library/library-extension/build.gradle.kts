@@ -1,5 +1,5 @@
-val RELEASE_GROUP: String by project
-val RELEASE_ARTIFACT: String by project
+val releaseGroup: String by project
+val releaseArtifact: String by project
 
 plugins {
     alias(libs.plugins.android.library)
@@ -11,17 +11,16 @@ plugins {
 }
 
 android {
-    namespace = "$RELEASE_GROUP.$RELEASE_ARTIFACT"
+    namespace = "$releaseGroup.$releaseArtifact"
     testNamespace = "$namespace.test"
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true
 }
 
 dependencies {
-    ktlintRuleset(libs.ktlint)
     ktlintRuleset(libs.rulebook.ktlint)
 
-    implementation(project(":$RELEASE_ARTIFACT"))
+    implementation(project(":$releaseArtifact"))
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx.appcompat)
 
