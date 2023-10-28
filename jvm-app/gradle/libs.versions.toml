@@ -1,7 +1,7 @@
 [versions]
 jdk = "8"
-kotlin = "1.8.20"
-ktlint = "0.49.1"
+kotlin = "1.9.10"
+ktlint = "1.0.1"
 
 [plugins]
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.7.4"
@@ -11,7 +11,7 @@ pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
-rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.3"
+rulebook-ktlint = "com.hendraanggrian.rulebook:rulebook-ktlint:0.4"
 # main
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
 # test
