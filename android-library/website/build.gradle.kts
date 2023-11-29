@@ -16,7 +16,7 @@ pages {
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js"
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js",
     )
     minimal {
         authorName = developerName

@@ -7,7 +7,7 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.Material3.DayNight.NoActionBar">
     <activity
-      android:name="com.example.app.MainActivity"
+      android:name=".MainActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

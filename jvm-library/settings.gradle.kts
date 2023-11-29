@@ -9,6 +9,6 @@ dependencyResolutionManagement.repositories {
 
 rootProject.name = "jvm-library"
 
-include("library", "library-extension")
+include("library", "library-ext")
 include("sample")
 include("website")

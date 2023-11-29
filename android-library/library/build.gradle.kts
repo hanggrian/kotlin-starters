@@ -10,6 +10,8 @@ plugins {
     alias(libs.plugins.maven.publish)
 }
 
+kotlin.explicitApi()
+
 android {
     namespace = "$releaseGroup.$releaseArtifact"
     testNamespace = "$namespace.test"

@@ -10,7 +10,6 @@ val releaseUrl: String by project
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
     alias(libs.plugins.dokka)
-    alias(libs.plugins.kotlinx.kover) apply false
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.maven.publish) apply false
 }
