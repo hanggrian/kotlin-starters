@@ -35,7 +35,7 @@ subprojects {
                     com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaJavadoc")
                 )
             )
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)

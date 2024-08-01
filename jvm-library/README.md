@@ -1,8 +1,7 @@
-[![Travis CI](https://img.shields.io/travis/com/example/library)](https://travis-ci.com/github/example/library/)
-[![Codecov](https://img.shields.io/codecov/c/github/example/library)](https://codecov.io/gh/example/library/)
-[![Maven Central](https://img.shields.io/maven-central/v/com.example/library)](https://repo1.maven.org/maven2/com/example/library/)
-[![Nexus Snapshot](https://img.shields.io/nexus/s/com.example/library?server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/com/example/library/)
-[![OpenJDK](https://img.shields.io/badge/jdk-1.8%2B-informational)](https://openjdk.java.net/projects/jdk8/)
+[![CircleCI](https://img.shields.io/circleci/build/gh/johndoe/library)](https://app.circleci.com/pipelines/gh/johndoe/library/)
+[![Codecov](https://img.shields.io/codecov/c/gh/johndoe/library)](https://app.codecov.io/gh/johndoe/library/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.johndoe/library)](https://repo1.maven.org/maven2/com/johndoe/library/)
+[![OpenJDK](https://img.shields.io/badge/jdk-11%2B-informational)](https://openjdk.org/projects/jdk/11/)
 
 # My Modules
 
@@ -15,8 +14,8 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation "com.example:library:$version"
-    implementation "com.example:library-extension:$version"
+    implementation "com.johndoe:library:$version"
+    implementation "com.johndoe:library-extension:$version"
 }
 ```
 

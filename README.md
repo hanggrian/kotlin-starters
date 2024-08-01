@@ -1,18 +1,18 @@
 # Kotlin Starters
 
-![Repository logo.](https://github.com/hendraanggrian/kotlin-starters/raw/assets/logo.png)
+![The repository logo.](https://github.com/hendraanggrian/kotlin-starters/raw/assets/logo.png)
 
 Personal Gradle project templates with emphasis on **Kotlin**, separated by
 target platform and kind of distribution.
 
-| | Plugins | Publication | Testing |
-| --- | :---: | :---: | :---: |
-| android-app | [Android] | &cross; | [Robolectric] |
-| android-library | [Android], [Dokka] | [Maven Central] | [Robolectric] |
-| js-app | &cross; | &cross; | &cross; |
-| jvm-app | [Application] | &cross; | &cross; |
-| jvm-library | [Dokka] | [Maven Central] | &cross; |
-| native-app | &cross; | &cross; | &cross; |
+| | Plugins | Publication | Testing
+--- | :---: | :---: | :---:
+android-app | [Android] | &cross; | [Robolectric]
+android-library | [Android], [Dokka] | [Maven Central] | [Robolectric]
+js-app | &cross; | &cross; | &cross;
+jvm-app | [Application] | &cross; | &cross;
+jvm-library | [Dokka] | [Maven Central] | &cross;
+native-app | &cross; | &cross; | &cross;
 
 ## Kotlin Frameworks
 
@@ -31,8 +31,8 @@ target platform and kind of distribution.
     and [gitignore](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files/)
     file.
   - [EditorConfig](https://editorconfig.org/) enforces IDE settings.
-  - [Travis CI](https://travis-ci.com/) to run test every commit, also triggers
-    [Codecov](https://about.codecov.io/) integration within Travis CI.
+  - [CircleCI](https://circleci.com/) to run test every commit, also triggers
+    [Codecov](https://about.codecov.io/) integration within CircleCI.
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     scripts with properties delegation.

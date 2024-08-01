@@ -15,6 +15,6 @@ public open class View : AppCompatTextView {
 
     public constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) :
         super(context, attrs, defStyleAttr) {
-            text = "Hello World"
-        }
+        text = "Hello World"
+    }
 }

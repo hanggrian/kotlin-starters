@@ -1,6 +1,6 @@
-[![Travis CI](https://img.shields.io/travis/com/example/app)](https://travis-ci.com/github/example/app/)
-[![Codecov](https://img.shields.io/codecov/c/github/example/app)](https://codecov.io/gh/example/app/)
-[![GitHub Releases](https://img.shields.io/github/release/example/app)](https://github.com/example/app/releases/)
+[![CircleCI](https://img.shields.io/circleci/build/gh/johndoe/app)](https://app.circleci.com/pipelines/gh/johndoe/app/)
+[![Codecov](https://img.shields.io/codecov/c/gh/johndoe/app)](https://app.codecov.io/gh/johndoe/app/)
+[![GitHub Releases](https://img.shields.io/github/release/johndoe/app)](https://github.com/johndoe/app/releases/)
 [![Android SDK](https://img.shields.io/badge/sdk-14%2B-informational)](https://developer.android.com/studio/releases/platforms/#4.0)
 
 # My App

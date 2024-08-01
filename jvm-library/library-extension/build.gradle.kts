@@ -14,7 +14,7 @@ dependencies {
     ktlintRuleset(libs.rulebook.ktlint)
 
     implementation(project(":$releaseArtifact"))
-    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines)
 
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.truth)

@@ -40,7 +40,7 @@ subprojects {
     plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
         configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
             configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary())
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.Companion.S01)
+            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)
