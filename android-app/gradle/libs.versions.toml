@@ -13,7 +13,7 @@ android-application = { id = "com.android.application", version.ref = "android-p
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.8.3"
 ktlint = "org.jlleitschuh.gradle.ktlint:12.1.1"
 git-publish = "org.ajoberstar.git-publish:4.2.2"
-pages = "com.hendraanggrian.pages:0.1"
+pages = "com.hanggrian.pages:0.1"
 
 [libraries]
 # lint

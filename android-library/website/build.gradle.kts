@@ -11,8 +11,8 @@ plugins {
 }
 
 pages {
-    resources.from("$rootDir/build/dokka/")
-    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css")
+    resources.from("src", "$rootDir/build/dokka/")
+    styles.add("styles/prism-tomorrow.css")
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js",

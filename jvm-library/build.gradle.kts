@@ -26,13 +26,14 @@ subprojects {
     }
     plugins.withType<org.jlleitschuh.gradle.ktlint.KtlintPlugin>().configureEach {
         the<org.jlleitschuh.gradle.ktlint.KtlintExtension>()
-            .version.set(libs.versions.ktlint.get())
+            .version
+            .set(libs.versions.ktlint.get())
     }
     plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
         configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
             configure(
                 com.vanniktech.maven.publish.KotlinJvm(
-                    com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaJavadoc")
+                    com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaJavadoc"),
                 )
             )
             publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
