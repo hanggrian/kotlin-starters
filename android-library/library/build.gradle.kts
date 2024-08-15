@@ -17,6 +17,9 @@ android {
     testNamespace = "$namespace.test"
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true
+    kotlinOptions {
+        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+    }
 }
 
 dependencies {

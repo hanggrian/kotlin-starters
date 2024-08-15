@@ -1,6 +1,12 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 val releaseGroup: String by project
 val releaseArtifact: String by project
 val releaseVersion: String by project
+
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 
 plugins {
     alias(libs.plugins.android.application)
@@ -9,7 +15,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+kotlin.jvmToolchain(jdkVersion.asInt())
 
 ktlint.version.set(libs.versions.ktlint.get())
 
@@ -26,11 +32,11 @@ android {
         applicationId = namespace
     }
     compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(jreVersion)
+        targetCompatibility = JavaVersion.toVersion(jreVersion)
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+        jvmTarget = JavaVersion.toVersion(jreVersion).toString()
     }
     buildTypes {
         debug {
@@ -53,4 +59,9 @@ dependencies {
 
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.bundles.androidx.test)
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions.jvmTarget
+        .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
 }

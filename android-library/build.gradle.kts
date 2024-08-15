@@ -1,3 +1,20 @@
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.MavenPublishBasePlugin
+import com.vanniktech.maven.publish.SonatypeHost
+import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
+
 val developerId: String by project
 val developerName: String by project
 val developerUrl: String by project
@@ -6,6 +23,9 @@ val releaseArtifact: String by project
 val releaseVersion: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
+
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -22,26 +42,22 @@ allprojects {
 }
 
 subprojects {
-    plugins.withType<com.android.build.gradle.LibraryPlugin>().configureEach {
-        modify(the<com.android.build.gradle.LibraryExtension>())
+    plugins.withType<LibraryPlugin>().configureEach {
+        modify(the<LibraryExtension>())
     }
-    plugins.withType<com.android.build.gradle.AppPlugin>().configureEach {
-        modify(the<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>())
+    plugins.withType<AppPlugin>().configureEach {
+        modify(the<BaseAppModuleExtension>())
     }
-    plugins.withType<org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper>()
-        .configureEach {
-            the<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension>()
-                .jvmToolchain(libs.versions.jdk.get().toInt())
-        }
-    plugins.withType<org.jlleitschuh.gradle.ktlint.KtlintPlugin>().configureEach {
-        the<org.jlleitschuh.gradle.ktlint.KtlintExtension>()
-            .version
-            .set(libs.versions.ktlint.get())
+    plugins.withType<KotlinAndroidPluginWrapper>().configureEach {
+        the<KotlinAndroidProjectExtension>().jvmToolchain(jdkVersion.asInt())
     }
-    plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
-        configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
-            configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary())
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    plugins.withType<KtlintPlugin>().configureEach {
+        the<KtlintExtension>().version.set(libs.versions.ktlint.get())
+    }
+    plugins.withType<MavenPublishBasePlugin> {
+        configure<MavenPublishBaseExtension> {
+            configure(AndroidSingleVariantLibrary())
+            publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)
@@ -69,6 +85,11 @@ subprojects {
             }
         }
     }
+
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions.jvmTarget
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+    }
 }
 
 tasks {
@@ -80,7 +101,7 @@ tasks {
     }
 }
 
-fun modify(extension: com.android.build.gradle.BaseExtension) {
+fun modify(extension: BaseExtension) {
     extension.setCompileSdkVersion(libs.versions.sdk.target.get().toInt())
     extension.defaultConfig {
         minSdk = libs.versions.sdk.min.get().toInt()
@@ -89,7 +110,7 @@ fun modify(extension: com.android.build.gradle.BaseExtension) {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        targetCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
-        sourceCompatibility = JavaVersion.toVersion(libs.versions.jdk.get())
+        sourceCompatibility = JavaVersion.toVersion(jreVersion)
+        targetCompatibility = JavaVersion.toVersion(jreVersion)
     }
 }

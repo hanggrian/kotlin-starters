@@ -1,4 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 val releaseGroup: String by project
+
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
@@ -7,7 +12,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+kotlin.jvmToolchain(jdkVersion.asInt())
 
 application.mainClass.set("$releaseGroup.app.App")
 
@@ -20,4 +25,14 @@ dependencies {
 
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
     testImplementation(libs.truth)
+}
+
+tasks {
+    compileJava {
+        options.release = jreVersion.asInt()
+    }
+    compileKotlin {
+        compilerOptions.jvmTarget
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+    }
 }

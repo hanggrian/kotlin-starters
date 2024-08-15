@@ -6,7 +6,7 @@ orbs:
 executors:
   linux:
     docker:
-      - image: cimg/android:2024.07
+      - image: cimg/android:2024.08
 
 jobs:
   upload-coverage:
