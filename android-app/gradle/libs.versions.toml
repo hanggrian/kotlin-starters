@@ -1,35 +1,34 @@
 [versions]
 jdk = "21"
 jre = "8"
-sdk-min = "14"
-sdk-target = "33"
-kotlin = "1.9.20"
-ktlint = "1.3.1"
-android-plugin = "8.5.2"
-androidx = "1.6.0"
-androidx-test = "1.5.0"
+sdk-min = "21"
+sdk-target = "35"
+kotlin = "2.0.0"
+ktlint = "1.5.0"
+android-plugin = "8.8.0"
+androidx = "1.7.0"
+androidx-test = "1.6.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.8.3"
-ktlint = "org.jlleitschuh.gradle.ktlint:12.1.1"
-git-publish = "org.ajoberstar.git-publish:4.2.2"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
+ktlint = "org.jlleitschuh.gradle.ktlint:12.1.2"
+git-publish = "org.ajoberstar.git-publish:5.1.0"
 pages = "com.hanggrian.pages:0.1"
 
 [libraries]
 # lint
 rulebook-ktlint = "com.hanggrian.rulebook:rulebook-ktlint:0.1"
 # main
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
+kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1"
 material = { module = "com.google.android.material:material", version.ref = "androidx" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx" }
 androidx-multidex = "androidx.multidex:multidex:2.0.1"
 # test
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }
-androidx-test-junit = "androidx.test.ext:junit:1.1.5"
-robolectric = "org.robolectric:robolectric:4.10.3"
+androidx-test-junit = "androidx.test.ext:junit:1.2.1"
+robolectric = "org.robolectric:robolectric:4.14.1"
 truth = "com.google.truth:truth:1.4.4"
 
 [bundles]

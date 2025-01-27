@@ -1,21 +1,21 @@
 [versions]
 jdk = "21"
 jre = "8"
-kotlin = "1.9.20"
-ktlint = "1.3.1"
+kotlin = "2.0.0"
+ktlint = "1.5.0"
 
 [plugins]
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.8.3"
-ktlint = "org.jlleitschuh.gradle.ktlint:12.1.1"
-maven-publish = "com.vanniktech.maven.publish.base:0.29.0"
-git-publish = "org.ajoberstar.git-publish:4.2.2"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
+ktlint = "org.jlleitschuh.gradle.ktlint:12.1.2"
+maven-publish = "com.vanniktech.maven.publish.base:0.30.0"
+git-publish = "org.ajoberstar.git-publish:5.1.0"
 pages = "com.hanggrian.pages:0.1"
 
 [libraries]
 # lint
 rulebook-ktlint = "com.hanggrian.rulebook:rulebook-ktlint:0.1"
 # main
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
+kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1"
 # test
 truth = "com.google.truth:truth:1.4.4"

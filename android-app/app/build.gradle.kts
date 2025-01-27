@@ -53,6 +53,8 @@ android {
 dependencies {
     ktlintRuleset(libs.rulebook.ktlint)
 
+    implementation(libs.kotlinx.coroutines)
+
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.multidex)

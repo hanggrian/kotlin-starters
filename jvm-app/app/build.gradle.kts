@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val releaseGroup: String by project
+val releaseArtifact: String by project
 
 val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
 val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
@@ -14,7 +15,7 @@ plugins {
 
 kotlin.jvmToolchain(jdkVersion.asInt())
 
-application.mainClass.set("$releaseGroup.app.App")
+application.mainClass.set("$releaseGroup.$releaseArtifact.App")
 
 ktlint.version.set(libs.versions.ktlint.get())
 
