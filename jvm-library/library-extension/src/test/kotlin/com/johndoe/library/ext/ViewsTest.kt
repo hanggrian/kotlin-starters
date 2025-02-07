@@ -1,4 +1,4 @@
-package com.johndoe.library
+package com.johndoe.library.ext
 
 import kotlin.test.Test
 import kotlin.test.assertNotNull

@@ -1,6 +1,6 @@
 package com.example
 
-import com.johndoe.library.Views
+import com.johndoe.library.ext.Views
 import javax.swing.JFrame
 
 class App {

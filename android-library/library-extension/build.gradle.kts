@@ -13,7 +13,7 @@ plugins {
 kotlin.explicitApi()
 
 android {
-    namespace = "$releaseGroup.$releaseArtifact"
+    namespace = "$releaseGroup.$releaseArtifact.ext"
     testNamespace = "$namespace.test"
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true

@@ -1,4 +1,4 @@
-package com.johndoe.library
+package com.johndoe.library.ext
 
 import android.os.Bundle
 import androidx.appcompat.R
