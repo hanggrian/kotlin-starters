@@ -7,7 +7,6 @@ import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
 import com.vanniktech.maven.publish.SonatypeHost
-import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
@@ -31,7 +30,6 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     kotlin("android") version libs.versions.kotlin apply false
-    alias(libs.plugins.dokka)
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.maven.publish) apply false
 }
@@ -90,15 +88,6 @@ subprojects {
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions.jvmTarget
             .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
-    }
-}
-
-tasks {
-    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
-        delete(layout.buildDirectory)
-    }
-    dokkaHtmlMultiModule {
-        outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
     }
 }
 

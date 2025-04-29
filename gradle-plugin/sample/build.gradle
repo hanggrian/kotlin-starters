@@ -1,0 +1,8 @@
+buildscript {
+  repositories.mavenCentral()
+  dependencies {
+    classpath files('plugin-0.1.jar')
+  }
+}
+
+apply plugin: 'com.johndoe.plugin'

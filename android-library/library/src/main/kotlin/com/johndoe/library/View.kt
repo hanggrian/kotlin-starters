@@ -6,15 +6,15 @@ import androidx.appcompat.widget.AppCompatTextView
 
 public open class View : AppCompatTextView {
     public constructor(context: Context) : super(context) {
-        text = "Hello World"
+        setText(android.R.string.ok)
     }
 
     public constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        text = "Hello World"
+        setText(android.R.string.ok)
     }
 
     public constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) :
         super(context, attrs, defStyleAttr) {
-        text = "Hello World"
+        setText(android.R.string.ok)
     }
 }

@@ -12,7 +12,6 @@ android {
         applicationId = namespace
         multiDexEnabled = true
     }
-    lint.abortOnError = false
 }
 
 dependencies {

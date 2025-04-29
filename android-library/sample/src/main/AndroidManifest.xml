@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+
   <application
     android:name="androidx.multidex.MultiDexApplication"
     android:allowBackup="true"
     android:label="My App"
     android:supportsRtl="true"
-    android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+    android:theme="@style/Theme.Material3.DayNight.NoActionBar"
+    tools:ignore="MissingApplicationIcon">
     <activity
       android:name="com.example.MainActivity"
       android:exported="true">

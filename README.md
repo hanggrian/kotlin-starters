@@ -1,29 +1,30 @@
 # Kotlin Starters
 
-![The repository logo.](https://github.com/hendraanggrian/kotlin-starters/raw/assets/logo.png)
+![](https://github.com/hanggrian/kotlin-starters/raw/assets/logo.png)
 
-Personal Gradle project templates with emphasis on **Kotlin**, separated by
+Personal Gradle project templates with emphasis on **Kotlin,** separated by
 target platform and kind of distribution.
 
-| | Plugins | Publication | Testing
---- | :---: | :---: | :---:
-android-app | [Android] | &cross; | [Robolectric]
-android-library | [Android], [Dokka] | [Maven Central] | [Robolectric]
-js-app | &cross; | &cross; | &cross;
-jvm-app | [Application] | &cross; | &cross;
-jvm-library | [Dokka] | [Maven Central] | &cross;
-native-app | &cross; | &cross; | &cross;
+| | Plugins | Testing | Publishing | Website | Coverage | Max Heap Size
+--- | :---: | :---: | :---: | :---: | :---: | :---:
+android-app | [Kotlin Android], [Android] | [JUnit 4], [Robolectric] | &cross; | [Cayman] | &check; | 4GB
+android-library | [Kotlin Android], [Android] | [JUnit 4], [Robolectric] | [Maven Central] | [Dokka], [Minimal] | &check; | 4GB
+gradle-plugin | [Kotlin DSL] | [JUnit 4] | [Plugin Portal] | [Dokka], [Minimal] | &cross; | 2GB
+js-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
+jvm-app | [Kotlin JVM], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
+jvm-library | [Kotlin JVM] | [JUnit 5] | [Maven Central] | [Dokka], [Minimal] | &check; | 2GB
+native-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
 
-## Kotlin Frameworks
+## Kotlin frameworks
 
 - Targeted plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
-- [Kotlin Test Library](https://kotlinlang.org/api/latest/kotlin.test/) with
-  JUnit dependencies.
+- JUnit testing framework with [Kotlin Test](https://kotlinlang.org/api/latest/kotlin.test/)
+  library support and [Truth](https://truth.dev/) asserter.
 - [Ktlint](https://github.com/pinterest/ktlint/) code linter with third-party
   ruleset [Rulebook](https://github.com/hendraanggrian/rulebook/).
 - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
 
-## Project Layout
+## Project layout
 
 - Root directory:
   - GitHub [README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes/),
@@ -41,13 +42,20 @@ native-app | &cross; | &cross; | &cross;
     in TOML file to avoid typing unsafe dependencies.
 - Website module:
   - [Pages Gradle Plugin](https://github.com/hendraanggrian/pages-gradle-plugin/)
-    for generating webpage displaying README's content and documentation links
-    (except for apps).
+    for generating webpage displaying README's content and documentation links.
   - [gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish/)
     plugin, necessary for uploading to [GitHub Pages](https://pages.github.com/).
 
-[Dokka]: https://github.com/Kotlin/dokka/
+[Kotlin JVM]: https://kotlinlang.org/docs/get-started-with-jvm-gradle-project.html
+[Kotlin Android]: https://developer.android.com/kotlin/add-kotlin
+[Kotlin DSL]: https://docs.gradle.org/current/userguide/kotlin_dsl.html
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
 [Android]: https://developer.android.com/studio/build/
-[Maven Central]: https://search.maven.org/
-[Robolectric]: http://robolectric.org/
+[JUnit 4]: https://junit.org/junit4/
+[JUnit 5]: https://junit.org/junit5/
+[Robolectric]: https://robolectric.org/
+[Plugin Portal]: https://plugins.gradle.org/
+[Maven Central]: https://central.sonatype.com/
+[Dokka]: https://github.com/Kotlin/dokka/
+[Cayman]: https://hanggrian.github.io/cayman-dark-theme/
+[Minimal]: https://hanggrian.github.io/minimal-dark-theme/

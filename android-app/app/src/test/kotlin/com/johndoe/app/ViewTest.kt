@@ -1,14 +1,17 @@
 package com.johndoe.app
 
+import android.os.Build
+import com.google.common.truth.Truth.assertThat
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Build.VERSION_CODES.LOLLIPOP])
 @DoNotInstrument
 class ViewTest {
     private lateinit var activity: MainActivity
@@ -21,7 +24,5 @@ class ViewTest {
     }
 
     @Test
-    fun test() {
-        assertEquals("Hello World", view.text.toString())
-    }
+    fun test() = assertThat(view.text.toString()).isEqualTo(activity.getString(android.R.string.ok))
 }

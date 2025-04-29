@@ -1,11 +1,9 @@
 package com.johndoe.library.ext
 
+import com.google.common.truth.Truth.assertThat
 import kotlin.test.Test
-import kotlin.test.assertNotNull
 
 class ViewsTest {
     @Test
-    fun test() {
-        assertNotNull(Views.create())
-    }
+    fun test() = assertThat(Views.create()).isNotNull()
 }

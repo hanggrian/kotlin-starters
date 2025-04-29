@@ -6,15 +6,14 @@ orbs:
 executors:
   linux:
     docker:
-      - image: cimg/android:2024.08
+      - image: cimg/android:2025.04
 
 jobs:
   upload-coverage:
     executor: linux
     steps:
       - checkout
-      - run: ./gradlew androidDependencies
-      - run: ./gradlew test koverXmlReport
+      - run: ./gradlew check koverXmlReport
       - codecov/upload
 
 workflows:

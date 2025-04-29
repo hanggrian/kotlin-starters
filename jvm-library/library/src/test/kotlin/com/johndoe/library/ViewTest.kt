@@ -1,11 +1,9 @@
 package com.johndoe.library
 
+import com.google.common.truth.Truth.assertThat
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 class ViewTest {
     @Test
-    fun test() {
-        assertEquals("Hello World", View().text)
-    }
+    fun test() = assertThat(View().text).isEqualTo("Hello World")
 }

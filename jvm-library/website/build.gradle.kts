@@ -6,12 +6,13 @@ val releaseDescription: String by project
 val releaseUrl: String by project
 
 plugins {
+    alias(libs.plugins.dokka)
     alias(libs.plugins.pages)
     alias(libs.plugins.git.publish)
 }
 
 pages {
-    resources.from("src", "$rootDir/build/dokka/")
+    resources.from("src", layout.buildDirectory.dir("dokka"))
     styles.add("styles/prism-tomorrow.css")
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
@@ -24,8 +25,17 @@ pages {
         projectName = releaseArtifact
         projectDescription = releaseDescription
         projectUrl = releaseUrl
-        button("View\nDocumentation", "dokka")
+        button("View\nDocumentation", "dokka/")
     }
+}
+
+dokka.dokkaPublications.html {
+    outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
+}
+
+dependencies {
+    dokka(project(":$releaseArtifact"))
+    dokka(project(":$releaseArtifact-extension"))
 }
 
 gitPublish {
@@ -34,11 +44,6 @@ gitPublish {
     contents.from(pages.outputDirectory)
 }
 
-tasks {
-    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
-        delete(layout.buildDirectory)
-    }
-    deployPages {
-        dependsOn(":dokkaHtmlMultiModule")
-    }
+tasks.deployResources {
+    dependsOn(tasks.dokkaGenerate)
 }

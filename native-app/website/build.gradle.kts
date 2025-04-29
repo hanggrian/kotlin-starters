@@ -10,14 +10,12 @@ plugins {
     alias(libs.plugins.git.publish)
 }
 
-pages {
-    cayman {
-        authorName = developerName
-        authorUrl = developerUrl
-        projectName = releaseArtifact
-        projectDescription = releaseDescription
-        projectUrl = releaseUrl
-    }
+pages.cayman {
+    authorName = developerName
+    authorUrl = developerUrl
+    projectName = releaseArtifact
+    projectDescription = releaseDescription
+    projectUrl = releaseUrl
 }
 
 gitPublish {

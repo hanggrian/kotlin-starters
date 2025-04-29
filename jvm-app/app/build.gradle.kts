@@ -24,8 +24,12 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines)
 
-    testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
+    testImplementation(kotlin("test-junit5", libs.versions.kotlin.get()))
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
     testImplementation(libs.truth)
+
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 tasks {
@@ -35,5 +39,8 @@ tasks {
     compileKotlin {
         compilerOptions.jvmTarget
             .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+    }
+    test {
+        useJUnitPlatform()
     }
 }
