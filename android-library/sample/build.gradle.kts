@@ -3,6 +3,7 @@ val releaseArtifact: String by project
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
+    alias(libs.plugins.ktlint)
 }
 
 android {
@@ -15,6 +16,8 @@ android {
 }
 
 dependencies {
+    ktlintRuleset(libs.rulebook.ktlint)
+
     implementation(project(":$releaseArtifact"))
     implementation(project(":$releaseArtifact-extension"))
     implementation(libs.material)

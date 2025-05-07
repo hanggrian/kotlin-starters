@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.library)
     kotlin("android") version libs.versions.kotlin
     alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka.javadoc)
     alias(libs.plugins.kotlinx.kover)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.maven.publish)

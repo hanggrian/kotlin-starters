@@ -11,6 +11,7 @@ android-plugin = "8.9.2"
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-plugin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
+dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "kotlin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
 ktlint = "org.jlleitschuh.gradle.ktlint:12.2.0"
 maven-publish = "com.vanniktech.maven.publish.base:0.31.0"

@@ -10,5 +10,4 @@ dependencyResolutionManagement.repositories {
 
 rootProject.name = "android-app"
 
-include("app")
 include("website")

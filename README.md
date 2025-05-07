@@ -2,8 +2,8 @@
 
 ![](https://github.com/hanggrian/kotlin-starters/raw/assets/logo.png)
 
-Personal Gradle project templates with emphasis on **Kotlin,** separated by
-target platform and kind of distribution.
+Common Gradle project templates with emphasis on **Kotlin,** separated by target
+platform and kind of distribution.
 
 | | Plugins | Testing | Publishing | Website | Coverage | Max Heap Size
 --- | :---: | :---: | :---: | :---: | :---: | :---:
@@ -15,7 +15,7 @@ jvm-app | [Kotlin JVM], [Application] | [JUnit 5] | &cross; | [Cayman] | &check;
 jvm-library | [Kotlin JVM] | [JUnit 5] | [Maven Central] | [Dokka], [Minimal] | &check; | 2GB
 native-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
 
-## Kotlin frameworks
+## Frameworks
 
 - Targeted plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
 - JUnit testing framework with [Kotlin Test](https://kotlinlang.org/api/latest/kotlin.test/)

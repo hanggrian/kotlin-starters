@@ -44,7 +44,7 @@ subprojects {
     }
     plugins.withType<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
-            configure(KotlinJvm(JavadocJar.Dokka("dokkaJavadoc")))
+            configure(KotlinJvm(JavadocJar.Dokka("dokkaGeneratePublicationJavadoc")))
             publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {

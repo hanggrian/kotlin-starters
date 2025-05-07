@@ -45,5 +45,5 @@ gitPublish {
 }
 
 tasks.deployResources {
-    dependsOn(tasks.dokkaGenerate)
+    dependsOn(tasks.dokkaGeneratePublicationHtml)
 }
