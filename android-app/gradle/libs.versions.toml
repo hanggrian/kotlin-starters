@@ -5,12 +5,12 @@ sdk-min = "21"
 sdk-target = "36"
 kotlin = "2.0.0"
 ktlint = "1.5.0"
-android-plugin = "8.9.2"
+android-plugin = "8.10.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-plugin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
-ktlint = "org.jlleitschuh.gradle.ktlint:12.2.0"
+ktlint = "org.jlleitschuh.gradle.ktlint:12.3.0"
 git-publish = "org.ajoberstar.git-publish:5.1.1"
 pages = "com.hanggrian.pages:0.2"
 
@@ -26,14 +26,16 @@ androidx-multidex = "androidx.multidex:multidex:2.0.1"
 androidx-test-core = "androidx.test:core:1.6.1"
 androidx-test-runner = "androidx.test:runner:1.6.2"
 androidx-test-junit = "androidx.test.ext:junit:1.2.1"
+mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.4.0"
 robolectric = "org.robolectric:robolectric:4.14.1"
 truth = "com.google.truth:truth:1.4.4"
 
 [bundles]
-androidx-test = [
+junit4 = [
   "androidx-test-core",
   "androidx-test-runner",
   "androidx-test-junit",
+  "mockito-kotlin",
   "robolectric",
   "truth",
 ]

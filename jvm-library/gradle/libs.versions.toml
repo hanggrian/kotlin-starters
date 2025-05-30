@@ -9,8 +9,8 @@ ktlint = "1.5.0"
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "kotlin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
-ktlint = "org.jlleitschuh.gradle.ktlint:12.2.0"
-maven-publish = "com.vanniktech.maven.publish.base:0.31.0"
+ktlint = "org.jlleitschuh.gradle.ktlint:12.3.0"
+maven-publish = "com.vanniktech.maven.publish.base:0.32.0"
 git-publish = "org.ajoberstar.git-publish:5.1.1"
 pages = "com.hanggrian.pages:0.2"
 
@@ -23,4 +23,14 @@ kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-platform-launcher = "org.junit.platform:junit-platform-launcher:1.12.2"
+mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.18.0"
+mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.4.0"
 truth = "com.google.truth:truth:1.4.4"
+
+[bundles]
+junit5 = [
+  "junit-jupiter",
+  "mockito-junit-jupiter",
+  "mockito-kotlin",
+  "truth",
+]

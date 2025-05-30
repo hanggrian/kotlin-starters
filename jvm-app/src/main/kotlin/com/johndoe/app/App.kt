@@ -1,19 +1,21 @@
 package com.johndoe.app
 
+import java.awt.Font
 import javax.swing.JFrame
+import javax.swing.JLabel
 
-class App {
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            val view = View()
-            view.setBounds(10, 10, 100, 40)
+object App {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val label = JLabel()
+        label.setFont(Font("Default", Font.PLAIN, 20))
+        label.setBounds(50, 50, 300, 100)
+        label.setText("${JLabelImpl(label).size} pixels")
 
-            val frame = JFrame()
-            frame.add(view)
-            frame.setSize(100, 100)
-            frame.layout = null
-            frame.isVisible = true
-        }
+        val frame = JFrame()
+        frame.add(label)
+        frame.setSize(400, 300)
+        frame.layout = null
+        frame.isVisible = true
     }
 }

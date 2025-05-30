@@ -65,7 +65,7 @@ dependencies {
     implementation(libs.androidx.multidex)
 
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
-    testImplementation(libs.bundles.androidx.test)
+    testImplementation(libs.bundles.junit4)
 }
 
 tasks.withType<KotlinCompile>().configureEach {

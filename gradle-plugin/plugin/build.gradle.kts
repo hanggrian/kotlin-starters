@@ -42,7 +42,7 @@ dependencies {
 
     testImplementation(gradleTestKit())
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
-    testImplementation(libs.truth)
+    testImplementation(libs.bundles.junit4)
 }
 
 tasks {

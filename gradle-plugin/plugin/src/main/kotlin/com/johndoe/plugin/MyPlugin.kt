@@ -7,7 +7,9 @@ class MyPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.tasks.register("myTask") { task ->
             task.description = "Print a line"
-            task.doLast { println("line") }
+            task.doLast {
+                println("${ProjectImpl(project).count} characters")
+            }
         }
     }
 }

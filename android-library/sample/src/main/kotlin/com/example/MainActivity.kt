@@ -1,14 +1,31 @@
 package com.example
 
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.FrameLayout
-import com.johndoe.library.ext.Views.create
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.johndoe.library.ext.TextViewExtImpl
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var layout: RelativeLayout
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<FrameLayout>(R.id.layout).addView(create(this))
+        layout = findViewById(R.id.layout)
+
+        val text = TextView(this)
+        text.x = 50f
+        text.y = 50f
+        text.width = 300
+        text.height = 100
+
+        val impl = TextViewExtImpl(text)
+        text.text = "${impl.size} pixels"
+        text.text = "${text.text} at ${impl.position}"
+
+        layout.addView(text)
     }
 }

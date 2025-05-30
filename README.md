@@ -19,7 +19,8 @@ native-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
 
 - Targeted plugin for each platform and [Coroutines Support Library](https://github.com/Kotlin/kotlinx.coroutines/).
 - JUnit testing framework with [Kotlin Test](https://kotlinlang.org/api/latest/kotlin.test/)
-  library support and [Truth](https://truth.dev/) asserter.
+  library support, [Mockito](https://site.mockito.org/) suite and [Truth](https://truth.dev/)
+  asserter.
 - [Ktlint](https://github.com/pinterest/ktlint/) code linter with third-party
   ruleset [Rulebook](https://github.com/hendraanggrian/rulebook/).
 - [Kover](https://github.com/Kotlin/kotlinx-kover/) code coverage.
