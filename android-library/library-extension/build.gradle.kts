@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.dokka.javadoc)
     alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.maven.publish)
 }
 

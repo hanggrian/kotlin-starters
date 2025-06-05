@@ -12,7 +12,7 @@ val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 plugins {
     kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.dokka)
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.gradle.publish)
 }
 

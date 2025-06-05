@@ -9,7 +9,7 @@ allprojects {
 plugins {
     kotlin("multiplatform") version libs.versions.kotlin
     alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint.gradle)
 }
 
 ktlint.version.set(libs.versions.ktlint.get())

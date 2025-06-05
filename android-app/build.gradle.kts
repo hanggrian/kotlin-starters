@@ -17,7 +17,7 @@ plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
     alias(libs.plugins.kotlinx.kover)
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint.gradle)
 }
 
 kotlin.jvmToolchain(jdkVersion.asInt())

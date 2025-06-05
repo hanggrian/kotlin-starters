@@ -3,7 +3,7 @@ val releaseArtifact: String by project
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android") version libs.versions.kotlin
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint.gradle)
 }
 
 android {

@@ -4,7 +4,7 @@ jre = "8"
 sdk-min = "21"
 sdk-target = "36"
 kotlin = "2.0.0"
-ktlint = "1.5.0"
+ktlint = "1.6.0"
 android-plugin = "8.10.1"
 
 [plugins]
@@ -13,7 +13,7 @@ android-library = { id = "com.android.library", version.ref = "android-plugin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "kotlin" }
 kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.1"
-ktlint = "org.jlleitschuh.gradle.ktlint:12.3.0"
+ktlint-gradle = "org.jlleitschuh.gradle.ktlint:12.3.0"
 maven-publish = "com.vanniktech.maven.publish.base:0.32.0"
 git-publish = "org.ajoberstar.git-publish:5.1.1"
 pages = "com.hanggrian.pages:0.2"
