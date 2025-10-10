@@ -1,11 +1,12 @@
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val releaseGroup: String by project
 val releaseVersion: String by project
 val releaseArtifact: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 allprojects {
     group = releaseGroup
@@ -19,7 +20,7 @@ plugins {
     alias(libs.plugins.ktlint.gradle)
 }
 
-kotlin.jvmToolchain(jdkVersion.asInt())
+kotlin.jvmToolchain(javaCompileVersion.asInt())
 
 application.mainClass.set("$releaseGroup.$releaseArtifact.App")
 
@@ -39,11 +40,11 @@ dependencies {
 
 tasks {
     compileJava {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     compileKotlin {
         compilerOptions.jvmTarget
-            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
     }
     test {
         useJUnitPlatform()

@@ -6,7 +6,6 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
@@ -23,8 +22,8 @@ val releaseVersion: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -47,7 +46,7 @@ subprojects {
         modify(the<BaseAppModuleExtension>())
     }
     plugins.withType<KotlinAndroidPluginWrapper>().configureEach {
-        the<KotlinAndroidProjectExtension>().jvmToolchain(jdkVersion.asInt())
+        the<KotlinAndroidProjectExtension>().jvmToolchain(javaCompileVersion.asInt())
     }
     plugins.withType<KtlintPlugin>().configureEach {
         the<KtlintExtension>().version.set(libs.versions.ktlint.get())
@@ -55,7 +54,6 @@ subprojects {
     plugins.withType<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
             configure(AndroidSingleVariantLibrary())
-            publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)
@@ -87,20 +85,20 @@ subprojects {
 
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions.jvmTarget
-            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
     }
 }
 
 fun modify(extension: BaseExtension) {
-    extension.setCompileSdkVersion(libs.versions.sdk.target.get().toInt())
+    extension.setCompileSdkVersion(libs.versions.android.compile.get().toInt())
     extension.defaultConfig {
-        minSdk = libs.versions.sdk.min.get().toInt()
-        targetSdk = libs.versions.sdk.target.get().toInt()
+        targetSdk = libs.versions.android.compile.get().toInt()
+        minSdk = libs.versions.android.support.get().toInt()
         version = releaseVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     extension.compileOptions {
-        sourceCompatibility = JavaVersion.toVersion(jreVersion)
-        targetCompatibility = JavaVersion.toVersion(jreVersion)
+        sourceCompatibility = JavaVersion.toVersion(javaSupportVersion)
+        targetCompatibility = JavaVersion.toVersion(javaSupportVersion)
     }
 }

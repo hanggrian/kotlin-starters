@@ -19,7 +19,7 @@ android {
     buildFeatures.buildConfig = false
     testOptions.unitTests.isIncludeAndroidResources = true
     kotlinOptions {
-        jvmTarget = JavaVersion.toVersion(libs.versions.jdk.get()).toString()
+        jvmTarget = JavaVersion.toVersion(libs.versions.java.support.get()).toString()
     }
 }
 

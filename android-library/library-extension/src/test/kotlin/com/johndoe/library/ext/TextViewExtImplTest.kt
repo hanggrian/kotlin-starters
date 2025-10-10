@@ -1,6 +1,5 @@
 package com.johndoe.library.ext
 
-import android.os.Build
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.common.truth.Truth.assertThat
@@ -11,14 +10,12 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [Build.VERSION_CODES.LOLLIPOP])
 @DoNotInstrument
 class TextViewExtImplTest {
     @Mock private lateinit var text: TextView

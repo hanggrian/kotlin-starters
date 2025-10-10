@@ -2,7 +2,6 @@ import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
@@ -19,8 +18,8 @@ val releaseVersion: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
@@ -35,7 +34,7 @@ allprojects {
 
 subprojects {
     plugins.withType<KotlinPluginWrapper>().configureEach {
-        the<KotlinJvmProjectExtension>().jvmToolchain(jdkVersion.asInt())
+        the<KotlinJvmProjectExtension>().jvmToolchain(javaCompileVersion.asInt())
     }
     plugins.withType<KtlintPlugin>().configureEach {
         the<KtlintExtension>()
@@ -45,7 +44,7 @@ subprojects {
     plugins.withType<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
             configure(KotlinJvm(JavadocJar.Dokka("dokkaGeneratePublicationJavadoc")))
-            publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+            publishToMavenCentral()
             signAllPublications()
             pom {
                 name.set(project.name)
@@ -77,11 +76,11 @@ subprojects {
 
     tasks {
         withType<JavaCompile>().configureEach {
-            options.release = jreVersion.asInt()
+            options.release = javaSupportVersion.asInt()
         }
         withType<KotlinCompile>().configureEach {
             compilerOptions.jvmTarget
-                .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+                .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
         }
         withType<Test>().configureEach {
             useJUnitPlatform()
