@@ -12,7 +12,10 @@ plugins {
 }
 
 pages {
-    resources.from("src", layout.buildDirectory.dir("dokka"))
+    resources.from(
+        "src/",
+        layout.buildDirectory.dir("dokka/"),
+    )
     styles.add("styles/prism-tomorrow.css")
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",

@@ -2,7 +2,8 @@ val releaseArtifact: String by project
 
 plugins {
     alias(libs.plugins.android.application)
-    kotlin("android") version libs.versions.kotlin
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.ktlint.gradle)
 }
 
@@ -13,14 +14,22 @@ android {
         applicationId = namespace
         multiDexEnabled = true
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
     ktlintRuleset(libs.rulebook.ktlint)
 
-    implementation(project(":$releaseArtifact"))
     implementation(project(":$releaseArtifact-extension"))
+    implementation(libs.kotlinx.coroutines)
     implementation(libs.material)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.multidex)
+    implementation(libs.hilt)
+
+    ksp(libs.hilt.compiler)
+
+    debugImplementation(libs.leakcanary)
 }

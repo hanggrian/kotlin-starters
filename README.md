@@ -1,19 +1,19 @@
 # Kotlin Starters
 
-![](https://github.com/hanggrian/kotlin-starters/raw/assets/logo.png)
+![Logo](https://github.com/hanggrian/kotlin-starters/raw/assets/logo.png)
 
 Common Gradle project templates with emphasis on **Kotlin,** separated by target
 platform and kind of distribution.
 
 | | Plugins | Testing | Publishing | Website | Coverage | Max Heap Size
 --- | :---: | :---: | :---: | :---: | :---: | :---:
-android-app | [Kotlin Android], [Android] | [JUnit 4], [Robolectric] | &cross; | [Cayman] | &check; | 4GB
+android-application | [Kotlin Android], [Android] | [JUnit 4], [Robolectric] | &cross; | [Cayman] | &check; | 4GB
 android-library | [Kotlin Android], [Android] | [JUnit 4], [Robolectric] | [Maven Central] | [Dokka], [Minimal] | &check; | 4GB
 gradle-plugin | [Kotlin DSL] | [JUnit 4] | [Plugin Portal] | [Dokka], [Minimal] | &cross; | 2GB
-js-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
-jvm-app | [Kotlin JVM], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
+js-application | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
+jvm-application | [Kotlin JVM], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
 jvm-library | [Kotlin JVM] | [JUnit 5] | [Maven Central] | [Dokka], [Minimal] | &check; | 2GB
-native-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
+native-application | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
 
 ## Frameworks
 
@@ -33,8 +33,10 @@ native-app | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
     and [gitignore](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files/)
     file.
   - [EditorConfig](https://editorconfig.org/) enforces IDE settings.
-  - [CircleCI](https://circleci.com/) to run test every commit, also triggers
-    [Codecov](https://about.codecov.io/) integration within CircleCI.
+- [CircleCI](https://circleci.com/) workflow:
+  - Run tests, linters and push coverage to [Codecov](https://codecov.io/).
+  - Activate [Renovate](https://docs.renovatebot.com/) bot to alert out-of-date
+    dependencies.
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     scripts with properties delegation.

@@ -2,30 +2,27 @@ package com.example
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.johndoe.library.ext.TextViewExtImpl
+import com.example.databinding.ActivityMainBinding
+import com.johndoe.library.ext.ExtendedViewStats
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import javax.inject.Provider
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var layout: RelativeLayout
+    private lateinit var binding: ActivityMainBinding
+
+    @Inject lateinit var statsProvider: Provider<ExtendedViewStats>
+
+    val stats: ExtendedViewStats by lazy { statsProvider.get() }
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        layout = findViewById(R.id.layout)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val text = TextView(this)
-        text.x = 50f
-        text.y = 50f
-        text.width = 300
-        text.height = 100
-
-        val impl = TextViewExtImpl(text)
-        text.text = "${impl.size} pixels"
-        text.text = "${text.text} at ${impl.position}"
-
-        layout.addView(text)
+        binding.text.text = "${stats.size} pixels at ${stats.position}"
     }
 }

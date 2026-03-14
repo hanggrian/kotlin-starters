@@ -5,7 +5,6 @@ import com.vanniktech.maven.publish.MavenPublishBasePlugin
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
@@ -19,27 +18,41 @@ val releaseDescription: String by project
 val releaseUrl: String by project
 
 val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
-val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
+val javaSupportVersion = JavaVersion.toVersion(libs.versions.java.support.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
-    alias(libs.plugins.ktlint.gradle) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.maven.publish) apply false
 }
 
 allprojects {
     group = releaseGroup
     version = releaseVersion
+
+    plugins.apply(KtlintPlugin::class)
+
+    afterEvaluate {
+        the<KtlintExtension>().version.set(libs.versions.ktlint.get())
+
+        dependencies.ktlintRuleset(libs.rulebook.ktlint)
+    }
 }
 
 subprojects {
     plugins.withType<KotlinPluginWrapper>().configureEach {
-        the<KotlinJvmProjectExtension>().jvmToolchain(javaCompileVersion.asInt())
-    }
-    plugins.withType<KtlintPlugin>().configureEach {
-        the<KtlintExtension>()
-            .version
-            .set(libs.versions.ktlint.get())
+        configure<JavaPluginExtension> {
+            toolchain.languageVersion.set(javaCompileVersion)
+            sourceCompatibility = javaSupportVersion
+            targetCompatibility = javaSupportVersion
+        }
+        configure<KotlinJvmProjectExtension> {
+            jvmToolchain {
+                languageVersion.set(javaCompileVersion)
+            }
+            compilerOptions.jvmTarget.set(JvmTarget.fromTarget(javaSupportVersion.toString()))
+        }
     }
     plugins.withType<MavenPublishBasePlugin> {
         configure<MavenPublishBaseExtension> {
@@ -74,16 +87,7 @@ subprojects {
         }
     }
 
-    tasks {
-        withType<JavaCompile>().configureEach {
-            options.release = javaSupportVersion.asInt()
-        }
-        withType<KotlinCompile>().configureEach {
-            compilerOptions.jvmTarget
-                .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
-        }
-        withType<Test>().configureEach {
-            useJUnitPlatform()
-        }
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
     }
 }

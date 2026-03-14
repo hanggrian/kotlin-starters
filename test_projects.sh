@@ -10,17 +10,17 @@ die() { echo; echo "$RED$*$END"; echo; exit 1; } >&2
 
 SOURCE_ROOT="$(cd "$(dirname "$0")" && pwd)" && readonly SOURCE_ROOT
 declare -a ANDROID_PROJECTS=(
-  "$(cd "$SOURCE_ROOT/android-app" && pwd)"
+  "$(cd "$SOURCE_ROOT/android-application" && pwd)"
   "$(cd "$SOURCE_ROOT/android-library" && pwd)"
 ) && readonly ANDROID_PROJECTS
 declare -a JAVA_PROJECTS=(
-  "$(cd "$SOURCE_ROOT/jvm-app" && pwd)"
+  "$(cd "$SOURCE_ROOT/jvm-application" && pwd)"
   "$(cd "$SOURCE_ROOT/jvm-library" && pwd)"
 ) && readonly JAVA_PROJECTS
 declare -a OTHER_PROJECTS=(
   "$(cd "$SOURCE_ROOT/gradle-plugin" && pwd)"
-  "$(cd "$SOURCE_ROOT/js-app" && pwd)"
-  "$(cd "$SOURCE_ROOT/native-app" && pwd)"
+  "$(cd "$SOURCE_ROOT/js-application" && pwd)"
+  "$(cd "$SOURCE_ROOT/native-application" && pwd)"
 ) && readonly OTHER_PROJECTS
 
 KOVER_FILE='build/reports/kover/report.xml' && readonly KOVER_FILE
@@ -35,7 +35,7 @@ for project in "${ANDROID_PROJECTS[@]}"; do
 
   echo '(2/3) Checking coverage file'
   is_app=false
-  if [[ "$project" == *'-app' ]]; then
+  if [[ "$project" == *'-application' ]]; then
     is_app=true
     if [[ ! -e "$KOVER_FILE" ]]; then
       die 'Coverage not found.'
@@ -69,7 +69,7 @@ for project in "${JAVA_PROJECTS[@]}"; do
 
   echo '(2/3) Checking coverage file'
   is_app=false
-  if [[ "$project" == *'-app' ]]; then
+  if [[ "$project" == *'-application' ]]; then
     is_app=true
     if [ ! -e "$KOVER_FILE" ]; then
       die 'Coverage not found.'
@@ -108,3 +108,5 @@ for project in "${OTHER_PROJECTS[@]}"; do
 done
 
 echo "${GREEN}Tests complete.$END"
+echo
+echo 'Goodbye!'
