@@ -33,7 +33,7 @@ native-application | &cross; | &cross; | &cross; | [Cayman] | &check; | 2GB
     and [gitignore](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files/)
     file.
   - [EditorConfig](https://editorconfig.org/) enforces IDE settings.
-- [CircleCI](https://circleci.com/) workflow:
+- [GitHub Actions](https://docs.github.com/en/actions/) workflows:
   - Run tests, linters and push coverage to [Codecov](https://codecov.io/).
   - Activate [Renovate](https://docs.renovatebot.com/) bot to alert out-of-date
     dependencies.

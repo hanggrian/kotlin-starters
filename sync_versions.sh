@@ -33,24 +33,26 @@ for project in "${PROJECTS[@]}"; do
 
   echo '(1/4) Generating Gradle wrapper'
   cd "$project" || exit 1
-  update_gradle_wrapper 'distributionUrl' \
-    'https\\\://services.gradle.org/distributions/gradle-9.4.0-bin.zip'
+  update_gradle_wrapper \
+    'distributionUrl' \
+    'https\\\://services.gradle.org/distributions/gradle-9.4.1-bin.zip'
   ./gradlew -q wrapper
 
   echo '(2/4) Updating base'
   update_libs 'java-compile' '21'
   update_libs 'java-support' '8'
-  update_libs 'kotlin' '2.3.10'
-  update_libs 'dokka' '2.1.0'
+  update_libs 'kotlin' '2.3.20'
+  update_libs 'dokka' '2.2.0'
   update_libs 'ktlint' '1.8.0'
-  update_libs 'kotlinx-kover' 'org.jetbrains.kotlinx.kover:0.9.7'
+  update_libs 'kotlinx-kover' 'org.jetbrains.kotlinx.kover:0.9.8'
   update_libs 'ksp' 'com.google.devtools.ksp:2.3.6'
   update_libs 'ktlint-gradle' 'org.jlleitschuh.gradle.ktlint:14.2.0'
-  update_libs 'git-publish' 'org.ajoberstar.git-publish:5.1.3'
+  update_libs 'git-publish' 'org.ajoberstar.git-publish:6.0.0'
   update_libs 'pages' 'com.hanggrian.pages:0.3'
-  update_libs 'rulebook-ktlint' \
+  update_libs \
+    'rulebook-ktlint' \
     'com.hanggrian.rulebook:rulebook-ktlint:0.2'
-  update_libs 'mockito-kotlin' 'org.mockito.kotlin:mockito-kotlin:6.2.3'
+  update_libs 'mockito-kotlin' 'org.mockito.kotlin:mockito-kotlin:6.3.0'
   update_libs 'truth' 'com.google.truth:truth:1.4.5'
 
   mockito_version='5.23.0'
@@ -74,13 +76,15 @@ for project in "${PROJECTS[@]}"; do
     echo '(3/4) Updating JVM'
     update_libs 'dagger' "$dagger_version"
     update_libs 'junit' '5.14.3'
-    update_libs 'junit-platform-launcher' \
+    update_libs \
+      'junit-platform-launcher' \
       'org.junit.platform:junit-platform-launcher:1.14.3'
-    update_libs 'mockito-junit-jupiter' \
+    update_libs \
+      'mockito-junit-jupiter' \
       "org.mockito:mockito-junit-jupiter:$mockito_version"
   else
     echo '(3/4) Updating Gradle Publish'
-    update_libs 'gradle-publish' 'com.gradle.plugin-publish:2.1.0'
+    update_libs 'gradle-publish' 'com.gradle.plugin-publish:2.1.1'
     update_libs 'junit' 'junit:junit:4.13.2'
   fi
 

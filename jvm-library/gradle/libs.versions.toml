@@ -1,8 +1,8 @@
 [versions]
 java-compile = "21"
 java-support = "8"
-kotlin = "2.3.10"
-dokka = "2.1.0"
+kotlin = "2.3.20"
+dokka = "2.2.0"
 junit = "5.14.3"
 ktlint = "1.8.0"
 dagger = "2.59.2"
@@ -10,11 +10,11 @@ dagger = "2.59.2"
 [plugins]
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
-kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.7"
+kotlinx-kover = "org.jetbrains.kotlinx.kover:0.9.8"
 ksp = "com.google.devtools.ksp:2.3.6"
 ktlint-gradle = "org.jlleitschuh.gradle.ktlint:14.2.0"
 maven-publish = "com.vanniktech.maven.publish.base:0.36.0"
-git-publish = "org.ajoberstar.git-publish:5.1.3"
+git-publish = "org.ajoberstar.git-publish:6.0.0"
 pages = "com.hanggrian.pages:0.3"
 
 [libraries]
@@ -30,7 +30,7 @@ junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 junit-platform-launcher = "org.junit.platform:junit-platform-launcher:1.14.3"
 mockito-junit-jupiter = "org.mockito:mockito-junit-jupiter:5.23.0"
-mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:6.2.3"
+mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:6.3.0"
 truth = "com.google.truth:truth:1.4.5"
 
 [bundles]

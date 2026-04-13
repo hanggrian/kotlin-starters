@@ -3,8 +3,5 @@
   "extends": ["config:recommended"],
   "mode": "full",
   "prCreation": "not-pending",
-  "internalChecksFilter": "strict",
-  "ignoreDeps": [
-    "cimg/android"
-  ]
+  "internalChecksFilter": "strict"
 }
