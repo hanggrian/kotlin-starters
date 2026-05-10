@@ -15,6 +15,4 @@ runs:
           ${{ github.workspace }}/.gradle/caches/modules-2/
           ${{ github.workspace }}/.gradle/wrapper/
         key: gradle-${{ hashFiles('gradle/libs.versions.toml') }}
-
-    - shell: bash
-      run: ./gradlew compileKotlin
+        restore-keys: gradle-

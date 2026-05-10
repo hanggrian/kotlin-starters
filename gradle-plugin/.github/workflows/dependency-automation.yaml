@@ -11,12 +11,12 @@ concurrency:
 jobs:
   activate-renovatebot:
     if: github.event.forced == false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: github-actions
     steps:
       - uses: actions/checkout@v6
 
-      - uses: renovatebot/github-action@v46.1.8
+      - uses: renovatebot/github-action@v46.1.13
         with:
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
